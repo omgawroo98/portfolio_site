@@ -1,0 +1,70 @@
+{
+    "nav": {
+        "home": "Home",
+        "about": "Chi sono",
+        "skills": "Competenze",
+        "services": "Servizi",
+        "portfolio": "Portfolio",
+        "contact": "Contatto"
+    },
+    "hero": {
+        "title": "Ciao, sono Omar.",
+        "subtitle": "Sviluppatore Full Stack",
+        "desc": "Creo applicazioni web moderne e scalabili.",
+        "contact": "Contattami"
+    },
+    "about": {
+        "title": "Chi sono",
+        "description": "Sono uno sviluppatore full stack appassionato, focalizzato sulla creazione di applicazioni web performanti e intuitive."
+    },
+    "services": {
+        "title": "Servizi",
+        "items": {
+            "web": {
+                "title": "Sviluppo Web",
+                "desc": "Costruzione di siti web reattivi, accessibili e performanti."
+            },
+            "backend": {
+                "title": "API Backend",
+                "desc": "Creazione di API REST e GraphQL scalabili con Node.js."
+            },
+            "design": {
+                "title": "UI/UX Design",
+                "desc": "Progettazione di interfacce intuitive con strumenti moderni."
+            }
+        }
+    },
+    "portfolio": {
+        "title": "Portfolio",
+        "projects": {
+            "portfolio": {
+                "title": "Portfolio Dev",
+                "desc": "Il mio sito personale realizzato con React e MUI."
+            },
+            "weather": {
+                "title": "App Meteo",
+                "desc": "Un'app di previsioni meteo con API OpenWeather."
+            },
+            "blog": {
+                "title": "Blog CMS",
+                "desc": "Sistema di blogging con markdown e backend Node.js."
+            }
+        }
+    },
+    "contact": {
+        "title": "Contatto",
+        "description": "Mi farebbe piacere ricevere tue notizie!",
+        "fields": {
+            "name": "Nome",
+            "email": "Email",
+            "message": "Messaggio",
+            "send": "Invia"
+        }
+    },
+    "home": {
+        "title": "Ciao, sono Omar.",
+        "subtitle": "Sviluppatore Full Stack",
+        "description": "Creo applicazioni web dinamiche e scalabili per la tua azienda, offrendo soluzioni complete dall'ideazione al deployment.",
+        "cta": "Contattami"
+    }
+}
