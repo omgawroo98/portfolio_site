@@ -1,26 +1,24 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Contact from './components/Contact';
-import Home from './components/Home';
 import Navbar from './components/Navbar';
-import Skills from './components/Skills';
+import Home from './components/Home';
 import About from './components/About';
-import Portfolio from './components/Portfolio';
+import Skills from './components/Skills';
 import Services from './components/Services';
+import Portfolio from './components/Portfolio';
+import Contact from './components/Contact';
 
 function App() {
   return (
-    <Router basename="/omgawroo98/omgawroo98.github.io">
-      <Navbar /> {/* ← Always visible */}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/skills" element={<Skills />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/contact" element={<Contact />} />
-
-      </Routes>
-    </Router>
+    <>
+      <Navbar />
+      <main>
+        <section id="home"><Home /></section>
+        <section id="about"><About /></section>
+        <section id="skills"><Skills /></section>
+        <section id="services"><Services /></section>
+        <section id="portfolio"><Portfolio /></section>
+        <section id="contact"><Contact /></section>
+      </main>
+    </>
   );
 }
 
