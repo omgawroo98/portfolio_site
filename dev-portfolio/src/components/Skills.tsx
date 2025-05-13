@@ -1,7 +1,13 @@
-import { Box, Typography, List, ListItem, ListItemText } from '@mui/material';
+import {
+    Box,
+    Typography,
+    List,
+    ListItem,
+    ListItemText,
+    Container,
+} from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import Grid from '@mui/material/GridLegacy';
-
 
 const Skills = () => {
     const { t } = useTranslation();
@@ -14,26 +20,38 @@ const Skills = () => {
     };
 
     return (
-        <Box sx={{ p: 4 }}>
-            <Typography variant="h4" gutterBottom>
-                {t('skills.title')}
-            </Typography>
-            <Grid container spacing={4}>
-                {Object.entries(skillData).map(([category, skills]) => (
-                    <Grid key={category} item xs={12} sm={6} md={3}>
-                        <Typography variant="h6" gutterBottom>
-                            {t(`skills.${category}`)}
-                        </Typography>
-                        <List dense>
-                            {skills.map((skill) => (
-                                <ListItem key={skill} disablePadding>
-                                    <ListItemText primary={skill} />
-                                </ListItem>
-                            ))}
-                        </List>
-                    </Grid>
-                ))}
-            </Grid>
+        <Box
+            id="skills"
+            sx={{
+                minHeight: '100vh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                px: 2,
+            }}
+        >
+            <Container maxWidth="lg">
+                <Typography variant="h4" align="center" gutterBottom fontWeight="bold">
+                    {t('skills.title')}
+                </Typography>
+
+                <Grid container spacing={4} justifyContent="center">
+                    {Object.entries(skillData).map(([category, skills]) => (
+                        <Grid item key={category} xs={12} sm={6} md={3}>
+                            <Typography variant="h6" gutterBottom>
+                                {t(`skills.${category}`)}
+                            </Typography>
+                            <List dense>
+                                {skills.map((skill) => (
+                                    <ListItem key={skill} disablePadding>
+                                        <ListItemText primary={skill} />
+                                    </ListItem>
+                                ))}
+                            </List>
+                        </Grid>
+                    ))}
+                </Grid>
+            </Container>
         </Box>
     );
 };

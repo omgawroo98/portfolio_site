@@ -1,19 +1,36 @@
 import { Box, Typography } from '@mui/material';
-import { useTranslation } from 'react-i18next';
+import Grid from '@mui/material/GridLegacy';
 
 const About = () => {
-    const { t } = useTranslation();
-
-    return (
-        <Box sx={{ p: 4 }}>
-            <Typography variant="h4" gutterBottom>
-                {t('nav.about')}
-            </Typography>
-            <Typography variant="body1" color="text.secondary">
-                I'm a passionate full stack developer focused on crafting clean, user-friendly, and performant web applications. I specialize in React, TypeScript, and Node.js.
-            </Typography>
-        </Box>
-    );
+  return (
+    <Box
+      id="about"
+      sx={{
+        minHeight: '30vh',
+        display: 'flex',
+        alignItems: 'center', // vertically center
+        justifyContent: 'center', // horizontally center
+        px: 2, // optional padding
+      }}
+    >
+      <Grid
+        container
+        spacing={4}
+        maxWidth="md"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Grid item xs={12}>
+          <Typography variant="h3" align="center" fontWeight="bold">
+            About Me
+          </Typography>
+          <Typography variant="body1" align="center" sx={{ mt: 2 }}>
+            I'm Omar, a full stack developer based in Germany...
+          </Typography>
+        </Grid>
+      </Grid>
+    </Box>
+  );
 };
 
-export default About;
+export default About

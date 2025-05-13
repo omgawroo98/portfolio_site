@@ -1,43 +1,45 @@
-import { Box, Typography, Paper } from '@mui/material';
+import { Box, Typography, Paper, Container } from '@mui/material';
 import Grid from '@mui/material/GridLegacy';
+import { useTranslation } from 'react-i18next';
 
-const services = [
-    {
-        title: 'Web Development',
-        desc: 'Building responsive, accessible, and high-performance websites.',
-    },
-    {
-        title: 'Backend APIs',
-        desc: 'Creating scalable REST and GraphQL APIs with Node.js.',
-    },
-    {
-        title: 'UI/UX Design',
-        desc: 'Designing intuitive user interfaces using modern tools.',
-    },
-];
+const serviceKeys = ['web', 'backend', 'design'];
 
 const Services = () => {
-    return (
-        <Box sx={{ p: 4 }}>
-            <Typography variant="h4" gutterBottom>
-                Services
-            </Typography>
-            <Grid container spacing={4}>
-                {services.map(({ title, desc }) => (
-                    <Grid item xs={12} md={4} key={title}>
-                        <Paper elevation={2} sx={{ p: 3 }}>
-                            <Typography variant="h6" gutterBottom>
-                                {title}
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                {desc}
-                            </Typography>
-                        </Paper>
-                    </Grid>
-                ))}
+  const { t } = useTranslation();
+
+  return (
+    <Box
+      id="services"
+      sx={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        px: 2,
+      }}
+    >
+      <Container maxWidth="lg">
+        <Typography variant="h4" align="center" gutterBottom fontWeight="bold">
+          {t('services.title')}
+        </Typography>
+
+        <Grid container spacing={4} justifyContent="center">
+          {serviceKeys.map((key) => (
+            <Grid item xs={12} sm={6} md={4} key={key}>
+              <Paper elevation={2} sx={{ p: 3 }}>
+                <Typography variant="h6" gutterBottom>
+                  {t(`services.${key}.title`)}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {t(`services.${key}.desc`)}
+                </Typography>
+              </Paper>
             </Grid>
-        </Box>
-    );
+          ))}
+        </Grid>
+      </Container>
+    </Box>
+  );
 };
 
 export default Services;

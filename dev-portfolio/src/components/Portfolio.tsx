@@ -1,34 +1,46 @@
-import { Box, Typography, Card, CardContent } from '@mui/material';
+import { Box, Typography, Card, CardContent, Container } from '@mui/material';
 import Grid from '@mui/material/GridLegacy';
+import { useTranslation } from 'react-i18next';
 
-const projects = [
-    { title: 'Dev Portfolio', desc: 'My personal site built with React & MUI.' },
-    { title: 'Weather App', desc: 'A weather forecasting app using OpenWeather API.' },
-    { title: 'Blog CMS', desc: 'A markdown-based blog system with Node.js backend.' },
-];
+const projectKeys = ['portfolio', 'weather', 'blog'];
 
 const Portfolio = () => {
-    return (
-        <Box sx={{ p: 4 }}>
-            <Typography variant="h4" gutterBottom>
-                Portfolio
-            </Typography>
-            <Grid container spacing={4}>
-                {projects.map(({ title, desc }) => (
-                    <Grid item xs={12} sm={6} md={4} key={title}>
-                        <Card>
-                            <CardContent>
-                                <Typography variant="h6">{title}</Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                    {desc}
-                                </Typography>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-                ))}
+  const { t } = useTranslation();
+
+  return (
+    <Box
+      id="portfolio"
+      sx={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        px: 2,
+      }}
+    >
+      <Container maxWidth="lg">
+        <Typography variant="h4" gutterBottom>
+          {t('portfolio.title')}
+        </Typography>
+        <Grid container spacing={4}>
+          {projectKeys.map((key) => (
+            <Grid item xs={12} sm={6} md={4} key={key}>
+              <Card>
+                <CardContent>
+                  <Typography variant="h6" gutterBottom>
+                    {t(`portfolio.projects.${key}.title`)}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {t(`portfolio.projects.${key}.desc`)}
+                  </Typography>
+                </CardContent>
+              </Card>
             </Grid>
-        </Box>
-    );
+          ))}
+        </Grid>
+      </Container>
+    </Box>
+  );
 };
 
 export default Portfolio;
