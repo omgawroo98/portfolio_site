@@ -16,6 +16,12 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 //@ts-ignore
 import Scrollspy from 'react-scrollspy';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import { useContext } from 'react';
+import { ColorModeContext } from '../Theme/ThemeContext';
+import { useTheme } from '@mui/material/styles';
+
 
 const navItems = ['home', 'about', 'skills', 'services', 'portfolio', 'contact'];
 const languages = [
@@ -29,7 +35,8 @@ const Navbar = () => {
   const { t, i18n } = useTranslation();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-
+  const colorMode = useContext(ColorModeContext);
+  const theme = useTheme();
   const trigger = useScrollTrigger({ disableHysteresis: true, threshold: 0 });
 
   const handleLanguageClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -116,6 +123,9 @@ const Navbar = () => {
                   </MenuItem>
                 ))}
               </Menu>
+              <IconButton onClick={colorMode.toggleColorMode}>
+                {theme.palette.mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
+              </IconButton>
             </Box>
           </Toolbar>
         </AppBar>
