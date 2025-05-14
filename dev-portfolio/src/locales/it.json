@@ -17,21 +17,26 @@
         "title": "Chi sono",
         "description": "Sono uno sviluppatore full stack appassionato, focalizzato sulla creazione di applicazioni web performanti e intuitive."
     },
+    "skills": {
+        "title": "Competenze",
+        "frontend": "Frontend",
+        "backend": "Backend",
+        "tools": "Strumenti",
+        "languages": "Linguaggi"
+    },
     "services": {
         "title": "Servizi",
-        "items": {
-            "web": {
-                "title": "Sviluppo Web",
-                "desc": "Costruzione di siti web reattivi, accessibili e performanti."
-            },
-            "backend": {
-                "title": "API Backend",
-                "desc": "Creazione di API REST e GraphQL scalabili con Node.js."
-            },
-            "design": {
-                "title": "UI/UX Design",
-                "desc": "Progettazione di interfacce intuitive con strumenti moderni."
-            }
+        "web": {
+            "title": "Sviluppo Web",
+            "desc": "Costruzione di siti web reattivi, accessibili e performanti."
+        },
+        "backend": {
+            "title": "API Backend",
+            "desc": "Creazione di API REST e GraphQL scalabili con Node.js."
+        },
+        "design": {
+            "title": "UI/UX Design",
+            "desc": "Progettazione di interfacce intuitive con strumenti moderni."
         }
     },
     "portfolio": {
@@ -53,12 +58,12 @@
     },
     "contact": {
         "title": "Contatto",
-        "description": "Mi farebbe piacere ricevere tue notizie!",
-        "fields": {
+        "subtitle": "Mi farebbe piacere sentirti! Non esitare a contattarmi per domande o proposte di collaborazione.",
+        "form": {
             "name": "Nome",
             "email": "Email",
             "message": "Messaggio",
-            "send": "Invia"
+            "submit": "Invia"
         }
     },
     "home": {

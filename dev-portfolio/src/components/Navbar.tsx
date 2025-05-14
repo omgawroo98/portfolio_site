@@ -19,7 +19,7 @@ import Scrollspy from 'react-scrollspy';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import { useContext } from 'react';
-import { ColorModeContext } from '../Theme/ThemeContext';
+import { ColorModeContext } from '../theme/ThemeContext';
 import { useTheme } from '@mui/material/styles';
 
 

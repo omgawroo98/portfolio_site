@@ -1,7 +1,10 @@
 import { Box, Typography } from '@mui/material';
 import Grid from '@mui/material/GridLegacy';
+import { useTranslation } from 'react-i18next';
 
 const About = () => {
+  const { t } = useTranslation();
+
   return (
     <Box
       id="about"
@@ -22,10 +25,10 @@ const About = () => {
       >
         <Grid item xs={12}>
           <Typography variant="h3" align="center" fontWeight="bold">
-            About Me
+            {t('about.title')}
           </Typography>
           <Typography variant="body1" align="center" sx={{ mt: 2 }}>
-            I'm Omar, a full stack developer based in Germany...
+            {t('about.description')}
           </Typography>
         </Grid>
       </Grid>

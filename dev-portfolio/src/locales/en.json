@@ -17,21 +17,26 @@
     "title": "About Me",
     "description": "I'm a passionate full stack developer focused on crafting clean, user-friendly, and performant web applications."
   },
+  "skills": {
+    "title": "Skills",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "tools": "Tools",
+    "languages": "Languages"
+  },
   "services": {
     "title": "Services",
-    "items": {
-      "web": {
-        "title": "Web Development",
-        "desc": "Building responsive, accessible, and high-performance websites."
-      },
-      "backend": {
-        "title": "Backend APIs",
-        "desc": "Creating scalable REST and GraphQL APIs with Node.js."
-      },
-      "design": {
-        "title": "UI/UX Design",
-        "desc": "Designing intuitive user interfaces using modern tools."
-      }
+    "web": {
+      "title": "Web Development",
+      "desc": "Building responsive, accessible, and high-performance websites."
+    },
+    "backend": {
+      "title": "Backend APIs",
+      "desc": "Creating scalable REST and GraphQL APIs with Node.js."
+    },
+    "design": {
+      "title": "UI/UX Design",
+      "desc": "Designing intuitive user interfaces using modern tools."
     }
   },
   "portfolio": {
@@ -53,12 +58,12 @@
   },
   "contact": {
     "title": "Contact",
-    "description": "I'd love to hear from you!",
-    "fields": {
+    "subtitle": "I'd love to hear from you! Feel free to reach out with any questions or collaboration ideas.",
+    "form": {
       "name": "Name",
       "email": "Email",
       "message": "Message",
-      "send": "Send"
+      "submit": "Send"
     }
   },
   "home": {
