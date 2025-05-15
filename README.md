@@ -1,75 +1,46 @@
-# 🌐 omgawroo98.github.io – Developer Portfolio
+# Getting Started with Create React App
 
-Welcome to the source code of my personal developer portfolio, built with **React**, **Material UI**, and **i18n**. This site is designed to showcase who I am, what I build, and how I work — including project highlights, contact information, and a clear organizational workflow.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-You can check it out live here: [https://omgawroo98.github.io](https://omgawroo98.github.io)
+## Available Scripts
 
----
+In the project directory, you can run:
 
-## 🚀 Features
+### `npm start`
 
-- 🎨 **Clean, responsive UI** using Material UI
-- 🌙 **Dark mode** support (in progress) – [TKT-001]
-- 🌍 **Multilingual support** via `react-i18next`
-- 🧩 **Modular components** for easy maintenance
-- 🛠️ **Ticket-driven development** with commit tagging
-- 🗂 **Project board** for transparent roadmap and progress
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
----
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-## 📁 Structure
+### `npm test`
 
-```bash
-dev-portfolio/
-├── components/       # Reusable UI blocks (Portfolio, Services, Contact)
-├── locales/          # i18n translations
-├── App.tsx           # Main application wrapper
-├── index.tsx         # Entry point
-```
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
----
+### `npm run build`
 
-## 🧠 Workflow Philosophy
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-This project is structured using a **ticket-based system**. Each feature or bug is tied to a GitHub Issue with a unique ID (e.g., `TKT-001`). Commits reference these IDs to improve traceability:
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-```bash
-feat: add theme toggle for dark mode [TKT-001]
-fix: add missing translations to form labels [TKT-002]
-```
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-👉 View the [GitHub Project Board](https://github.com/omgawroo98/omgawroo98.github.io/projects) to track progress.
+### `npm run eject`
 
----
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-## 📬 Contact
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Feel free to reach out via the [Contact section](https://omgawroo98.github.io/#contact) on the website — or connect with me on [LinkedIn](https://www.linkedin.com/in/your-profile).
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
----
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## 🛠️ Tech Stack
+## Learn More
 
-- **React** with TypeScript
-- **Material UI (MUI)**
-- **i18next** for internationalization
-- **GitHub Projects** for task management
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
----
-
-## 🗳 Example Tickets
-
-| ID       | Title                               | Type      |
-|----------|-------------------------------------|-----------|
-| TKT-001  | Add Dark Mode Support in UI         | Feature   |
-| TKT-002  | Fix Missing i18n Translations       | Bug       |
-
----
-
-## 📌 License
-
-This project is open for viewing, learning, and inspiration. Please do not reuse content or designs without permission.
-
----
-
-Thanks for visiting! 🎉
+To learn React, check out the [React documentation](https://reactjs.org/).
