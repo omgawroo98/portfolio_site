@@ -8,16 +8,6 @@ const Services = () => {
   const { t } = useTranslation();
 
   return (
-    <Box
-      id="services"
-      sx={{
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        px: 2,
-      }}
-    >
       <Container maxWidth="lg">
         <Typography variant="h4" align="center" gutterBottom fontWeight="bold">
           {t('services.title')}
@@ -38,7 +28,6 @@ const Services = () => {
           ))}
         </Grid>
       </Container>
-    </Box>
   );
 };
 

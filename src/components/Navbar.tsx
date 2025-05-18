@@ -63,7 +63,7 @@ const Navbar = () => {
         <AppBar
           position="fixed"
           color="inherit"
-          elevation={0}
+          elevation={trigger ? 4 : 0} // <-- dynamic shadow toggle
           sx={{
             transition: 'box-shadow 0.3s ease-in-out',
             zIndex: (theme) => theme.zIndex.drawer + 1,
@@ -71,15 +71,15 @@ const Navbar = () => {
         >
           <Toolbar
             sx={{
-              justifyContent: 'space-between',
-              maxWidth: '1200px',
-              mx: 'auto',
+              display: 'flex',
+              justifyContent: 'space-around',
               width: '100%',
+              py: 2, // vertical padding  
             }}
           >
             {/* Branding */}
-            <Typography variant="h6" sx={{ fontWeight: 'bold', textTransform: 'capitalize' }}>
-              omar
+            <Typography variant="h4">
+              Omar Elbakri
             </Typography>
 
             {/* Scrollspy Nav Links */}
@@ -99,8 +99,6 @@ const Navbar = () => {
                   key={item}
                   href={`#${item}`}
                   sx={{
-                    textTransform: 'none',
-                    fontWeight: 500,
                     color: 'text.primary',
                     scrollBehavior: 'smooth',
                     '&.active': {
@@ -108,7 +106,9 @@ const Navbar = () => {
                     },
                   }}
                 >
-                  {t(`nav.${item}`)}
+                  <Typography variant="nav">
+                    {t(`nav.${item}`)}
+                  </Typography>
                 </Button>
               ))}
 

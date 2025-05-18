@@ -5,16 +5,6 @@ const Contact = () => {
   const { t } = useTranslation();
 
   return (
-    <Box
-      id="contact"
-      sx={{
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        px: 2,
-      }}
-    >
       <Container maxWidth="sm">
         <Typography variant="h4" gutterBottom align="center">
           {t('contact.title')}
@@ -45,7 +35,6 @@ const Contact = () => {
           </Button>
         </Stack>
       </Container>
-    </Box>
   );
 };
 
