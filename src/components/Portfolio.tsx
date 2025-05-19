@@ -9,7 +9,7 @@ const Portfolio = () => {
 
   return (
       <Container maxWidth="lg">
-        <Typography variant="h4" gutterBottom>
+        <Typography variant="h1" gutterBottom>
           {t('portfolio.title')}
         </Typography>
         <Grid container spacing={4}>

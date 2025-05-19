@@ -9,7 +9,7 @@ const Services = () => {
 
   return (
       <Container maxWidth="lg">
-        <Typography variant="h4" align="center" gutterBottom fontWeight="bold">
+        <Typography variant="h1" align="center" gutterBottom fontWeight="bold">
           {t('services.title')}
         </Typography>
 

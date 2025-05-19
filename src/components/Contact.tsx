@@ -6,7 +6,7 @@ const Contact = () => {
 
   return (
       <Container maxWidth="sm">
-        <Typography variant="h4" gutterBottom align="center">
+        <Typography variant="h1" gutterBottom align="center">
           {t('contact.title')}
         </Typography>
 

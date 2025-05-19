@@ -14,8 +14,11 @@
         "contact": "Contattami"
     },
     "about": {
-        "title": "Chi sono",
-        "description": "Sono uno sviluppatore full stack appassionato, focalizzato sulla creazione di applicazioni web performanti e intuitive."
+        "heading": "Conosciamoci meglio",
+        "paragraph1": "Sono Omar, uno sviluppatore Full Stack con sede in Germania, appassionato di creare applicazioni web pulite, efficienti e scalabili. Mi specializzo nella creazione di esperienze digitali moderne utilizzando React, Node.js e TypeScript — strumenti che mi permettono di trasformare idee in soluzioni affidabili ed eleganti.",
+        "paragraph2": "Oltre a scrivere codice, mi concentro sullo sviluppo di software intuitivo, accessibile e facilmente manutenibile. Mi piace risolvere problemi reali, progettando interfacce reattive o sviluppando API robuste.",
+        "paragraph3": "Con grande attenzione ai dettagli e una passione per l'apprendimento continuo, cerco di scrivere codice che sia non solo funzionale, ma anche ben pensato — a supporto di una crescita sostenibile e di una migliore esperienza per gli sviluppatori.",
+        "cta": "Scarica il CV"
     },
     "skills": {
         "title": "Competenze",

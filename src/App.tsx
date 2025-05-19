@@ -12,7 +12,7 @@ function App() {
     <>
       <Navbar />
       <main>
-        <SectionWrapper id="home"><Home /></SectionWrapper>
+        <SectionWrapper id="home" fullHeight><Home /></SectionWrapper>
         <SectionWrapper id="about"><About /></SectionWrapper>
         <SectionWrapper id="skills"><Skills /></SectionWrapper>
         <SectionWrapper id="services"><Services /></SectionWrapper>

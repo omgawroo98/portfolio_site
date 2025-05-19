@@ -21,14 +21,14 @@ const Skills = () => {
 
     return (
             <Container maxWidth="lg">
-                <Typography variant="h4" align="center" gutterBottom fontWeight="bold">
+                <Typography variant="h1" align="center" gutterBottom fontWeight="bold">
                     {t('skills.title')}
                 </Typography>
 
-                <Grid container spacing={4} justifyContent="center">
+                <Grid container justifyContent="space-around">
                     {Object.entries(skillData).map(([category, skills]) => (
                         <Grid item key={category} xs={12} sm={6} md={3}>
-                            <Typography variant="h6" gutterBottom>
+                            <Typography variant="h3" gutterBottom>
                                 {t(`skills.${category}`)}
                             </Typography>
                             <List dense>
