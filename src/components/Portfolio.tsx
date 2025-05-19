@@ -1,5 +1,4 @@
-import { Box, Typography, Card, CardContent, Container } from '@mui/material';
-import Grid from '@mui/material/GridLegacy';
+import { Typography, Card, CardContent, Container, Grid } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 
 const projectKeys = ['portfolio', 'weather', 'blog'];
@@ -14,7 +13,7 @@ const Portfolio = () => {
         </Typography>
         <Grid container spacing={4}>
           {projectKeys.map((key) => (
-            <Grid item xs={12} sm={6} md={4} key={key}>
+            <Grid size={4} key={key}>
               <Card>
                 <CardContent>
                   <Typography variant="h6" gutterBottom>

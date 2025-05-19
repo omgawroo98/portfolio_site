@@ -3,18 +3,27 @@ import { createTheme, ThemeOptions } from '@mui/material/styles';
 const getTheme = (mode: 'light' | 'dark'): ThemeOptions =>
   createTheme({
     palette: {
-      mode,
-      primary: {
-        main: '#1e88e5',
-      },
-      error: {
-        main: '#e53935',
-      },
+      mode: 'light',
       background: {
-        default: mode === 'dark' ? '#121212' : '#ffffff',
+        default: '#fefaf6',  // Creamy background
+        paper: '#fdf6ec',    // Lighter surface like cards
+      },
+      primary: {
+        main: '#d4a373',     // Warm tan for buttons/nav
+        contrastText: '#fff',
+      },
+      secondary: {
+        main: '#c89f81',     // Soft taupe for outlines or hover
       },
       text: {
-        primary: mode === 'dark' ? '#ffffff' : '#1c1c1c',
+        primary: '#2e2e2e',  // Neutral heading
+        secondary: '#6b6b6b',
+      },
+      navbar: {
+        main: '#e7d9c4',     // NEW: Soft beige specifically for the navbar
+      },
+      error: {
+        main: '#e57373',     // Slightly muted red
       },
     },
     typography: {

@@ -62,27 +62,33 @@ const Navbar = () => {
 
         <AppBar
           position="fixed"
-          color="inherit"
-          elevation={trigger ? 4 : 0} // <-- dynamic shadow toggle
+          color="transparent"
+          elevation={0}
           sx={{
-            transition: 'box-shadow 0.3s ease-in-out',
-            zIndex: (theme) => theme.zIndex.drawer + 1,
+            backdropFilter: 'blur(10px)',
+            px: 2,
+            py: 1.5,
           }}
         >
-          <Toolbar
+          <Box
             sx={{
-              display: 'flex',
-              justifyContent: 'space-around',
               width: '100%',
-              py: 2, // vertical padding  
+              mx: 'auto',
+              backgroundColor: 'navbar.main',
+              borderRadius: '60rem',
+              px: { xs: 2, md: 4 },
+              py: 1,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
             }}
           >
             {/* Branding */}
-            <Typography variant="h4">
+            <Typography variant="h5" sx={{ color: 'text.primary', fontWeight: 700 }}>
               Omar Elbakri
             </Typography>
 
-            {/* Scrollspy Nav Links */}
+            {/* Nav + buttons */}
             <Box
               component={Scrollspy}
               items={navItems}
@@ -101,34 +107,49 @@ const Navbar = () => {
                   sx={{
                     color: 'text.primary',
                     scrollBehavior: 'smooth',
+                    textTransform: 'none',
                     '&.active': {
-                      color: 'error.main',
+                      color: '#b46d4e',
                     },
+                    '&:hover': {
+                      color: '#d28c7a'
+                    }
                   }}
                 >
-                  <Typography variant="nav">
-                    {t(`nav.${item}`)}
-                  </Typography>
+                  {t(`nav.${item}`)}
                 </Button>
               ))}
 
-              {/* Language Switcher */}
-              <IconButton onClick={handleLanguageClick}>
+              <IconButton onClick={handleLanguageClick} sx={{ color: 'text.primary' }}>
                 <LanguageIcon />
               </IconButton>
-              <Menu anchorEl={anchorEl} open={open} onClose={() => setAnchorEl(null)}>
-                {languages.map(({ code, label }) => (
-                  <MenuItem key={code} onClick={() => handleLanguageChange(code)}>
-                    {label}
-                  </MenuItem>
-                ))}
-              </Menu>
-              <IconButton onClick={colorMode.toggleColorMode}>
+
+              <IconButton onClick={colorMode.toggleColorMode} sx={{ color: 'common.white' }}>
                 {theme.palette.mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
               </IconButton>
+
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: 'common.white',
+                  color: 'primary.dark',
+                  fontWeight: 600,
+                  borderRadius: '999px',
+                  px: 3,
+                  py: 1,
+                  ml: 2,
+                  textTransform: 'none',
+                  '&:hover': {
+                    backgroundColor: 'grey.100',
+                  },
+                }}
+              >
+                {t('nav.cta') || 'Apply Now'}
+              </Button>
             </Box>
-          </Toolbar>
+          </Box>
         </AppBar>
+
       </motion.div>
     </Slide>
   );

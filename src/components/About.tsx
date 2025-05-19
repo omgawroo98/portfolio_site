@@ -1,5 +1,4 @@
-import { Box, Typography, Button, Stack, Divider } from '@mui/material';
-import Grid from '@mui/material/GridLegacy';
+import { Box, Typography, Button, Stack, Divider, Grid } from '@mui/material';
 import DownloadIcon from '@mui/icons-material/Download';
 import ReactIcon from '../assets/logos/react.svg'
 import NodeIcon from '../assets/logos/nodedotjs.svg'
@@ -11,7 +10,7 @@ const About = () => {
   return (
     <Grid container spacing={6} alignItems="center">
       {/* Left: Text */}
-      <Grid item xs={12} md={7}>
+      <Grid size={7}>
         <Stack spacing={3}>
           <Box>
             <Typography variant="h1" fontWeight="bold" gutterBottom>
@@ -36,7 +35,7 @@ const About = () => {
       </Grid>
 
       {/* Right: Image */}
-      <Grid item xs={12} md={5}>
+      <Grid size={5}>
         <Box display="flex" gap={2} flexWrap="wrap">
           <img src={ReactIcon} alt="React" width={40} />
           <img src={NodeIcon} alt="Node.js" width={40} />

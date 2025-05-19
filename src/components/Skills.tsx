@@ -5,9 +5,9 @@ import {
     ListItem,
     ListItemText,
     Container,
+    Grid
 } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import Grid from '@mui/material/GridLegacy';
 
 const Skills = () => {
     const { t } = useTranslation();
@@ -27,7 +27,7 @@ const Skills = () => {
 
                 <Grid container justifyContent="space-around">
                     {Object.entries(skillData).map(([category, skills]) => (
-                        <Grid item key={category} xs={12} sm={6} md={3}>
+                        <Grid key={category} size={3}>
                             <Typography variant="h3" gutterBottom>
                                 {t(`skills.${category}`)}
                             </Typography>

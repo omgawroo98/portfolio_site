@@ -22,7 +22,7 @@ const SectionWrapper = ({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        maxWidth: '75rem',
+        maxWidth: '100rem',
         mx: 'auto',
         scrollMarginTop: theme.spacing(10),
       }}
