@@ -3,11 +3,11 @@ import '@mui/material/Typography';
 
 declare module '@mui/material/styles' {
     interface Palette {
-        navbar: Palette['primary'];
+        surface: Palette['primary'];
     }
 
     interface PaletteOptions {
-        navbar?: PaletteOptions['primary'];
+        surface?: PaletteOptions['primary'];
     }
 
     interface TypographyVariants {

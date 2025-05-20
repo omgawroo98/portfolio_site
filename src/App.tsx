@@ -6,10 +6,13 @@ import Services from './components/Services';
 import Portfolio from './components/Portfolio';
 import Contact from './components/Contact';
 import SectionWrapper from './layout/SectionWrapper';
+import SwirlBackground from './effects/SwirlBackground';
 
 function App() {
   return (
-    <>
+
+    <div style={{ position: 'relative', minHeight: '100vh' }}>
+      <SwirlBackground />
       <Navbar />
       <main>
         <SectionWrapper id="home" fullHeight><Home /></SectionWrapper>
@@ -19,7 +22,7 @@ function App() {
         <SectionWrapper id="portfolio"><Portfolio /></SectionWrapper>
         <SectionWrapper id="contact"><Contact /></SectionWrapper>
       </main>
-    </>
+    </div>
   );
 }
 

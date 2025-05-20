@@ -16,7 +16,7 @@ const Home = () => {
     const { t } = useTranslation();
 
     return (
-        <Grid container spacing={4} 
+        <Grid container spacing={4}
         // justifyContent="center" alignItems="center"
         >
             {/* Left Column */}
@@ -33,20 +33,20 @@ const Home = () => {
                     </Typography>
                     <Button
                         variant="contained"
-                        color="error"
                         size="large"
-                        sx={{ width: 'fit-content' }}
+
+                        sx={{ width: 'fit-content', backgroundColor: "surface.light" }}
                     >
                         {t('home.cta')}
                     </Button>
                     <Stack direction="row" spacing={2} sx={{ mt: 2 }}>
-                        <IconButton color="error" href="https://github.com/omgawroo98" target="_blank">
+                        <IconButton color="secondary" href="https://github.com/omgawroo98" target="_blank">
                             <GitHubIcon sx={{ fontSize: '2rem' }} />
                         </IconButton>
-                        <IconButton color="error" href="https://www.linkedin.com/in/omar-elbakri-345171349/" target="_blank">
+                        <IconButton color="primary" href="https://www.linkedin.com/in/omar-elbakri-345171349/" target="_blank">
                             <LinkedInIcon sx={{ fontSize: '2rem' }} />
                         </IconButton>
-                        <IconButton color="error" href="https://www.youtube.com/@OmarElbakri2" target="_blank">
+                        <IconButton color="primary" href="https://www.youtube.com/@OmarElbakri2" target="_blank">
                             <YouTubeIcon sx={{ fontSize: '2rem' }} />
                         </IconButton>
                     </Stack>

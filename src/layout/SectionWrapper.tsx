@@ -16,15 +16,24 @@ const SectionWrapper = ({
       id={id}
       component="section"
       sx={{
-        minHeight: fullHeight ? '100vh' : 'auto',
+        minHeight: fullHeight ? '80vh' : 'auto',
         px: { xs: 2, sm: 4, md: 6 },
         py: { xs: theme.spacing(8), md: theme.spacing(12) },
+        background: "radial-gradient(circle at top right, #ffecb3 0%, #fff3e0 40%, #ffffff 80%)",
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        maxWidth: '100rem',
+        alignItems: 'center',
+        maxWidth: '80rem',
         mx: 'auto',
         scrollMarginTop: theme.spacing(10),
+
+        // 🌟 Card-style additions:
+        backgroundColor: '#fffaf6', // or theme.palette.background.paper
+        borderRadius: '1.5rem',
+        boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
+        mt: fullHeight ? 18 : 0,
+        marginBottom: 10
       }}
     >
       {children}

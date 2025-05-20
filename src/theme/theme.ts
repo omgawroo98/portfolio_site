@@ -19,8 +19,9 @@ const getTheme = (mode: 'light' | 'dark'): ThemeOptions =>
         primary: '#2e2e2e',  // Neutral heading
         secondary: '#6b6b6b',
       },
-      navbar: {
+      surface: {
         main: '#e7d9c4',     // NEW: Soft beige specifically for the navbar
+        light: '#f0d3b7'
       },
       error: {
         main: '#e57373',     // Slightly muted red
@@ -69,6 +70,10 @@ const getTheme = (mode: 'light' | 'dark'): ThemeOptions =>
             fontSize: '1.5rem',
             fontWeight: 500,
             textTransform: 'none',
+            color: "#2e2e2e",
+            '&:hover': {
+              backgroundColor: 'grey.100',
+            },
           },
         },
       },

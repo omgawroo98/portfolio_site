@@ -67,14 +67,15 @@ const Navbar = () => {
           sx={{
             backdropFilter: 'blur(10px)',
             px: 2,
-            py: 1.5,
+            pt: 1.5
+            // py: 1.5,
           }}
         >
           <Box
             sx={{
               width: '100%',
               mx: 'auto',
-              backgroundColor: 'navbar.main',
+              backgroundColor: 'surface.main',
               borderRadius: '60rem',
               px: { xs: 2, md: 4 },
               py: 1,
@@ -112,7 +113,7 @@ const Navbar = () => {
                       color: '#b46d4e',
                     },
                     '&:hover': {
-                      color: '#d28c7a'
+                      color: '#d28c7a '
                     }
                   }}
                 >
