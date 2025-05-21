@@ -1,83 +1,71 @@
 import { createTheme, ThemeOptions } from '@mui/material/styles';
 
-const getTheme = (mode: 'light' | 'dark'): ThemeOptions =>
-  createTheme({
-    palette: {
-      mode: 'light',
-      background: {
-        default: '#fefaf6',  // Creamy background
-        paper: '#fdf6ec',    // Lighter surface like cards
-      },
-      primary: {
-        main: '#d4a373',     // Warm tan for buttons/nav
-        contrastText: '#fff',
-      },
-      secondary: {
-        main: '#c89f81',     // Soft taupe for outlines or hover
-      },
-      text: {
-        primary: '#2e2e2e',  // Neutral heading
-        secondary: '#6b6b6b',
-      },
-      surface: {
-        main: '#e7d9c4',     // NEW: Soft beige specifically for the navbar
-        light: '#f0d3b7'
-      },
-      error: {
-        main: '#e57373',     // Slightly muted red
-      },
-    },
-    typography: {
-      fontFamily: 'Inter, sans-serif',
-      h1: {
-        fontSize: '5rem',
-        fontWeight: 700,
-        lineHeight: 1.2,
-      },
-      h2: {
-        fontSize: '2.25rem',
-        fontWeight: 600,
-      },
-      h3: {
-        fontSize: '1.75rem',
-        fontWeight: 600,
-      },
-      h4: {
-        fontSize: '1.625rem',
-        fontWeight: 700,
-        lineHeight: 1.2,
-        letterSpacing: '-0.5px',
-        color: '#0f172a',
-      },
-      body1: {
-        fontSize: '1.4rem',
-        lineHeight: 1.6,
-      },
-      nav: {
-        fontSize: '1.2rem',
-        fontWeight: 500,
-        textTransform: 'none',
-      }
-    },
-    components: {
-      MuiButton: {
-        defaultProps: {
-          disableElevation: true,
+  const getTheme = (mode: 'light' | 'dark'): ThemeOptions => {
+    const isLight = mode === 'light';
+
+    return createTheme({
+      palette: {
+        mode,
+        primary: {
+          main: isLight ? '#b08968' : '#a78bfa', // soft violet
         },
-        styleOverrides: {
-          root: {
-            borderRadius: 8,
-            fontSize: '1.5rem',
-            fontWeight: 500,
-            textTransform: 'none',
-            color: "#2e2e2e",
-            '&:hover': {
-              backgroundColor: 'grey.100',
+        secondary: {
+          main: isLight ? '#7f5539' : '#818cf8', // lavender-blue
+        },
+        background: {
+          default: isLight ? '#fefae0' : '#0d0b1f', // deep navy purple
+          paper: isLight ? '#ffffff' : '#1a162f', // surface cards
+        },
+        text: {
+          primary: isLight ? '#1c1c1c' : '#e0e7ff', // light indigo white
+          secondary: isLight ? '#4a4a4a' : '#a5b4fc',
+        },
+      },
+      typography: {
+        fontFamily: "'Inter', sans-serif",
+        h1: {
+          fontSize: '2.8rem',
+          fontWeight: 700,
+          color: isLight ? undefined : '#e0e7ff',
+        },
+        h2: {
+          fontSize: '2.2rem',
+          fontWeight: 600,
+          color: isLight ? undefined : '#c4b5fd',
+        },
+        body1: {
+          fontSize: '1rem',
+          color: isLight ? '#333' : '#d1d5db',
+        },
+      },
+      components: {
+        MuiButton: {
+          styleOverrides: {
+            root: {
+              borderRadius: '8px',
+              textTransform: 'none',
+              background: isLight
+                ? undefined
+                : 'linear-gradient(90deg, #7c3aed, #a78bfa)',
+              color: isLight ? undefined : '#fff',
+              boxShadow: isLight
+                ? undefined
+                : '0 0 8px rgba(167, 139, 250, 0.4)',
+            },
+          },
+        },
+        MuiPaper: {
+          styleOverrides: {
+            root: {
+              backgroundImage: 'none',
+              backgroundColor: isLight ? '#ffffff' : 'rgba(26, 22, 47, 0.6)',
+              backdropFilter: isLight ? undefined : 'blur(10px)',
+              border: isLight ? undefined : '1px solid rgba(255,255,255,0.05)',
             },
           },
         },
       },
-    },
-  });
+    });
+  };
 
-export default getTheme;
+  export default getTheme;

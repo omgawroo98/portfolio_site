@@ -19,7 +19,9 @@ const SectionWrapper = ({
         minHeight: fullHeight ? '80vh' : 'auto',
         px: { xs: 2, sm: 4, md: 6 },
         py: { xs: theme.spacing(8), md: theme.spacing(12) },
-        background: "radial-gradient(circle at top right, #ffecb3 0%, #fff3e0 40%, #ffffff 80%)",
+        background: theme.palette.mode === 'light'
+          ? 'radial-gradient(circle at top right, #ffeccb 0%, #fff3e0 40%, #ffffff 80%)'
+          : 'radial-gradient(circle at center, #5b21b6 0%, #1e1b35 70%)',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
