@@ -31,7 +31,7 @@ const NavButton: React.FC<NavButtonProps> = ({
                 borderRadius: '0.5rem', // pill shape
                 textTransform: 'none', // disable uppercase
                 fontWeight: 600,
-                paddingX: 2.5,
+                paddingX: 1.5,
                 paddingY: 1,
                 '&:hover': {
                     backgroundColor: '#6c4fe0', // slightly darker on hover

@@ -21,7 +21,6 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import { useContext } from 'react';
 import { ColorModeContext } from '../theme/ThemeContext';
 import { useTheme } from '@mui/material/styles';
-import NavButton from './NavButton';
 
 
 const navItems = ['home', 'about', 'skills', 'services', 'portfolio', 'contact'];
@@ -96,11 +95,11 @@ const Navbar = () => {
             }}
           >
             {/* Branding */}
-            <Typography variant="h5" sx={{ color: 'text.primary', fontWeight: 700 }}>
+            <Typography variant="h5" sx={{ color: 'text.primary', fontWeight: 700, width: '10rem', }}>
               Omar Elbakri
             </Typography>
 
-            {/* Nav + buttons */}
+            {/* Nav */}
             <Box
               component={Scrollspy}
               items={navItems}
@@ -113,19 +112,38 @@ const Navbar = () => {
               }}
             >
               {navItems.map((item) => (
-                <NavButton
+                <Button
                   key={item}
-                  label={t(`nav.${item}`)}
                   href={`#${item}`}
-                // active={currentSection === item}
-                />
+                  sx={{
+                    color: 'common.white',
+                    scrollBehavior: 'smooth',
+                    textTransform: 'none',
+                    '&.active': {
+                      color: 'error.main',
+                    },
+                    fontSize: '1.125rem',
+                  }}
+                >
+                  {t(`nav.${item}`)}
+                </Button>
               ))}
+            </Box>
 
-              {/* Language Switcher */}
+            { /* Language switcher and light mode */}
+            <Box sx={{
+              width: '10rem',
+              // mx: 'auto',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-around',
+            }}>
+
               <IconButton onClick={handleLanguageClick} sx={{ color: 'text.primary' }}>
                 <LanguageIcon />
               </IconButton>
-              <Menu anchorEl={anchorEl} open={open} onClose={() => setAnchorEl(null)}>
+
+              <Menu anchorEl={anchorEl} open={open} onClose={() => setAnchorEl(null)} disableScrollLock>
                 {languages.map(({ code, label }) => (
                   <MenuItem key={code} onClick={() => handleLanguageChange(code)}>
                     {label}
@@ -138,13 +156,13 @@ const Navbar = () => {
                 {theme.palette.mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
               </IconButton>
 
-              <NavButton
+              {/* <NavButton
                 key="contact"
                 label={'Contact Me'}
                 href={''}
-              />
-
+              /> */}
             </Box>
+
           </Box>
         </AppBar>
 
