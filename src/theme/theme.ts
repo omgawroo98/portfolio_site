@@ -39,21 +39,21 @@ import { createTheme, ThemeOptions } from '@mui/material/styles';
         },
       },
       components: {
-        MuiButton: {
-          styleOverrides: {
-            root: {
-              borderRadius: '8px',
-              textTransform: 'none',
-              background: isLight
-                ? undefined
-                : 'linear-gradient(90deg, #7c3aed, #a78bfa)',
-              color: isLight ? undefined : '#fff',
-              boxShadow: isLight
-                ? undefined
-                : '0 0 8px rgba(167, 139, 250, 0.4)',
-            },
-          },
-        },
+        // MuiButton: {
+        //   styleOverrides: {
+        //     root: {
+        //       borderRadius: '8px',
+        //       textTransform: 'none',
+        //       background: isLight
+        //         ? undefined
+        //         : 'linear-gradient(90deg, #7c3aed, #a78bfa)',
+        //       color: isLight ? undefined : '#fff',
+        //       boxShadow: isLight
+        //         ? undefined
+        //         : '0 0 8px rgba(167, 139, 250, 0.4)',
+        //     },
+        //   },
+        // },
         MuiPaper: {
           styleOverrides: {
             root: {

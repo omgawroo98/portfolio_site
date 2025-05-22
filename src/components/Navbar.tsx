@@ -117,7 +117,7 @@ const Navbar = () => {
                   key={item}
                   label={t(`nav.${item}`)}
                   href={`#${item}`}
-                  // active={currentSection === item}
+                // active={currentSection === item}
                 />
               ))}
 
@@ -138,40 +138,18 @@ const Navbar = () => {
                 {theme.palette.mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
               </IconButton>
 
-              <Button
-                variant="contained"
-                sx={{
-                  background: (theme) =>
-                    theme.palette.mode === 'dark'
-                      ? 'linear-gradient(to right, #7c3aed, #a78bfa)'
-                      : 'common.white',
-                  color: (theme) =>
-                    theme.palette.mode === 'dark' ? '#fff' : 'primary.dark',
-                  fontWeight: 600,
-                  borderRadius: '999px',
-                  px: 3,
-                  py: 1,
-                  ml: 2,
-                  boxShadow:
-                    theme.palette.mode === 'dark'
-                      ? '0 0 12px rgba(167, 139, 250, 0.4)'
-                      : 'none',
-                  textTransform: 'none',
-                  '&:hover': {
-                    backgroundColor: theme.palette.mode === 'dark'
-                      ? '#a78bfa'
-                      : 'grey.100',
-                  },
-                }}
-              >
-                {t('nav.cta') || 'Apply Now'}
-              </Button>
+              <NavButton
+                key="contact"
+                label={'Contact Me'}
+                href={''}
+              />
+
             </Box>
           </Box>
         </AppBar>
 
       </motion.div>
-    </Slide>
+    </Slide >
   );
 };
 
