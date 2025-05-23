@@ -34,7 +34,7 @@ import { createTheme, ThemeOptions } from '@mui/material/styles';
           color: isLight ? undefined : '#c4b5fd',
         },
         body1: {
-          fontSize: '1rem',
+          fontSize: '1.5rem',
           color: isLight ? '#333' : '#d1d5db',
         },
       },

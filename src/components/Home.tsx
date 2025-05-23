@@ -25,7 +25,7 @@ const Home = () => {
                     <Typography variant="h1" fontWeight="bold">
                         {t('home.title')}
                     </Typography>
-                    <Typography variant="h3" color="text.secondary">
+                    <Typography variant="h2" color="text.secondary">
                         {t('home.subtitle')}
                     </Typography>
                     <Typography variant="body1" color="text.secondary">
@@ -40,7 +40,7 @@ const Home = () => {
                         {t('home.cta')}
                     </Button>
                     <Stack direction="row" spacing={2} sx={{ mt: 2 }}>
-                        <IconButton color="secondary" href="https://github.com/omgawroo98" target="_blank">
+                        <IconButton color="primary" href="https://github.com/omgawroo98" target="_blank">
                             <GitHubIcon sx={{ fontSize: '2rem' }} />
                         </IconButton>
                         <IconButton color="primary" href="https://www.linkedin.com/in/omar-elbakri-345171349/" target="_blank">

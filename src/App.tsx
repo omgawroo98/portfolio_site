@@ -7,6 +7,7 @@ import Portfolio from './components/Portfolio';
 import Contact from './components/Contact';
 import SectionWrapper from './layout/SectionWrapper';
 import SwirlBackground from './effects/SwirlBackground';
+import GlowEffectDemo from './layout/GlowEffectDemo';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <SectionWrapper id="services"><Services /></SectionWrapper>
         <SectionWrapper id="portfolio"><Portfolio /></SectionWrapper>
         <SectionWrapper id="contact"><Contact /></SectionWrapper>
+        <GlowEffectDemo />
       </main>
     </div>
   );
