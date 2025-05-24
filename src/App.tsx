@@ -18,7 +18,7 @@ function App() {
       <StarField />
       <Navbar />
       <main>
-        <SectionWrapper id="home" fullHeight><Home /></SectionWrapper>
+        <SectionWrapper id="home" fullHeight pt="10rem"><Home /></SectionWrapper>
         <SectionWrapper id="about"><About /></SectionWrapper>
         <SectionWrapper id="skills"><Skills /></SectionWrapper>
         <SectionWrapper id="services"><Services /></SectionWrapper>

@@ -6,10 +6,12 @@ const SectionWrapper = ({
   children,
   id,
   fullHeight = false,
+  pt,
 }: {
   children: React.ReactNode;
   id: string;
   fullHeight?: boolean;
+  pt?: number | string
 }) => {
   const theme = useTheme();
 
@@ -19,12 +21,13 @@ const SectionWrapper = ({
       component="section"
       sx={{
         width: '100%',
-        minHeight: fullHeight ? '100vh' : 'auto',
+        minHeight: 'auto',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         px: { xs: 2, sm: 4 },
-        py: { xs: 6, sm: 8 },
+        pt: pt ?? { xs: 6, sm: 8 },
+        pb: { xs: 6, sm: 8 },
       }}
     >
       <Box

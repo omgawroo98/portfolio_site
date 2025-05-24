@@ -20,7 +20,7 @@ const Home = () => {
         // justifyContent="center" alignItems="center"
         >
             {/* Left Column */}
-            <Grid size={6}>
+            <Grid size={7}>
                 <Stack spacing={2}>
                     <Typography variant="h1" fontWeight="bold">
                         {t('home.title')}
@@ -54,14 +54,15 @@ const Home = () => {
             </Grid>
 
             {/* Right Column */}
-            <Grid size={4} sx={{ ml: 'auto' }}>
+            <Grid size={5} sx={{
+                marginLeft: 'auto',
+            }}>
                 <Box
                     component="img"
                     src={profileImage}
                     alt="Omar illustration"
                     sx={{
-                        width: '100%',
-                        maxWidth: 400,
+                        width: 400,
                         borderRadius: 8,
                         boxShadow: 3,
                     }}
