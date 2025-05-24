@@ -8,12 +8,14 @@ import Contact from './components/Contact';
 import SectionWrapper from './layout/SectionWrapper';
 import SwirlBackground from './effects/SwirlBackground';
 import GlowEffectDemo from './layout/GlowEffectDemo';
+import StarField from './effects/StarField';
 
 function App() {
   return (
 
     <div style={{ position: 'relative', minHeight: '100vh' }}>
       {/* <SwirlBackground /> */}
+      <StarField />
       <Navbar />
       <main>
         <SectionWrapper id="home" fullHeight><Home /></SectionWrapper>

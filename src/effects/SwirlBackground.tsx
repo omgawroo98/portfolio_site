@@ -5,7 +5,7 @@ import { useTheme } from '@mui/material/styles';
 const SwirlBackground: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const simplex = useRef(new SimplexNoise());
-    const theme = useTheme(); // Access current MUI theme
+    const theme = useTheme();
 
     useEffect(() => {
         const container = containerRef.current;
@@ -37,17 +37,22 @@ const SwirlBackground: React.FC = () => {
         const particleProps = new Float32Array(particlePropsLength);
 
         const baseTTL = 300, rangeTTL = 600;
-        const baseSpeed = 0.05, rangeSpeed = 0.05;
+        const baseSpeed = 0.01, rangeSpeed = 0.02;
         const baseRadius = 1, rangeRadius = 4;
-        const baseHue = 210, rangeHue = 40; // cooler blue tones for dark theme
+        const baseHue = 210, rangeHue = 40;
         const noiseSteps = 8;
         const xOff = 0.00125, yOff = 0.00125, zOff = 0.0001;
-        const backgroundColor = theme.palette.background.default; // Use theme background
+        const backgroundColor = theme.palette.background.default;
         let tick = 0;
         const TAU = Math.PI * 2;
 
+        let speedMultiplier = 1;
+        let targetMultiplier = 1;
+        let lastMouseMove = 0;
+        let mouseX = center[0];
+        let mouseY = center[1];
+
         const rand = (n: number) => Math.random() * n;
-        const randRange = (n: number) => n - Math.random() * n * 2;
         const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
         const fadeInOut = (t: number, m: number) => {
             const hm = 0.5 * m;
@@ -102,12 +107,25 @@ const SwirlBackground: React.FC = () => {
 
             let x = particleProps[i];
             let y = particleProps[i2];
-            const n = simplex.current.noise3D(x * xOff, y * yOff, tick * zOff) * noiseSteps * TAU;
-            const vx = lerp(particleProps[i3], Math.cos(n), 0.1);
-            const vy = lerp(particleProps[i4], Math.sin(n), 0.1);
+
+            const dx = mouseX - x;
+            const dy = mouseY - y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            const angleToMouse = Math.atan2(dy, dx);
+
+            const noiseAngle = simplex.current.noise3D(x * xOff, y * yOff, tick * zOff) * noiseSteps * TAU;
+
+            // Blend between noise and mouse angle based on distance
+            const blendFactor = Math.min(1, 200 / (dist + 1)); // closer = more affected
+            const angle = lerp(noiseAngle, angleToMouse, blendFactor);
+
+            const vx = lerp(particleProps[i3], Math.cos(angle), 0.1);
+            const vy = lerp(particleProps[i4], Math.sin(angle), 0.1);
+
             let life = particleProps[i5];
             const ttl = particleProps[i6];
-            const speed = particleProps[i7];
+            const baseSpeed = particleProps[i7];
+            const speed = baseSpeed * speedMultiplier;
             const x2 = x + vx * speed;
             const y2 = y + vy * speed;
             const radius = particleProps[i8];
@@ -161,6 +179,7 @@ const SwirlBackground: React.FC = () => {
             ctx.b.fillStyle = backgroundColor;
             ctx.b.fillRect(0, 0, canvas.b.width, canvas.b.height);
 
+            speedMultiplier = lerp(speedMultiplier, targetMultiplier, 0.05);
             drawParticles();
             renderGlow();
             renderToScreen();
@@ -168,12 +187,31 @@ const SwirlBackground: React.FC = () => {
             requestAnimationFrame(draw);
         }
 
+        function handleMouseMove(e: MouseEvent) {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            targetMultiplier = 5;
+            lastMouseMove = Date.now();
+        }
+
+        function monitorIdle() {
+            if (Date.now() - lastMouseMove > 300) {
+                targetMultiplier = 1;
+            }
+            requestAnimationFrame(monitorIdle);
+        }
+
         resize();
         initParticles();
         draw();
+        monitorIdle();
         window.addEventListener('resize', resize);
+        window.addEventListener('mousemove', handleMouseMove);
 
-        return () => window.removeEventListener('resize', resize);
+        return () => {
+            window.removeEventListener('resize', resize);
+            window.removeEventListener('mousemove', handleMouseMove);
+        };
     }, [theme.palette.background.default]);
 
     return <div ref={containerRef} className="content--canvas" />;
