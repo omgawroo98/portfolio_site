@@ -12,16 +12,14 @@ import {
 } from '@mui/material';
 import LanguageIcon from '@mui/icons-material/Language';
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { motion } from 'framer-motion';
 //@ts-ignore
 import Scrollspy from 'react-scrollspy';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
-import { useContext } from 'react';
 import { ColorModeContext } from '../theme/ThemeContext';
 import { useTheme } from '@mui/material/styles';
-
 
 const navItems = ['home', 'about', 'skills', 'services', 'portfolio', 'contact'];
 const languages = [
@@ -59,7 +57,6 @@ const Navbar = () => {
         }}
         transition={{ duration: 0.25 }}
       >
-
         <AppBar
           position="fixed"
           color="transparent"
@@ -67,25 +64,19 @@ const Navbar = () => {
           sx={{
             backdropFilter: 'blur(10px)',
             px: 2,
-            pt: 1.5
-            // py: 1.5,
+            pt: 1.5,
+            boxShadow: '0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12)',
           }}
         >
           <Box
             sx={{
               width: '100%',
               mx: 'auto',
-              backgroundColor: (theme) =>
-                theme.palette.mode === 'dark'
-                  ? 'rgba(124, 58, 237, 0.08)' // semi-transparent purple
-                  : theme.palette.background.paper,
+              backgroundColor: '#1e2333',
               backdropFilter: 'blur(12px)',
-              border: (theme) =>
-                theme.palette.mode === 'dark'
-                  ? '1px solid rgba(255,255,255,0.05)'
-                  : '1px solid rgba(0,0,0,0.05)',
-
-              // backgroundColor: 'surface.main',
+              border: theme.palette.mode === 'dark'
+                ? '1px solid rgba(255,255,255,0.05)'
+                : '1px solid rgba(0,0,0,0.05)',
               borderRadius: '60rem',
               px: { xs: 2, md: 4 },
               py: 1,
@@ -94,12 +85,10 @@ const Navbar = () => {
               justifyContent: 'space-between',
             }}
           >
-            {/* Branding */}
-            <Typography variant="h5" sx={{ color: 'text.primary', fontWeight: 700, width: '10rem', }}>
+            <Typography variant="h5" sx={{ color: 'text.primary', fontWeight: 700, width: '10rem' }}>
               Omar Elbakri
             </Typography>
 
-            {/* Nav */}
             <Box
               component={Scrollspy}
               items={navItems}
@@ -116,7 +105,7 @@ const Navbar = () => {
                   key={item}
                   href={`#${item}`}
                   sx={{
-                    color: 'common.white',
+                    color: 'text.primary',
                     scrollBehavior: 'smooth',
                     textTransform: 'none',
                     '&.active': {
@@ -130,15 +119,14 @@ const Navbar = () => {
               ))}
             </Box>
 
-            { /* Language switcher and light mode */}
-            <Box sx={{
-              width: '10rem',
-              // mx: 'auto',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-around',
-            }}>
-
+            <Box
+              sx={{
+                width: '10rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-around',
+              }}
+            >
               <IconButton onClick={handleLanguageClick} sx={{ color: 'text.primary' }}>
                 <LanguageIcon />
               </IconButton>
@@ -151,23 +139,14 @@ const Navbar = () => {
                 ))}
               </Menu>
 
-              {/* Dark Mode Toggle */}
-              <IconButton onClick={colorMode.toggleColorMode} sx={{ color: 'common.white' }}>
+              <IconButton onClick={colorMode.toggleColorMode} sx={{ color: 'text.primary' }}>
                 {theme.palette.mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
               </IconButton>
-
-              {/* <NavButton
-                key="contact"
-                label={'Contact Me'}
-                href={''}
-              /> */}
             </Box>
-
           </Box>
         </AppBar>
-
       </motion.div>
-    </Slide >
+    </Slide>
   );
 };
 

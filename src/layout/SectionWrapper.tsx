@@ -34,6 +34,8 @@ const SectionWrapper = ({
           maxWidth: '1100px',
           borderRadius: 4,
           overflow: 'hidden',
+          boxShadow: '0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12)'
+          // backgroundColor: theme.palette.background.paper
         }}
       >
         <GlowingEffect
@@ -47,15 +49,17 @@ const SectionWrapper = ({
         />
 
         <Paper
-          elevation={4}
+          elevation={0}
           sx={{
             position: 'relative',
             borderRadius: 4,
             p: { xs: 3, sm: 5 },
-            bgcolor: theme.palette.background.paper,
-            color: theme.palette.text.primary,
             zIndex: 1,
+            border: theme.palette.mode === 'dark'
+              ? '1px solid rgba(255,255,255,0.05)'
+              : '1px solid rgba(0,0,0,0.05)',
           }}
+
         >
           {children}
         </Paper>

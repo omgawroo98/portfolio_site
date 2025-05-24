@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import SimplexNoise from 'simplex-noise';
+import { useTheme } from '@mui/material/styles';
 
 const SwirlBackground: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const simplex = useRef(new SimplexNoise());
+    const theme = useTheme(); // Access current MUI theme
 
     useEffect(() => {
         const container = containerRef.current;
@@ -34,14 +36,13 @@ const SwirlBackground: React.FC = () => {
         const particlePropsLength = particleCount * particlePropCount;
         const particleProps = new Float32Array(particlePropsLength);
 
-        const rangeY = 100;
         const baseTTL = 300, rangeTTL = 600;
         const baseSpeed = 0.05, rangeSpeed = 0.05;
         const baseRadius = 1, rangeRadius = 4;
-        const baseHue = 220, rangeHue = 100;
+        const baseHue = 210, rangeHue = 40; // cooler blue tones for dark theme
         const noiseSteps = 8;
         const xOff = 0.00125, yOff = 0.00125, zOff = 0.0001;
-        const backgroundColor = 'hsla(260,40%,5%,1)';
+        const backgroundColor = theme.palette.background.default; // Use theme background
         let tick = 0;
         const TAU = Math.PI * 2;
 
@@ -65,7 +66,7 @@ const SwirlBackground: React.FC = () => {
 
         function initParticle(i: number) {
             const x = rand(canvas.a.width);
-            const y = rand(canvas.a.height); // Modified to spread dots across full height
+            const y = rand(canvas.a.height);
             const vx = 0, vy = 0;
             const life = 0;
             const ttl = baseTTL + rand(rangeTTL);
@@ -75,7 +76,6 @@ const SwirlBackground: React.FC = () => {
 
             particleProps.set([x, y, vx, vy, life, ttl, speed, radius, hue], i);
         }
-
 
         function initParticles() {
             for (let i = 0; i < particlePropsLength; i += particlePropCount) {
@@ -87,7 +87,7 @@ const SwirlBackground: React.FC = () => {
             ctx.a.save();
             ctx.a.lineCap = 'round';
             ctx.a.lineWidth = radius;
-            ctx.a.strokeStyle = `hsla(${hue},100%,60%,${fadeInOut(life, ttl)})`;
+            ctx.a.strokeStyle = `hsla(${hue}, 100%, 70%, ${fadeInOut(life, ttl)})`;
             ctx.a.beginPath();
             ctx.a.moveTo(x, y);
             ctx.a.lineTo(x2, y2);
@@ -174,7 +174,7 @@ const SwirlBackground: React.FC = () => {
         window.addEventListener('resize', resize);
 
         return () => window.removeEventListener('resize', resize);
-    }, []);
+    }, [theme.palette.background.default]);
 
     return <div ref={containerRef} className="content--canvas" />;
 };

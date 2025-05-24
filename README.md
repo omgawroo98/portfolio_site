@@ -2,6 +2,8 @@
 
 Welcome to the source code of my personal developer portfolio, built with **React**, **Material UI**, and **i18n**. This site is designed to showcase who I am, what I build, and how I work — including project highlights, contact information, and a clear organizational workflow.
 
+🧑‍🦯 This website was built with **WCAG 2.2 accessibility guidelines** in mind to ensure better usability and inclusion.
+
 You can check it out live here: [https://omgawroo98.github.io](https://omgawroo98.github.io)
 
 ---

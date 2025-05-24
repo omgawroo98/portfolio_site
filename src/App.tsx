@@ -13,7 +13,7 @@ function App() {
   return (
 
     <div style={{ position: 'relative', minHeight: '100vh' }}>
-      <SwirlBackground />
+      {/* <SwirlBackground /> */}
       <Navbar />
       <main>
         <SectionWrapper id="home" fullHeight><Home /></SectionWrapper>
