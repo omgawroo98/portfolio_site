@@ -17,7 +17,7 @@ const Home = () => {
 
     return (
         <Grid container spacing={4}
-        // justifyContent="center" alignItems="center"
+            justifyContent="center" alignItems="space-around"
         >
             {/* Left Column */}
             <Grid size={7}>
@@ -27,6 +27,7 @@ const Home = () => {
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'space-between',
+                        gap: 4
                     }}
                 >
                     {/* Top Section: Typography */}
@@ -71,7 +72,7 @@ const Home = () => {
             </Grid>
 
             {/* Right Column */}
-            <Grid size={4} sx={{
+            <Grid size={4.5} sx={{
                 ml: 'auto',
             }}>
                 <Box

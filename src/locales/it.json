@@ -7,11 +7,11 @@
         "portfolio": "Portfolio",
         "contact": "Contatto"
     },
-    "hero": {
-        "title": "Ciao, sono Omar.",
+    "home": {
+        "title": "Ciao a te, sono Omar.",
         "subtitle": "Sviluppatore Full Stack",
-        "desc": "Creo applicazioni web moderne e scalabili.",
-        "contact": "Contattami"
+        "description": "Creo applicazioni web dinamiche e scalabili per la tua azienda, offrendo soluzioni complete dall'ideazione al deployment.",
+        "cta": "Contattami"
     },
     "about": {
         "heading": "Conosciamoci meglio",
@@ -68,11 +68,5 @@
             "message": "Messaggio",
             "submit": "Invia"
         }
-    },
-    "home": {
-        "title": "Ciao, sono Omar.",
-        "subtitle": "Sviluppatore Full Stack",
-        "description": "Creo applicazioni web dinamiche e scalabili per la tua azienda, offrendo soluzioni complete dall'ideazione al deployment.",
-        "cta": "Contattami"
     }
 }

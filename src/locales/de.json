@@ -7,11 +7,11 @@
         "portfolio": "Portfolio",
         "contact": "Kontakt"
     },
-    "hero": {
+    "home": {
         "title": "Hallo, ich bin Omar.",
         "subtitle": "Full Stack Entwickler",
-        "desc": "Ich entwickle moderne, skalierbare Webanwendungen.",
-        "contact": "Kontaktieren Sie mich"
+        "description": "Ich entwickle dynamische und skalierbare Webanwendungen für Ihr Unternehmen und biete Komplettlösungen von der Idee bis zur Bereitstellung.",
+        "cta": "Kontaktieren Sie mich"
     },
     "about": {
         "heading": "Lerne mich kennen",
@@ -68,11 +68,5 @@
             "message": "Nachricht",
             "submit": "Senden"
         }
-    },
-    "home": {
-        "title": "Hallo, ich bin Omar.",
-        "subtitle": "Full Stack Entwickler",
-        "description": "Ich entwickle dynamische und skalierbare Webanwendungen für Ihr Unternehmen und biete Komplettlösungen von der Idee bis zur Bereitstellung.",
-        "cta": "Kontaktieren Sie mich"
     }
 }

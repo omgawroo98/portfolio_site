@@ -7,11 +7,11 @@
     "portfolio": "Portfolio",
     "contact": "Contact"
   },
-  "hero": {
-    "title": "Hi, I'm Omar.",
+  "home": {
+    "title": "Hello there, I'm Omar.",
     "subtitle": "Full Stack Developer",
-    "desc": "I build modern, scalable web apps.",
-    "contact": "Contact Me"
+    "description": "I create dynamic and scalable web applications for your business, providing end-to-end solutions from concept to deployment.",
+    "cta": "Contact Me"
   },
   "about": {
     "heading": "About Me",
@@ -68,11 +68,5 @@
       "message": "Message",
       "submit": "Send"
     }
-  },
-  "home": {
-    "title": "Hi, I'm Omar.",
-    "subtitle": "Full Stack Developer",
-    "description": "I create dynamic and scalable web applications for your business, providing end-to-end solutions from concept to deployment.",
-    "cta": "Contact Me"
   }
 }

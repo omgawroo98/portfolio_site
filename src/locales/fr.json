@@ -7,11 +7,11 @@
         "portfolio": "Portfolio",
         "contact": "Contact"
     },
-    "hero": {
+    "home": {
         "title": "Salut, je suis Omar.",
         "subtitle": "Développeur Full Stack",
-        "desc": "Je crée des applications web modernes et évolutives.",
-        "contact": "Contactez-moi"
+        "description": "Je crée des applications web dynamiques et évolutives pour votre entreprise, en fournissant des solutions complètes de la conception au déploiement.",
+        "cta": "Contactez-moi"
     },
     "about": {
         "heading": "Faisons connaissance",
@@ -68,11 +68,5 @@
             "message": "Message",
             "submit": "Envoyer"
         }
-    },
-    "home": {
-        "title": "Salut, je suis Omar.",
-        "subtitle": "Développeur Full Stack",
-        "description": "Je crée des applications web dynamiques et évolutives pour votre entreprise, en fournissant des solutions complètes de la conception au déploiement.",
-        "cta": "Contactez-moi"
     }
 }
