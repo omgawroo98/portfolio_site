@@ -1,6 +1,5 @@
 import { createTheme, ThemeOptions } from '@mui/material/styles';
 import { PaletteMode } from '@mui/material';
-// import OverusedGroteskWoff2 from '../assets/fonts/overused-grotesk-woff2';
 
 const getTheme = (mode: PaletteMode): ThemeOptions =>
   createTheme({
@@ -21,64 +20,116 @@ const getTheme = (mode: PaletteMode): ThemeOptions =>
       },
     },
     typography: {
-      fontFamily: 'OverusedGrotesk, Arial, sans-serif',
+      fontFamily: 'Overused Grotesk, Arial, sans-serif',
+
       h1: {
         fontSize: '5rem',
         fontWeight: 700,
-        lineHeight: 1.4,
+        lineHeight: 0.85,           // 85%
+        letterSpacing: '-0.05em',   // -5%
       },
       h2: {
         fontSize: '2rem',
         fontWeight: 500,
-        lineHeight: 1.5,
+        lineHeight: 0.9,            // 90%
+        letterSpacing: '-0.045em',
       },
       h3: {
         fontSize: '1.75rem',
         fontWeight: 600,
-        lineHeight: 1.4,
+        lineHeight: 0.92,           // 92%
+        letterSpacing: '-0.04em',
       },
       h4: {
         fontSize: '1.5rem',
         fontWeight: 600,
+        lineHeight: 0.95,           // 95%
+        letterSpacing: '-0.035em',
       },
       h5: {
         fontSize: '1.25rem',
-        fontWeight: 500,
+        fontWeight: 300,
+        lineHeight: 1.0,            // 100%
+        letterSpacing: '-0.03em',
       },
       h6: {
         fontSize: '1rem',
         fontWeight: 500,
+        lineHeight: 1.0,
+        letterSpacing: '-0.03em',
       },
+
       body1: {
         fontSize: '1.5rem',
         fontWeight: 300,
+        lineHeight: 1.5,           // 150%
+        letterSpacing: '-0.01em',  // -1%
       },
       body2: {
         fontSize: '0.875rem',
         fontWeight: 400,
+        lineHeight: 1.3,           // 130%
       },
-      button: {
-        fontWeight: 600,
-        textTransform: 'none',
+
+      button: 
+      { 
+        fontWeight: 600, 
+        textTransform: 'none' 
       },
     },
-    // components: {
-    //   MuiCssBaseline: {
-    //     styleOverrides: `
-    //     @font-face {
-    //       font-family: 'Overused Grotesk';
-    //       font-style: normal;
-    //       font-display: swap;
-    //       font-weight: 400;
-    //       src: local('Overused Grotesk'), local('OverusedGrotesk-Regular'),
-    //            url(${OverusedGroteskWoff2}) format('woff2');
-    //       unicode-range: U+0000-00FF, U+0131, U+0152-0153,
-    //                      U+02BB-02BC, U+02C6, U+02DA, U+02DC,
-    //                      U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
-    //     }
-    //   `,
-    //   },
-    // },
+    components: {
+      MuiCssBaseline: {
+        styleOverrides: `
+            @font-face {
+            font-family: 'Overused Grotesk';
+            src: url('/fonts/overused-grotesk-woff2/OverusedGrotesk-Light.woff2') format('woff2');
+            font-weight: 300;
+            font-style: normal;
+            font-display: swap;
+          }
+
+          @font-face {
+            font-family: 'Overused Grotesk';
+            src: url('/fonts/overused-grotesk-woff2/OverusedGrotesk-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+          }
+
+          @font-face {
+            font-family: 'Overused Grotesk';
+            src: url('/fonts/overused-grotesk-woff2/OverusedGrotesk-Medium.woff2') format('woff2');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+          }
+
+          @font-face {
+            font-family: 'Overused Grotesk';
+            src: url('/fonts/overused-grotesk-woff2/OverusedGrotesk-SemiBold.woff2') format('woff2');
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+          }
+
+          @font-face {
+            font-family: 'Overused Grotesk';
+            src: url('/fonts/overused-grotesk-woff2/OverusedGrotesk-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+          }
+
+          @font-face {
+            font-family: 'Overused Grotesk';
+            src: url('/fonts/overused-grotesk-woff2/OverusedGrotesk-ExtraBold.woff2') format('woff2');
+            font-weight: 800;
+            font-style: normal;
+            font-display: swap;
+          }
+      `,
+      },
+    },
   });
 
 export default getTheme;

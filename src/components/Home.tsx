@@ -30,7 +30,7 @@ const Home = () => {
                     }}
                 >
                     {/* Top Section: Typography */}
-                    <Box>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
                         <Typography variant="h1" fontWeight="bold">
                             {t('home.title')}
                         </Typography>

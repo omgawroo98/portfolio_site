@@ -85,7 +85,7 @@ const Navbar = () => {
               justifyContent: 'space-between',
             }}
           >
-            <Typography variant="h5" sx={{ color: 'text.primary', fontWeight: 700, width: '10rem' }}>
+            <Typography variant="h4">
               Omar Elbakri
             </Typography>
 
@@ -111,10 +111,11 @@ const Navbar = () => {
                     '&.active': {
                       color: 'error.main',
                     },
-                    fontSize: '1.125rem',
                   }}
                 >
-                  {t(`nav.${item}`)}
+                  <Typography variant="h5">
+                    {t(`nav.${item}`)}
+                  </Typography>
                 </Button>
               ))}
             </Box>
