@@ -30,6 +30,15 @@ const SectionWrapper = ({
         pb: { xs: 6, sm: 8 },
       }}
     >
+      <GlowingEffect
+        blur={0}
+        borderWidth={3}
+        spread={80}
+        glow={true}
+        disabled={false}
+        proximity={64}
+        inactiveZone={0.01}
+      />
       <Box
         sx={{
           position: 'relative',
@@ -41,16 +50,6 @@ const SectionWrapper = ({
           // backgroundColor: theme.palette.background.paper
         }}
       >
-        <GlowingEffect
-          blur={0}
-          borderWidth={3}
-          spread={80}
-          glow={true}
-          disabled={false}
-          proximity={64}
-          inactiveZone={0.01}
-        />
-
         <Paper
           elevation={0}
           sx={{
@@ -58,14 +57,16 @@ const SectionWrapper = ({
             borderRadius: 4,
             p: { xs: 3, sm: 5 },
             zIndex: 1,
-            border: theme.palette.mode === 'dark'
-              ? '1px solid rgba(255,255,255,0.05)'
-              : '1px solid rgba(0,0,0,0.05)',
+            background: 'rgba(255, 255, 255, 0.05)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            boxShadow: '0 4px 30px rgba(0, 0, 0, 0.25)',
           }}
-
         >
           {children}
         </Paper>
+
       </Box>
     </Box>
   );

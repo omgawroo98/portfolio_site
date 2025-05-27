@@ -6,18 +6,20 @@ const getTheme = (mode: PaletteMode): ThemeOptions =>
     palette: {
       mode,
       background: {
-        default: '#0f172a',
-        paper: '#1e2333',
+        default: '#0a0a0a', // Deep black base
+        paper: '#121212',   // Slightly lighter for cards
       },
       text: {
-        primary: '#f1f5f9',      // main text color
-        secondary: '#c8d1da',    // muted text (subtle, captions, etc.)
-        disabled: '#7c8b9a',     // for disabled states
+        primary: '#f5f5f5',
+        secondary: '#a1a1aa',
       },
       primary: {
-        main: '#facc15',          // Yellow-400 as primary
+        main: '#ffffff', // Neutral white
         contrastText: '#0f172a',  // Text that appears on primary buttons
       },
+      secondary: {
+        main: '#888888', // Subtle secondary for muted text/icons
+      }
     },
     typography: {
       fontFamily: 'Overused Grotesk, Arial, sans-serif',
@@ -71,10 +73,10 @@ const getTheme = (mode: PaletteMode): ThemeOptions =>
         lineHeight: 1.3,           // 130%
       },
 
-      button: 
-      { 
-        fontWeight: 600, 
-        textTransform: 'none' 
+      button:
+      {
+        fontWeight: 600,
+        textTransform: 'none'
       },
     },
     components: {

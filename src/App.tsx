@@ -12,18 +12,35 @@ import StarField from './effects/StarField';
 
 function App() {
   return (
-
     <div style={{ position: 'relative', minHeight: '100vh' }}>
       {/* <SwirlBackground /> */}
       <StarField />
       <Navbar />
       <main>
-        <SectionWrapper id="home" fullHeight pt="10rem"><Home /></SectionWrapper>
-        <SectionWrapper id="about"><About /></SectionWrapper>
-        <SectionWrapper id="skills"><Skills /></SectionWrapper>
-        <SectionWrapper id="services"><Services /></SectionWrapper>
-        <SectionWrapper id="portfolio"><Portfolio /></SectionWrapper>
-        <SectionWrapper id="contact"><Contact /></SectionWrapper>
+        <section id="home" style={{ minHeight: '100vh', paddingTop: '10rem' }}>
+          <Home />
+        </section>
+
+        <section id="about">
+          <About />
+        </section>
+
+        <section id="skills">
+          <Skills />
+        </section>
+
+        <section id="services">
+          <Services />
+        </section>
+
+        <section id="portfolio">
+          <Portfolio />
+        </section>
+
+        <section id="contact">
+          <Contact />
+        </section>
+
         <GlowEffectDemo />
       </main>
     </div>

@@ -11,82 +11,97 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import profileImage from '../assets/images/portfolio picture.jpg';
 import { useTranslation } from 'react-i18next';
+import { GlowingEffect } from '../layout/GlowingEffect';
+import RainbowCard from '../layout/RainbowCard';
 
 const Home = () => {
     const { t } = useTranslation();
 
     return (
-        <Grid container spacing={4}
-            justifyContent="center" alignItems="space-around"
+        <Box
+            id="home"
+            component="section"
+            sx={{
+                width: '100%',
+                minHeight: 'auto',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                // px: { xs: 2, sm: 4 },
+                // pt: { xs: 6, sm: 6 },
+                // pb: { xs: 6, sm: 8 },
+                position: 'relative',
+            }}
         >
-            {/* Left Column */}
-            <Grid size={7}>
-                <Box
-                    sx={{
-                        height: '100%',           // or a fixed height if you need
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'space-between',
-                        gap: 4
-                    }}
+
+            <Stack
+                direction="column"
+                spacing={4}
+                sx={{
+                    width: '100%',
+                    maxWidth: '80rem',
+                    mx: 'auto',
+                    // px: { xs: 2, sm: 4 },
+                    // py: { xs: 6, sm: 8 },
+                    position: 'relative',
+                    zIndex: 1,
+                }}
+            >
+                {/* Row of 2: Hero text + Profile image */}
+                <Stack
+                    direction={{ xs: 'column', md: 'row' }}
+                    spacing={4}
+                    alignItems="stretch"
                 >
-                    {/* Top Section: Typography */}
-                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-                        <Typography variant="h1" fontWeight="bold">
-                            {t('home.title')}
-                        </Typography>
-                        <Typography variant="h2" color="text.secondary">
-                            {t('home.subtitle')}
-                        </Typography>
-                        <Typography variant="body1" color="text.secondary">
-                            {t('home.description')}
-                        </Typography>
-                    </Box>
+                    {/* Card 1: Hero Text */}
+                    <RainbowCard>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+                            <Typography variant="h1" fontWeight="bold">
+                                {t('home.title')}
+                            </Typography>
+                            <Typography variant="h2" color="text.secondary">
+                                {t('home.subtitle')}
+                            </Typography>
+                            <Typography variant="body1" color="text.secondary">
+                                {t('home.description')} Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet
+                            </Typography>
+                        </Box>
+                    </RainbowCard>
 
-                    {/* Bottom Section: CTA Button + Icons */}
-                    <Box>
-                        <Button
-                            variant="contained"
-                            size="large"
-                            sx={{
-                                width: 'fit-content',
-                                backgroundColor: 'surface.light',
-                            }}
-                        >
-                            {t('home.cta')}
-                        </Button>
+                    {/* Card 2: Profile Image */}
+                    <RainbowCard sx={{ minWidth: 350 }}>
+                        <Box
+                            component="img"
+                            src={profileImage}
+                            alt="Omar illustration"
+                            sx={{ width: 300, borderRadius: 4 }}
+                        />
+                    </RainbowCard>
+                </Stack>
 
-                        <Stack direction="row" spacing={2} sx={{ mt: 2 }}>
-                            <IconButton color="primary" href="https://github.com/omgawroo98" target="_blank">
-                                <GitHubIcon sx={{ fontSize: '2rem' }} />
-                            </IconButton>
-                            <IconButton color="primary" href="https://www.linkedin.com/in/omar-elbakri-345171349/" target="_blank">
-                                <LinkedInIcon sx={{ fontSize: '2rem' }} />
-                            </IconButton>
-                            <IconButton color="primary" href="https://www.youtube.com/@OmarElbakri2" target="_blank">
-                                <YouTubeIcon sx={{ fontSize: '2rem' }} />
-                            </IconButton>
-                        </Stack>
-                    </Box>
-                </Box>
-            </Grid>
+                {/* Card 3: Buttons and Icons */}
+                <RainbowCard sx={{ flexDirection: 'row' }}>
+                    <Button
+                        variant="contained"
+                        size="large"
+                        sx={{
+                            backgroundColor: 'surface.light',
+                        }}
+                    >
+                        {t('home.cta')}
+                    </Button>
 
-            {/* Right Column */}
-            <Grid size={4.5} sx={{
-                ml: 'auto',
-            }}>
-                <Box
-                    component="img"
-                    src={profileImage}
-                    alt="Omar illustration"
-                    sx={{
-                        width: 400,
-                        borderRadius: 8,
-                        boxShadow: 3,
-                    }}
-                />
-            </Grid>
-        </Grid>
+                    <Stack direction="row" spacing={2}>
+                        <IconButton color="primary" href="https://github.com/..." target="_blank"><GitHubIcon /></IconButton>
+                        <IconButton color="primary" href="https://linkedin.com/..."><LinkedInIcon /></IconButton>
+                        <IconButton color="primary" href="https://youtube.com/..."><YouTubeIcon /></IconButton>
+                    </Stack>
+                </RainbowCard>
+            </Stack>
+
+
+        </Box >
+
     );
 };
 

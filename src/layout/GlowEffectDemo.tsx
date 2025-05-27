@@ -17,26 +17,31 @@ const glowGradient = `
     #dd7bbb 100%
   )
 `;
- 
+
 interface GridItemProps {
-//   area: string;
+  //   area: string;
   icon: React.ReactNode;
   title: string;
   description: React.ReactNode;
 }
 
-const GridItem = ({  icon, title, description }: GridItemProps) => (
+const GridItem = ({ icon, title, description }: GridItemProps) => (
   <Grid size={12}>
-    <Box position="relative">
+    <Box sx={{
+      position: "relative",
+      borderRadius: 4,
+      border: "1px solid rgba(255, 255, 255, 0.12)", // moved here
+    }}>
       <GlowingEffect
-          spread={40}
-          glow={true}
-          disabled={false}
-          proximity={64}
-          inactiveZone={0.01}
-        />
+        spread={40}
+        glow={true}
+        disabled={false}
+        proximity={64}
+        inactiveZone={0.01}
+        borderWidth={3}
+      />
       <Paper elevation={3} sx={{ position: 'relative', borderRadius: 4, p: 4, height: '100%', zIndex: 1 }}>
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+        < Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
           <IconButton size="large" sx={{ border: '1px solid #666', borderRadius: 2, width: 'fit-content' }}>
             {icon}
           </IconButton>
@@ -48,8 +53,8 @@ const GridItem = ({  icon, title, description }: GridItemProps) => (
           </Typography>
         </Box>
       </Paper>
-    </Box>
-  </Grid>
+    </Box >
+  </Grid >
 );
 
 export default function GlowingEffectMaterialDemo() {
