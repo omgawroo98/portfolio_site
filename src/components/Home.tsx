@@ -39,7 +39,7 @@ const Home = () => {
                 spacing={4}
                 sx={{
                     width: '100%',
-                    maxWidth: '80rem',
+                    maxWidth: '70%',
                     mx: 'auto',
                     // px: { xs: 2, sm: 4 },
                     // py: { xs: 6, sm: 8 },

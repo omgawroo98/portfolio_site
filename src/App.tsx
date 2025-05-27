@@ -1,4 +1,4 @@
-import Navbar from './components/Navbar';
+import Navbar from './layout/Navbar';
 import Home from './components/Home';
 import About from './components/About';
 import Skills from './components/Skills';
@@ -14,10 +14,10 @@ function App() {
   return (
     <div style={{ position: 'relative', minHeight: '100vh' }}>
       {/* <SwirlBackground /> */}
-      <StarField />
+      {/* <StarField /> */}
       <Navbar />
       <main>
-        <section id="home" style={{ minHeight: '100vh', paddingTop: '10rem' }}>
+        <section id="home" style={{ minHeight: '100vh', paddingTop: '8rem' }}>
           <Home />
         </section>
 
@@ -41,7 +41,6 @@ function App() {
           <Contact />
         </section>
 
-        <GlowEffectDemo />
       </main>
     </div>
   );
