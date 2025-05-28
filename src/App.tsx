@@ -6,21 +6,25 @@ import Services from './components/Services';
 import Portfolio from './components/Portfolio';
 import Contact from './components/Contact';
 import StarField from './effects/StarField';
+import { BackgroundBeams } from './effects/BackgroundBeams';
+import { FadeInOnScroll } from './effects/FadeInOnScroll';
 
 function App() {
   return (
     <div>
       {/* <SwirlBackground /> */}
       {/* <StarField /> */}
+      <BackgroundBeams />
       <Navbar />
       <main>
         <section id="home">
           <Home />
         </section>
-
-        <section id="about">
-          <About />
-        </section>
+        <FadeInOnScroll delay={0.2}>
+          <section id="about">
+            <About />
+          </section>
+        </FadeInOnScroll>
 
         <section id="skills">
           <Skills />
