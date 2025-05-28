@@ -5,9 +5,7 @@ import Skills from './components/Skills';
 import Services from './components/Services';
 import Portfolio from './components/Portfolio';
 import Contact from './components/Contact';
-import SectionWrapper from './layout/SectionWrapper';
 import SwirlBackground from './effects/SwirlBackground';
-import GlowEffectDemo from './layout/GlowEffectDemo';
 import StarField from './effects/StarField';
 
 function App() {

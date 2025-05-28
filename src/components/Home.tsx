@@ -27,9 +27,6 @@ const Home = () => {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                // px: { xs: 2, sm: 4 },
-                // pt: { xs: 6, sm: 6 },
-                // pb: { xs: 6, sm: 8 },
                 position: 'relative',
             }}
         >
@@ -41,8 +38,6 @@ const Home = () => {
                     width: '100%',
                     maxWidth: '70%',
                     mx: 'auto',
-                    // px: { xs: 2, sm: 4 },
-                    // py: { xs: 6, sm: 8 },
                     position: 'relative',
                     zIndex: 1,
                 }}

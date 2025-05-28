@@ -1,22 +1,37 @@
-"use client";
-
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import {
   Box,
   Button,
   IconButton,
+  Menu,
+  MenuItem,
   Typography,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import { ColorModeContext } from '../theme/ThemeContext';
+import LanguageIcon from '@mui/icons-material/Language';
+//@ts-ignore
+import Scrollspy from 'react-scrollspy';
+
+const languages = [
+  { code: 'en', label: '🇬🇧' },
+  { code: 'fr', label: '🇫🇷' },
+  { code: 'de', label: '🇩🇪' },
+  { code: 'it', label: '🇮🇹' },
+];
 
 interface NavbarProps {
   className?: string;
 }
 
 const Navbar = ({ className }: NavbarProps) => {
+  const { t } = useTranslation()
   const ref = useRef(null);
   const { scrollY } = useScroll({ target: ref });
   const [visible, setVisible] = useState<boolean>(false);
@@ -35,12 +50,8 @@ const Navbar = ({ className }: NavbarProps) => {
     >
       <NavBody visible={visible}>
         <NavbarLogo />
-        {!isMobile && <NavItems />}
-        {!isMobile && (
-          <NavbarButton variant="primary" href="#get-started">
-            Get Started
-          </NavbarButton>
-        )}
+        {!isMobile && <NavItems t={t} />}
+        {!isMobile && <NavbarButtons />}
         {isMobile && (
           <IconButton>
             <MenuIcon />
@@ -80,31 +91,33 @@ export const NavBody = ({ children, visible }: NavBodyProps) => {
   );
 };
 
-
-
-export const NavItems = () => {
+export const NavItems = ({ t }: { t: (arg0: string) => string }) => {
   const items = [
-    { name: "Home", link: "#" },
-    { name: "About", link: "#about" },
-    { name: "Services", link: "#services" },
-    { name: "Contact", link: "#contact" },
+    { name: "nav.home", link: "home" },
+    { name: "nav.about", link: "about" },
+    { name: "nav.skills", link: "skills" },
+    { name: "nav.contact", link: "contact" },
   ];
   return (
-    <Box display="flex" gap={2}>
+    <Box component={Scrollspy} items={items.map(i => i.link)} currentClassName="active" offset={-100} display="flex" gap={2}>
       {items.map((item, idx) => (
         <Button
           key={idx}
-          href={item.link}
+          href={`#${item.link}`}
           sx={{
-            color: "text.secondary",
-            "&:hover": {
-              color: "text.primary",
-              backgroundColor: "action.hover",
-              borderRadius: "999px",
+            color: 'text.secondary',
+            textTransform: 'none',
+            '&:hover': {
+              color: 'text.primary',
+              backgroundColor: 'action.hover',
+              borderRadius: '999px',
             },
+            '&.active': {
+              color: 'error.main',
+            }
           }}
         >
-          {item.name}
+          {t(item.name)}
         </Button>
       ))}
     </Box>
@@ -113,7 +126,7 @@ export const NavItems = () => {
 
 export const NavbarLogo = () => {
   return (
-    <Box display="flex" alignItems="center">
+    <Box display="flex" alignItems="center" sx={{width: '8rem'}}>
       <img
         src="https://assets.aceternity.com/logo-dark.png"
         alt="logo"
@@ -128,33 +141,40 @@ export const NavbarLogo = () => {
   );
 };
 
-export const NavbarButton = ({
-  href,
-  children,
-  variant = "primary",
-}: {
-  href: string;
-  children: React.ReactNode;
-  variant?: "primary" | "secondary" | "dark" | "gradient";
-}) => {
-  const styles = {
-    primary:
-      "px-4 py-2 rounded-md bg-white text-black text-sm font-bold shadow-[0_0_24px_rgba(34,42,53,0.06),_0_1px_1px_rgba(0,0,0,0.05),_0_0_0_1px_rgba(34,42,53,0.04),_0_0_4px_rgba(34,42,53,0.08),_0_16px_68px_rgba(47,48,55,0.05),_0_1px_0_rgba(255,255,255,0.1)_inset]",
-    secondary: "bg-transparent shadow-none dark:text-white",
-    dark:
-      "bg-black text-white shadow-[0_0_24px_rgba(34,42,53,0.06),_0_1px_1px_rgba(0,0,0,0.05),_0_0_0_1px_rgba(34,42,53,0.04),_0_0_4px_rgba(34,42,53,0.08),_0_16px_68px_rgba(47,48,55,0.05),_0_1px_0_rgba(255,255,255,0.1)_inset]",
-    gradient:
-      "bg-gradient-to-b from-blue-500 to-blue-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]",
+export const NavbarButtons = () => {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+
+  const { i18n } = useTranslation();
+  const colorMode = useContext(ColorModeContext);
+  const theme = useTheme();
+
+  const handleLanguageClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleLanguageChange = (lang: string) => {
+    i18n.changeLanguage(lang);
+    setAnchorEl(null);
   };
 
   return (
-    <Button
-      href={href}
-      className={`transition duration-200 inline-block text-center ${styles[variant]}`}
-    >
-      {children}
-    </Button>
+    <Box display="flex" justifyContent="space-around" sx={{width: "8rem"}}>
+      <IconButton onClick={handleLanguageClick} sx={{ color: 'text.primary' }}>
+        <LanguageIcon />
+      </IconButton>
+      <Menu anchorEl={anchorEl} open={open} onClose={() => setAnchorEl(null)} disableScrollLock>
+        {languages.map(({ code, label }) => (
+          <MenuItem key={code} onClick={() => handleLanguageChange(code)}>
+            {label}
+          </MenuItem>
+        ))}
+      </Menu>
+      <IconButton onClick={colorMode.toggleColorMode} sx={{ color: 'text.primary' }}>
+        {theme.palette.mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
+      </IconButton>
+    </Box>
   );
 };
 
-export default Navbar
+export default Navbar;
