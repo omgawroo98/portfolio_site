@@ -11,11 +11,33 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import profileImage from '../assets/images/portfolio picture.jpg';
 import { useTranslation } from 'react-i18next';
-import { GlowingEffect } from '../layout/GlowingEffect';
 import RainbowCard from '../layout/RainbowCard';
+import { AnimatedTooltip } from '../layout/AnimatedToolTip'
+
 
 const Home = () => {
     const { t } = useTranslation();
+
+    const icons = [
+        {
+            id: 1,
+            name: 'YouTube',
+            designation: 'Video Platform',
+            icon: <YouTubeIcon fontSize="large" sx={{ color: 'white' }} />,
+        },
+        {
+            id: 2,
+            name: 'GitHub',
+            designation: 'Code Hosting',
+            icon: <GitHubIcon fontSize="large" sx={{ color: 'white' }} />,
+        },
+        {
+            id: 3,
+            name: 'LinkedIn',
+            designation: 'Professional Network',
+            icon: <LinkedInIcon fontSize="large" sx={{ color: 'white' }} />,
+        },
+    ];
 
     return (
         <Box
@@ -23,11 +45,10 @@ const Home = () => {
             component="section"
             sx={{
                 width: '100%',
-                minHeight: 'auto',
+                height: 'calc(100vh - 4rem)',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                position: 'relative',
             }}
         >
 
@@ -74,24 +95,29 @@ const Home = () => {
                     </RainbowCard>
                 </Stack>
 
-                {/* Card 3: Buttons and Icons */}
-                <RainbowCard sx={{ flexDirection: 'row' }}>
-                    <Button
-                        variant="contained"
-                        size="large"
-                        sx={{
-                            backgroundColor: 'surface.light',
-                        }}
-                    >
-                        {t('home.cta')}
-                    </Button>
+                <Stack direction="row" spacing={2} useFlexGap flexWrap="nowrap">
+                    <RainbowCard sx={{ flex: 1, flexDirection: 'row', justifyContent: "center" }}>
+                        <AnimatedTooltip items={icons} />
+                    </RainbowCard>
 
-                    <Stack direction="row" spacing={2}>
-                        <IconButton color="primary" href="https://github.com/..." target="_blank"><GitHubIcon /></IconButton>
-                        <IconButton color="primary" href="https://linkedin.com/..."><LinkedInIcon /></IconButton>
-                        <IconButton color="primary" href="https://youtube.com/..."><YouTubeIcon /></IconButton>
-                    </Stack>
-                </RainbowCard>
+                    <RainbowCard sx={{ flex: 1.5 }}>
+                        <Typography variant="h6" fontWeight="bold" gutterBottom>
+                            Lorem Ipsum Two
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </Typography>
+                    </RainbowCard>
+
+                    <RainbowCard sx={{ flex: 1 }}>
+                        <Typography variant="h6" fontWeight="bold" gutterBottom>
+                            Lorem Ipsum Three
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        </Typography>
+                    </RainbowCard>
+                </Stack>
             </Stack>
 
 

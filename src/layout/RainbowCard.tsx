@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import { ReactNode } from 'react';
-import { GlowingEffect } from './GlowingEffect';
+import { GlowingEffect } from '../effects/GlowingEffect';
 
 interface GlassCardProps {
   children: ReactNode;

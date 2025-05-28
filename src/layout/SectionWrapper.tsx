@@ -1,6 +1,6 @@
 // SectionWrapper.tsx
 import { Box, useTheme, Paper } from '@mui/material';
-import { GlowingEffect } from './GlowingEffect'; // adjust the path as needed
+import { GlowingEffect } from '../effects/GlowingEffect'; // adjust the path as needed
 
 const SectionWrapper = ({
   children,

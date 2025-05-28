@@ -5,17 +5,16 @@ import Skills from './components/Skills';
 import Services from './components/Services';
 import Portfolio from './components/Portfolio';
 import Contact from './components/Contact';
-import SwirlBackground from './effects/SwirlBackground';
 import StarField from './effects/StarField';
 
 function App() {
   return (
-    <div style={{ position: 'relative', minHeight: '100vh' }}>
+    <div>
       {/* <SwirlBackground /> */}
       {/* <StarField /> */}
       <Navbar />
       <main>
-        <section id="home" style={{ minHeight: '100vh', paddingTop: '8rem' }}>
+        <section id="home">
           <Home />
         </section>
 

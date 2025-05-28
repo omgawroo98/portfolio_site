@@ -102,7 +102,7 @@ const StarField: React.FC = () => {
                 zIndex: -1,
                 width: '100%',
                 height: '100%',
-                background: 'radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%)',
+                background: 'radial-gradient(ellipse at bottom, #121212 0%, #0a0a0a 100%)',
             }}
         />
     );
