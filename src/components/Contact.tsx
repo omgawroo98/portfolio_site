@@ -46,7 +46,7 @@ const Contact = () => {
         </Typography>
 
         <form onSubmit={handleSubmit}>
-          <Stack spacing={2} mx="auto">
+          <Stack spacing={3} sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
             <InputElement
               label={t('contact.form.name')}
               value={formData.name}
@@ -63,7 +63,7 @@ const Contact = () => {
             <InputElement
               label={t('contact.form.message')}
               multiline
-              rows={4}
+              minRows={4}
               value={formData.message}
               onChange={handleChange('message')}
               fullWidth

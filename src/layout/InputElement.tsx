@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from 'react';
-import { TextField, Box, Typography, TextFieldProps, OutlinedInput } from '@mui/material';
+import { TextField, Box, Typography, OutlinedInput, OutlinedInputProps } from '@mui/material';
 
-interface InputElementProps extends Omit<TextFieldProps, 'variant'> {
+interface InputElementProps extends Omit<OutlinedInputProps, 'variant'> {
     label: string;
     description?: string;
     value: string;
@@ -28,20 +28,23 @@ const InputElement: React.FC<InputElementProps> = ({
                 value={value}
                 onChange={onChange}
                 sx={{
-                    fontSize: '0.875rem',
+                    fontSize: '1.5rem',
                     mt: 1.5,
                     borderRadius: 2,
                     backgroundColor: 'rgba(255, 255, 255, 0.05)',
                     color: 'white',
-                    px: 0,
-                    py: 0,
-                    height: 48, // Or any value you prefer
+                    px: 1,
+                    py: 1,
+                    alignItems: 'center',
+                    minHeight: '2.7rem',
+                    height: 'auto', // Or any value you prefer
                     '& input': {
                         padding: 0,
                         height: '100%',
                         boxSizing: 'border-box',
                     },
                 }}
+                {...props}
             />
         </Box>
     );

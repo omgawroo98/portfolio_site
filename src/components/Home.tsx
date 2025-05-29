@@ -88,7 +88,7 @@ const Home = () => {
                     <RainbowCard sx={{ minWidth: 350 }}>
                         <Box
                             component="img"
-                            src={profileImage}
+                            // src={profileImage}
                             alt="Omar illustration"
                             sx={{ width: 300, borderRadius: 4 }}
                         />

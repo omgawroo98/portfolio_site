@@ -43,7 +43,7 @@ function Skills() {
     return (
         <Box sx={{ py: 8, maxWidth: "70%", mx: "auto" }}>
             <RainbowCard>
-                <Typography variant="h1" fontWeight="bold" mb={6} textAlign="center">
+                <Typography variant="h1" fontWeight="bold" mb={6} textAlign="left">
                     Skills
                 </Typography>
 
