@@ -40,8 +40,9 @@ export const BackgroundBeams = React.memo(({ className }: { className?: string }
     ], []);
 
 
-    const duration = 1;
-    const showCometsAfter = duration * bottomLeftPaths.length * 0.2 + 1.5;
+    const durationStatic = 1;
+    const durationTransition = 10;
+    const showCometsAfter = durationStatic * bottomLeftPaths.length * 0.2 + 1.5;
 
     const [showComets, setShowComets] = useState(false);
 
@@ -87,7 +88,7 @@ export const BackgroundBeams = React.memo(({ className }: { className?: string }
                         style={{
                             strokeDasharray: 1000,
                             strokeDashoffset: 1000,
-                            animation: `drawLine ${duration}s ease-out forwards`,
+                            animation: `drawLine ${durationStatic}s ease-out forwards`,
                             animationDelay: `${index * 0.2}s`
                         }}
                     />
@@ -102,10 +103,11 @@ export const BackgroundBeams = React.memo(({ className }: { className?: string }
                         initial={{ pathLength: 0 }}
                         animate={{ pathLength: [0, 1, 0] }}
                         transition={{
-                            duration: 5,
-                            delay: index * 5,
-                            repeat: 0,
-                            ease: "easeInOut"
+                            duration: durationTransition,
+                            delay: index * durationTransition,
+                            repeat: Infinity,
+                            repeatDelay: (bottomLeftPaths.length - 1) * durationTransition,
+                            ease: [0, 0, 1, 1]
                         }}
                     />
                 ))}
@@ -136,7 +138,7 @@ export const BackgroundBeams = React.memo(({ className }: { className?: string }
                         style={{
                             strokeDasharray: 1000,
                             strokeDashoffset: 1000,
-                            animation: `drawLine ${duration}s ease-out forwards`,
+                            animation: `drawLine ${durationStatic}s ease-out forwards`,
                             animationDelay: `${index * 0.2}s`
                         }}
                     />
@@ -151,10 +153,11 @@ export const BackgroundBeams = React.memo(({ className }: { className?: string }
                         initial={{ pathLength: 0 }}
                         animate={{ pathLength: [0, 1, 0] }}
                         transition={{
-                            duration: 5,
-                            delay: index * 5,
-                            repeat: 0,
-                            ease: "easeInOut"
+                            duration: durationTransition,
+                            delay: index * durationTransition,
+                            repeat: Infinity,
+                            repeatDelay: (bottomLeftPaths.length - 1) * durationTransition,
+                            ease: [0, 0, 1, 1]
                         }}
                     />
                 ))}

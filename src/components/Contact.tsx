@@ -1,40 +1,80 @@
-import { Box, Typography, TextField, Button, Stack, Container } from '@mui/material';
+import { useState, ChangeEvent, FormEvent } from 'react';
+import { Box, Typography, TextField, Button, Stack } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import RainbowCard from '../layout/RainbowCard';
+import InputElement from '../layout/InputElement';
+import CustomButton from '../layout/Button';
+
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
 
 const Contact = () => {
   const { t } = useTranslation();
 
+  const [formData, setFormData] = useState<FormData>({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleChange =
+    (field: keyof FormData) =>
+      (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setFormData((prev) => ({
+          ...prev,
+          [field]: event.target.value
+        }));
+      };
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log('Form submitted:', formData);
+  };
+
   return (
-      <Container maxWidth="sm">
-        <Typography variant="h1" gutterBottom align="center">
+    <Box sx={{ py: 8, maxWidth: '70%', mx: 'auto' }}>
+      <RainbowCard>
+        <Typography variant="h1" gutterBottom align="left">
           {t('contact.title')}
         </Typography>
 
-        <Typography variant="body2" color="text.secondary" mb={3} align="center">
+        <Typography variant="body1" color="text.secondary" mb={3} align="center">
           {t('contact.subtitle')}
         </Typography>
 
-        <Stack spacing={2} maxWidth={500} mx="auto">
-          <TextField
-            label={t('contact.form.name')}
-            fullWidth
-          />
-          <TextField
-            label={t('contact.form.email')}
-            type="email"
-            fullWidth
-          />
-          <TextField
-            label={t('contact.form.message')}
-            multiline
-            rows={4}
-            fullWidth
-          />
-          <Button variant="contained" color="primary">
-            {t('contact.form.submit')}
-          </Button>
-        </Stack>
-      </Container>
+        <form onSubmit={handleSubmit}>
+          <Stack spacing={2} mx="auto">
+            <InputElement
+              label={t('contact.form.name')}
+              value={formData.name}
+              onChange={handleChange('name')}
+              fullWidth
+            />
+            <InputElement
+              label={t('contact.form.email')}
+              type="email"
+              value={formData.email}
+              onChange={handleChange('email')}
+              fullWidth
+            />
+            <InputElement
+              label={t('contact.form.message')}
+              multiline
+              rows={4}
+              value={formData.message}
+              onChange={handleChange('message')}
+              fullWidth
+            />
+            <CustomButton type="submit">
+              {t('contact.form.submit')}
+            </CustomButton>
+          </Stack>
+        </form>
+      </RainbowCard>
+    </Box>
   );
 };
 

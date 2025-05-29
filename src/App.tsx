@@ -8,6 +8,7 @@ import Contact from './components/Contact';
 import StarField from './effects/StarField';
 import { BackgroundBeams } from './effects/BackgroundBeams';
 import { FadeInOnScroll } from './effects/FadeInOnScroll';
+import { LinkPreview } from './effects/LinkPreview';
 
 function App() {
   return (
@@ -24,23 +25,24 @@ function App() {
           <section id="about">
             <About />
           </section>
-        </FadeInOnScroll>
 
-        <section id="skills">
-          <Skills />
-        </section>
 
-        <section id="services">
+          <section id="skills">
+            <Skills />
+          </section>
+
+          {/* <section id="services">
           <Services />
         </section>
 
         <section id="portfolio">
           <Portfolio />
-        </section>
+        </section> */}
 
-        <section id="contact">
-          <Contact />
-        </section>
+          <section id="contact">
+            <Contact />
+          </section>
+        </FadeInOnScroll>
 
       </main>
     </div>

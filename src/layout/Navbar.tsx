@@ -73,21 +73,23 @@ export const NavBody = ({ children, visible }: NavBodyProps) => {
       animate={{
         backdropFilter: visible ? "blur(10px)" : "none",
         boxShadow: visible
-          ? "0 0 24px rgba(34,42,53,0.06), 0 1px 1px rgba(0,0,0,0.05), 0 0 0 1px rgba(34,42,53,0.04), 0 0 4px rgba(34,42,53,0.08), 0 16px 68px rgba(47,48,55,0.05), 0 1px 0 rgba(255,255,255,0.1) inset"
+          ? `0 4px 12px rgba(0, 0, 0, 0.3),
+     0 12px 32px rgba(0, 0, 0, 0.4),
+     0 24px 64px rgba(0, 0, 0, 0.5)`
           : "none",
-        width: visible ? '70%' : '100%',
+        width: visible ? '60%' : '100%',
         y: visible ? 20 : 0,
       }}
       transition={{ type: "spring", stiffness: 120, damping: 20 }}
       style={{
-        backgroundColor: visible ? "rgba(18, 18, 18, 0.95)" : "#0f0f0f",
+        backgroundColor: visible ? "#141414" : "#0f0f0f",
         maxWidth: "100%",
         margin: "0 auto",
       }}
       className="relative z-[60] flex flex-row items-center justify-between self-start rounded-full px-4 py-2 lg:flex"
     >
       {children}
-    </motion.div>
+    </motion.div >
   );
 };
 
@@ -126,7 +128,7 @@ export const NavItems = ({ t }: { t: (arg0: string) => string }) => {
 
 export const NavbarLogo = () => {
   return (
-    <Box display="flex" alignItems="center" sx={{width: '8rem'}}>
+    <Box display="flex" alignItems="center" sx={{ width: '8rem' }}>
       <img
         src="https://assets.aceternity.com/logo-dark.png"
         alt="logo"
@@ -159,7 +161,7 @@ export const NavbarButtons = () => {
   };
 
   return (
-    <Box display="flex" justifyContent="space-around" sx={{width: "8rem"}}>
+    <Box display="flex" justifyContent="space-around" sx={{ width: "8rem" }}>
       <IconButton onClick={handleLanguageClick} sx={{ color: 'text.primary' }}>
         <LanguageIcon />
       </IconButton>
