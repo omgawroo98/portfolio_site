@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useRef, useState, createContext, useContext, JSX, RefObject } from 'react';
-import { Box, IconButton, Typography } from '@mui/material';
+import { Box, IconButton, Modal, Paper, Typography, useTheme } from '@mui/material';
 import { ArrowBackIosNew, ArrowForwardIos, Close } from '@mui/icons-material';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -69,9 +69,24 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
   };
 
   const scrollBy = (dir: 'left' | 'right') => {
-    if (!carouselRef.current) return;
-    carouselRef.current.scrollBy({ left: dir === 'left' ? -300 : 300, behavior: 'smooth' });
+    const container = carouselRef.current;
+    if (!container || !container.firstChild || !(container.firstChild as HTMLElement).firstChild) return;
+
+    // Access the first card
+    const firstCard = (container.firstChild as HTMLElement).firstChild as HTMLElement;
+    const cardWidth = firstCard.getBoundingClientRect().width;
+
+    // Use actual `gap` between cards (2 * 8px default MUI spacing)
+    const gap = 16; // adjust if you change Box gap
+
+    const scrollAmount = cardWidth + gap;
+
+    container.scrollBy({
+      left: dir === 'left' ? -scrollAmount : scrollAmount,
+      behavior: 'smooth',
+    });
   };
+
 
   const handleCardClose = (index: number) => {
     const ref = carouselRef.current;
@@ -145,160 +160,107 @@ export const BlurImage = ({ src, alt, ...rest }: { src: string; alt: string;[key
   );
 };
 
-type CardProps = {
-  card: {
-    src: string;
-    title: string;
-    category: string;
-  };
-  index: number;
-  layout?: boolean;
+export type DevValueCard = {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+  moreInfo: string;
 };
 
-export const Card = ({ card, index, layout = false }: CardProps) => {
+export const ValueCard = ({ icon, title, description, moreInfo }: DevValueCard) => {
   const [open, setOpen] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { onCardClose } = useContext(CarouselContext);
-
-  useOutsideClick(containerRef, () => handleClose());
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') handleClose();
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
-
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => {
-    setOpen(false);
-    onCardClose(index);
-  };
+  const theme = useTheme();
 
   return (
     <>
-      {/* Modal View */}
-      <AnimatePresence>
-        {open && (
-          <Box
-            component={motion.div}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            position="fixed"
-            top={0}
-            left={0}
-            width="100%"
-            height="100%"
-            zIndex={1200}
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            sx={{ backdropFilter: 'blur(8px)', backgroundColor: 'rgba(0,0,0,0.8)' }}
-          >
-            <Box
-              ref={containerRef}
-              component={motion.div}
-              layoutId={layout ? `card-${card.title}` : undefined}
-              bgcolor="background.paper"
-              p={{ xs: 3, md: 6 }}
-              borderRadius={4}
-              maxWidth="lg"
-              width="90%"
-              position="relative"
-            >
-              <IconButton
-                onClick={handleClose}
-                sx={{ position: 'absolute', top: 16, right: 16, backgroundColor: 'black', color: 'white' }}
-              >
-                <Close />
-              </IconButton>
-
-              <Typography variant="subtitle2" color="textSecondary" mb={1}>
-                {card.category}
-              </Typography>
-              <Typography variant="h4" fontWeight={600} mb={3}>
-                {card.title}
-              </Typography>
-            </Box>
-          </Box>
-        )}
-      </AnimatePresence>
-
-      {/* Card Preview */}
-      <Box
-        component={motion.button}
-        layoutId={layout ? `card-${card.title}` : undefined}
-        onClick={handleOpen}
+      <Paper
+        elevation={0}
         sx={{
-          position: 'relative',
-          width: { xs: 230, md: '20rem' },
-          height: { xs: 320, md: '25rem' },
-          overflow: 'hidden',
-          borderRadius: 4,
-          p: 0,
-          border: 'none',
-          cursor: 'pointer',
-          backgroundColor: 'grey.900',
+          width: { xs: 230, md: 300 },
+          minHeight: 220,
+          p: 2.5,
+          borderRadius: 3,
+          backgroundColor: 'rgba(255,255,255,0.03)',
+          color: '#fff',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          boxShadow: '0 0 0 1px rgba(255, 255, 255, 0.1), 0 4px 20px rgba(255, 255, 255, 0.05)',
+          transition: 'box-shadow 0.3s ease, transform 0.2s ease',
+          '&:hover': {
+            boxShadow: '0 0 0 1px rgba(255, 255, 255, 0.15), 0 6px 24px rgba(255, 255, 255, 0.08)',
+            transform: 'translateY(-2px)',
+          },
         }}
       >
-        {/* Background Image */}
-        <Box
-          component="img"
-          src={card.src}
-          alt={card.title}
-          sx={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-          }}
-        />
-
-        {/* Top Gradient Overlay */}
+        {/* Circular Icon Holder */}
         <Box
           sx={{
-            position: 'absolute',
-            inset: 0,
-            background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, transparent 50%)',
-            zIndex: 1,
-          }}
-        />
-
-        {/* Text Overlay */}
-        <Box
-          sx={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            p: 3,
-            zIndex: 2,
-            width: '100%',
-            color: 'common.white',
-            textAlign: 'left',
+            width: 48,
+            height: 48,
+            borderRadius: '50%',
+            background: '#111',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            mb: 2,
           }}
         >
-          <Typography
-            variant="caption"
-            sx={{ fontWeight: 600, lineHeight: 1.2 }}
-          >
-            {card.category}
+          <Box sx={{ color: 'white', fontSize: 28 }}>
+            {icon}
+          </Box>
+        </Box>
+
+        {/* Content */}
+        <Box>
+          <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
+            {title}
           </Typography>
-          <Typography
-            variant="h6"
-            sx={{
-              fontWeight: 600,
-              fontSize: { xs: '1rem', md: '1.5rem' },
-              mt: 1,
-              lineHeight: 1.3,
-            }}
-          >
-            {card.title}
+          <Typography variant="body2" color="grey.400">
+            {description}
           </Typography>
         </Box>
-      </Box>
+
+        <Typography
+          onClick={() => setOpen(true)}
+          sx={{
+            mt: 2,
+            fontSize: 14,
+            color: '#fff',
+            cursor: 'pointer',
+            fontWeight: 500,
+            alignSelf: 'flex-start',
+            '&:hover': { textDecoration: 'underline' },
+          }}
+        >
+          Learn More →
+        </Typography>
+      </Paper>
+
+      {/* Modal */}
+      <Modal open={open} onClose={() => setOpen(false)}>
+        <Box
+          sx={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            bgcolor: '#111',
+            color: 'white',
+            p: 4,
+            borderRadius: 3,
+            maxWidth: 400,
+            boxShadow: '0 0 20px rgba(255, 255, 255, 0.15)',
+          }}
+        >
+          <Typography variant="h6" mb={2}>
+            {title}
+          </Typography>
+          <Typography variant="body2" color="grey.400">
+            {moreInfo}
+          </Typography>
+        </Box>
+      </Modal>
     </>
   );
 };

@@ -10,11 +10,16 @@
     "home": {
         "title": "Salut, je suis Omar.",
         "subtitle": "Développeur Full Stack",
-        "description": "Je crée des applications web dynamiques et évolutives pour votre entreprise, en fournissant des solutions complètes de la conception au déploiement.",
+        "paragraph1": "Je suis un développeur Full Stack basé en Allemagne, passionné par la création d’applications web performantes et évolutives. J’apprécie particulièrement les projets ambitieux qui me poussent à sortir de ma zone de confort et à explorer les technologies de pointe, notamment dans les domaines de l’intelligence artificielle et des frameworks JavaScript modernes.",
+        "paragraph2": "Fort d’une solide expérience en développement front-end et back-end, je m’efforce de fournir des solutions robustes, efficaces et élégantes, de la conception au déploiement.",
+        "currentHeader": "Explorations actuelles",
+        "currentBody": "Applications basées sur l’IA, fonctions edge avec Vercel, architecture serverless et stratégies full-stack multi-plateformes.",
+        "outsideHeader": "En dehors du code",
+        "outsideBody": "Passionné par la philosophie et le design d’interface minimaliste. Toujours partant pour des projets créatifs hors des sentiers battus.",
         "cta": "Contactez-moi"
     },
     "about": {
-        "heading": "Faisons connaissance",
+        "heading": "Ce qui est important pour moi",
         "paragraph1": "Je suis Omar, un développeur Full Stack basé en Allemagne, passionné par la création d'applications web propres, efficaces et évolutives. Je me spécialise dans les expériences numériques modernes avec React, Node.js et TypeScript — des outils qui me permettent de transformer des idées en solutions fiables et élégantes.",
         "paragraph2": "Au-delà du code, je m'efforce de créer des logiciels intuitifs, accessibles et faciles à maintenir. J'aime résoudre des problèmes concrets, que ce soit en concevant des interfaces réactives ou en développant des API robustes.",
         "paragraph3": "Avec un œil attentif aux détails et une passion pour l’apprentissage continu, je m'efforce d'écrire du code qui est non seulement fonctionnel, mais aussi réfléchi — pour favoriser la croissance à long terme et améliorer l’expérience des développeurs.",

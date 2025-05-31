@@ -10,11 +10,16 @@
     "home": {
         "title": "Hallo, ich bin Omar.",
         "subtitle": "Full Stack Entwickler",
-        "description": "Ich entwickle dynamische und skalierbare Webanwendungen für Ihr Unternehmen und biete Komplettlösungen von der Idee bis zur Bereitstellung.",
+        "paragraph1": "Ich bin ein Full-Stack-Entwickler aus Deutschland mit einer Leidenschaft für die Entwicklung skalierbarer und leistungsstarker Webanwendungen. Besonders gern arbeite ich an herausfordernden Projekten, die meine Fähigkeiten erweitern und mir ermöglichen, neue Technologien zu erforschen – insbesondere in den Bereichen Künstliche Intelligenz und moderne JavaScript-Frameworks.",
+        "paragraph2": "Mit einer soliden Grundlage in Frontend- und Backend-Entwicklung konzentriere ich mich darauf, robuste, effiziente und elegante Lösungen von der Idee bis zur Umsetzung zu liefern.",
+        "currentHeader": "Aktuell in Erkundung",
+        "currentBody": "KI-gestützte Anwendungen, Edge-Funktionen mit Vercel, serverlose Architekturen und plattformübergreifende Full-Stack-Strategien.",
+        "outsideHeader": "Abseits des Codes",
+        "outsideBody": "Leidenschaft für Philosophie und minimalistisches UI-Design. Immer offen für kreative Nebenprojekte.",
         "cta": "Kontaktieren Sie mich"
     },
     "about": {
-        "heading": "Lerne mich kennen",
+        "heading": "Was mir wichtig ist",
         "paragraph1": "Ich bin Omar, ein Full Stack Developer mit Sitz in Deutschland und einer Leidenschaft für die Entwicklung sauberer, effizienter und skalierbarer Webanwendungen. Ich spezialisiere mich auf moderne digitale Erlebnisse mit React, Node.js und TypeScript – Tools, mit denen ich Ideen in zuverlässige und elegante Lösungen umsetzen kann.",
         "paragraph2": "Neben dem Programmieren konzentriere ich mich darauf, Software zu entwickeln, die intuitiv, zugänglich und gut wartbar ist. Ich löse gerne reale Probleme – sei es beim Entwerfen reaktionsfähiger Benutzeroberflächen oder beim Erstellen robuster APIs.",
         "paragraph3": "Mit einem Auge fürs Detail und der Freude am ständigen Lernen möchte ich Code schreiben, der nicht nur funktioniert, sondern durchdacht ist – und so langfristiges Wachstum und ein angenehmes Entwicklererlebnis unterstützt.",

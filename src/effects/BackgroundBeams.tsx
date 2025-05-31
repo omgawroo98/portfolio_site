@@ -93,7 +93,7 @@ export const BackgroundBeams = React.memo(({ className }: { className?: string }
                         }}
                     />
                 ))}
-                {showComets && bottomLeftPaths.map((path, index) => (
+                {/* {showComets && bottomLeftPaths.map((path, index) => (
                     <motion.path
                         key={`comet-bl-${index}`}
                         d={path}
@@ -110,7 +110,7 @@ export const BackgroundBeams = React.memo(({ className }: { className?: string }
                             ease: [0, 0, 1, 1]
                         }}
                     />
-                ))}
+                ))} */}
             </Box>
 
             {/* Top Right Trails (flipped) */}
@@ -143,7 +143,7 @@ export const BackgroundBeams = React.memo(({ className }: { className?: string }
                         }}
                     />
                 ))}
-                {showComets && bottomLeftPaths.map((path, index) => (
+                {/* {showComets && bottomLeftPaths.map((path, index) => (
                     <motion.path
                         key={`comet-tr-${index}`}
                         d={path}
@@ -160,7 +160,7 @@ export const BackgroundBeams = React.memo(({ className }: { className?: string }
                             ease: [0, 0, 1, 1]
                         }}
                     />
-                ))}
+                ))} */}
             </Box>
 
             <svg width="0" height="0">

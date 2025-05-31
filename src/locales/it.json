@@ -10,11 +10,16 @@
     "home": {
         "title": "Ciao a te, sono Omar.",
         "subtitle": "Sviluppatore Full Stack",
-        "description": "Creo applicazioni web dinamiche e scalabili per la tua azienda, offrendo soluzioni complete dall'ideazione al deployment.",
+        "paragraph1": "Sono uno sviluppatore Full Stack con sede in Germania e una grande passione per la creazione di applicazioni web scalabili e ad alte prestazioni. Amo affrontare progetti impegnativi che mi spingono oltre i miei limiti e mi permettono di esplorare tecnologie all’avanguardia, in particolare nei campi dell’intelligenza artificiale e dei framework JavaScript moderni.",
+        "paragraph2": "Con una solida esperienza nello sviluppo sia front-end che back-end, mi concentro sulla realizzazione di soluzioni robuste, efficienti ed eleganti, dalla concezione al rilascio.",
+        "currentHeader": "Attualmente sto esplorando",
+        "currentBody": "Applicazioni basate su intelligenza artificiale, funzioni edge con Vercel, architettura serverless e strategie full-stack multipiattaforma.",
+        "outsideHeader": "Fuori dal codice",
+        "outsideBody": "Appassionato di filosofia e design UI minimalista. Sempre pronto per progetti creativi alternativi.",
         "cta": "Contattami"
     },
     "about": {
-        "heading": "Conosciamoci meglio",
+        "heading": "Ciò che valuto",
         "paragraph1": "Sono Omar, uno sviluppatore Full Stack con sede in Germania, appassionato di creare applicazioni web pulite, efficienti e scalabili. Mi specializzo nella creazione di esperienze digitali moderne utilizzando React, Node.js e TypeScript — strumenti che mi permettono di trasformare idee in soluzioni affidabili ed eleganti.",
         "paragraph2": "Oltre a scrivere codice, mi concentro sullo sviluppo di software intuitivo, accessibile e facilmente manutenibile. Mi piace risolvere problemi reali, progettando interfacce reattive o sviluppando API robuste.",
         "paragraph3": "Con grande attenzione ai dettagli e una passione per l'apprendimento continuo, cerco di scrivere codice che sia non solo funzionale, ma anche ben pensato — a supporto di una crescita sostenibile e di una migliore esperienza per gli sviluppatori.",

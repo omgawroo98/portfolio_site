@@ -10,11 +10,16 @@
   "home": {
     "title": "Hello there, I'm Omar.",
     "subtitle": "Full Stack Developer",
-    "description": "I create dynamic and scalable web applications for your business, providing end-to-end solutions from concept to deployment.",
+    "paragraph1": "I'm a Full Stack Developer based in Germany with a passion for building scalable, high-performance web applications. I thrive on challenging projects that push my boundaries and allow me to explore cutting-edge technologies, particularly in the fields of artificial intelligence and modern JavaScript frameworks.",
+    "paragraph2": "With a strong foundation in both front-end and back-end development, I focus on delivering robust, efficient, and elegant solutions from concept to deployment.",
+    "currentHeader": "Currently Exploring",
+    "currentBody": "AI-powered apps, edge functions with Vercel, serverless architecture, and multi-platform full-stack strategies.",
+    "outsideHeader": "Outside the Code",
+    "outsideBody": "Passionate about philosophy and minimalist UI design. Always up for creative side quests.",
     "cta": "Contact Me"
   },
   "about": {
-    "heading": "About Me",
+    "heading": "What I Value",
     "paragraph1": "I'm Omar, a Full Stack Developer based in Germany with a passion for crafting clean, efficient, and scalable web applications. I specialize in building modern digital experiences using React, Node.js, and TypeScript — tools that allow me to turn ideas into reliable and elegant solutions.",
     "paragraph2": "Beyond writing code, I focus on building software that’s intuitive, accessible, and maintainable. I enjoy solving real-world problems, whether it’s designing responsive UIs or developing robust APIs.",
     "paragraph3": "With a strong eye for detail and a love for continuous learning, I aim to write code that’s not only functional, but thoughtful — supporting long-term growth and a smooth developer experience.",

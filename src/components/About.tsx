@@ -1,13 +1,15 @@
-import React from 'react';
 import { Box, Typography } from '@mui/material';
-import { Carousel, Card } from '../layout/MuiCarousel';
+import { Carousel, ValueCard } from '../layout/MuiCarousel';
 import { useTranslation } from 'react-i18next';
 import RainbowCard from '../layout/RainbowCard';
+import { BugReport, Speed, AutoAwesome, TouchApp } from '@mui/icons-material';
+import { Code2, Bug, Gauge, Sparkles, MousePointerClick } from 'lucide-react';
+
 
 function About() {
   const { t } = useTranslation()
-  const cards = data.map((card, index) => (
-    <Card key={card.src} card={card} index={index} />
+  const cards = values.map((value, index) => (
+    <ValueCard key={index} {...value} />
   ));
 
   return (
@@ -18,7 +20,6 @@ function About() {
           variant="h1"
           px={2}
         >
-
           {t('about.heading')}
         </Typography>
         <Carousel items={cards} />
@@ -27,37 +28,38 @@ function About() {
   );
 }
 
-const data = [
+const values = [
   {
-    category: 'Artificial Intelligence',
-    title: 'You can do more with AI.',
-    src: 'https://images.unsplash.com/photo-1593508512255-86ab42a8e620?q=80&w=3556&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    icon: <Code2 size={35} strokeWidth={1.5} />,
+    title: 'Clean Code',
+    description: 'Readable, maintainable, and scalable code that’s easy to build on.',
+    moreInfo: 'I follow principles like DRY, KISS, and SOLID to ensure that the codebase remains clean and extensible. Every line of code is written with purpose and clarity.'
   },
   {
-    category: 'Productivity',
-    title: 'Enhance your productivity.',
-    src: 'https://images.unsplash.com/photo-1531554694128-c4c6665f59c2?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    icon: <Bug size={35} strokeWidth={1.5} />,
+    title: 'Testing Matters',
+    description: 'Writing tests is critical for ensuring long-term stability and reliability.',
+    moreInfo: 'I use tools like Jest and Cypress to write unit, integration, and end-to-end tests that prevent regressions and increase confidence in deployments.'
   },
   {
-    category: 'Product',
-    title: 'Launching the new Apple Vision Pro.',
-    src: 'https://images.unsplash.com/photo-1713869791518-a770879e60dc?q=80&w=2333&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    icon: <Gauge size={35} strokeWidth={1.5} />,
+    title: 'Performance',
+    description: 'Optimized applications that load fast and feel responsive.',
+    moreInfo: 'Performance isn’t just a metric—it’s an experience. I optimize rendering, reduce payload sizes, and use profiling tools to improve runtime speed.'
   },
   {
-    category: 'Product',
-    title: 'Maps for your iPhone 15 Pro Max.',
-    src: 'https://images.unsplash.com/photo-1599202860130-f600f4948364?q=80&w=2515&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    icon: <Sparkles size={35} strokeWidth={1.5} />,
+    title: 'Attention to Detail',
+    description: 'From visual polish to accessibility, I care about the full picture.',
+    moreInfo: 'Small things matter: consistent spacing, pixel-perfect UI, accessible interactions, and meaningful animations all contribute to a better UX.'
   },
   {
-    category: 'iOS',
-    title: 'Photography just got better.',
-    src: 'https://images.unsplash.com/photo-1602081957921-9137a5d6eaee?q=80&w=2793&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  },
-  {
-    category: 'Hiring',
-    title: 'Hiring for a Staff Software Engineer',
-    src: 'https://images.unsplash.com/photo-1511984804822-e16ba72f5848?q=80&w=2048&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    icon: <MousePointerClick size={35} strokeWidth={1.5} />,
+    title: 'User-Centered Design',
+    description: 'Coding with the end user in mind results in better products.',
+    moreInfo: 'I collaborate closely with designers and stakeholders to ensure the product feels intuitive, inclusive, and delightful to use.'
   },
 ];
+
 
 export default About

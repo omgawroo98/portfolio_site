@@ -59,35 +59,39 @@ function Skills() {
                         <Grid container spacing={4}>
                             {items.map(({ label, desc, icon, url }) => (
                                 <Grid key={label} size={4}>
+
                                     <Stack direction="row" spacing={2} alignItems="flex-start">
                                         <Box sx={{ mt: 0.5 }}>{icon}</Box>
-                                        <Box>
-                                            <LinkPreview
-                                                url={url}
-                                                className="font-bold bg-clip-text text-transparent bg-gradient-to-br from-purple-500 to-pink-500"
-                                            >
+                                        <LinkPreview
+                                            url={url}
+                                            className="font-bold bg-clip-text text-transparent bg-gradient-to-br from-purple-500 to-pink-500"
+                                        >
+                                            <Box>
                                                 {label}
-                                            </LinkPreview>
-
+                                            </Box>
                                             <Typography variant="body2" color="text.secondary">
                                                 {desc}
                                             </Typography>
-                                        </Box>
+                                        </LinkPreview>
                                     </Stack>
+
                                 </Grid>
                             ))}
                         </Grid>
 
                         {/* Divider between sections (but not after last) */}
-                        {idx < entries.length - 1 && (
-                            <Divider
-                                sx={{ mt: 3, borderColor: "rgba(255,255,255,0.08)" }}
-                            />
-                        )}
+                        {
+                            idx < entries.length - 1 && (
+                                <Divider
+                                    sx={{ mt: 3, borderColor: "rgba(255,255,255,0.08)" }}
+                                />
+                            )
+                        }
                     </Box>
-                ))}
-            </RainbowCard>
-        </Box>
+                ))
+                }
+            </RainbowCard >
+        </Box >
     );
 }
 

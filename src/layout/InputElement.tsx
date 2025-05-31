@@ -37,7 +37,7 @@ const InputElement: React.FC<InputElementProps> = ({
                     py: 1,
                     alignItems: 'center',
                     minHeight: '2.7rem',
-                    height: 'auto', // Or any value you prefer
+                    height: 'auto',
                     '& input': {
                         padding: 0,
                         height: '100%',

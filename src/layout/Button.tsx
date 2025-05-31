@@ -19,12 +19,10 @@ const CustomButton: React.FC<CustomButtonProps> = ({ children, ...props }) => {
                 overflow: 'hidden',
                 position: 'relative',
                 boxShadow: '0 2px 6px rgba(0,0,0,0.1)',
-
                 '@keyframes shine': {
                     '0%': { backgroundPosition: '-200% 0' },
                     '100%': { backgroundPosition: '200% 0' },
                 },
-
                 '& .shine-text': {
                     fontWeight: 600,
                     fontSize: '1.25rem',
@@ -34,7 +32,6 @@ const CustomButton: React.FC<CustomButtonProps> = ({ children, ...props }) => {
                     zIndex: 1,
                     transition: 'color 0.3s ease',
                 },
-
                 '&:hover .shine-text': {
                     background: 'linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet)',
                     backgroundSize: '400% auto',

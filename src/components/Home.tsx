@@ -13,10 +13,16 @@ import profileImage from '../assets/images/portfolio picture.jpg';
 import { useTranslation } from 'react-i18next';
 import RainbowCard from '../layout/RainbowCard';
 import { AnimatedTooltip } from '../layout/AnimatedToolTip'
+import { Padding } from '@mui/icons-material';
 
 
 const Home = () => {
     const { t } = useTranslation();
+    const title = t('home.title'); // "Hello there, I'm Omar."
+
+    // Split the name
+    const name = 'Omar';
+    const [before, after] = title.split(name);
 
     const icons = [
         {
@@ -73,13 +79,20 @@ const Home = () => {
                     <RainbowCard>
                         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
                             <Typography variant="h1" fontWeight="bold">
-                                {t('home.title')}
+                                {before}
+                                <Box component="span" sx={{ color: '#fff' }}>
+                                    {name}
+                                </Box>
+                                {after}
                             </Typography>
                             <Typography variant="h2" color="text.secondary">
                                 {t('home.subtitle')}
                             </Typography>
                             <Typography variant="body1" color="text.secondary">
-                                {t('home.description')} Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet
+                                {t('home.paragraph1')}
+                                <br />
+                                {/* <br /> */}
+                                {t('home.paragraph2')}
                             </Typography>
                         </Box>
                     </RainbowCard>
@@ -88,7 +101,7 @@ const Home = () => {
                     <RainbowCard sx={{ minWidth: 350 }}>
                         <Box
                             component="img"
-                            // src={profileImage}
+                            src={profileImage}
                             alt="Omar illustration"
                             sx={{ width: 300, borderRadius: 4 }}
                         />
@@ -101,20 +114,20 @@ const Home = () => {
                     </RainbowCard>
 
                     <RainbowCard sx={{ flex: 1.5 }}>
-                        <Typography variant="h6" fontWeight="bold" gutterBottom>
-                            Lorem Ipsum Two
+                        <Typography variant="h5" fontWeight="bold" gutterBottom>
+                            {t('home.currentHeader')}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            {t('home.currentBody')}
                         </Typography>
                     </RainbowCard>
 
                     <RainbowCard sx={{ flex: 1 }}>
-                        <Typography variant="h6" fontWeight="bold" gutterBottom>
-                            Lorem Ipsum Three
+                        <Typography variant="h5" fontWeight="bold" gutterBottom>
+                            {t('home.outsideHeader')}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            {t('home.outsideBody')}
                         </Typography>
                     </RainbowCard>
                 </Stack>
