@@ -10,7 +10,7 @@
   "home": {
     "title": "Hello there, I'm Omar.",
     "subtitle": "Full Stack Developer",
-    "paragraph1": "I'm a Full Stack Developer based in Germany with a passion for building scalable, high-performance web applications. I thrive on challenging projects that push my boundaries and allow me to explore cutting-edge technologies, particularly in the fields of artificial intelligence and modern JavaScript frameworks.",
+    "paragraph1": "I'm a Full Stack Developer based in Germany with a passion for building scalable, high-performance web applications. I thrive on challenging projects that push my boundaries and allow me to explore cutting-edge technologies.",
     "paragraph2": "With a strong foundation in both front-end and back-end development, I focus on delivering robust, efficient, and elegant solutions from concept to deployment.",
     "currentHeader": "Currently Exploring",
     "currentBody": "AI-powered apps, edge functions with Vercel, serverless architecture, and multi-platform full-stack strategies.",

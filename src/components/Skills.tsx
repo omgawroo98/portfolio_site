@@ -42,55 +42,56 @@ function Skills() {
 
     return (
         <Box sx={{ py: 8, maxWidth: "70%", mx: "auto" }}>
-            <RainbowCard>
-                <Typography variant="h1" fontWeight="bold" mb={6} textAlign="left">
-                    Skills
-                </Typography>
+            <Typography variant="h1" mb={3} textAlign="left">
+                Meine Fähigkeiten
+            </Typography>
+            <Typography variant="h3" fontWeight={200} mb={6} textAlign="left">
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+            </Typography>
 
-                {entries.map(([category, items], idx) => (
-                    <Box key={category} sx={{ mb: 3 }}>
-                        <Typography
-                            variant="h3"
-                            sx={{ color: 'linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet)', mb: 2, fontWeight: 600, }}
-                        >
-                            {category}
-                        </Typography>
+            {entries.map(([category, items], idx) => (
+                <Box key={category} sx={{ mb: 3 }}>
+                    <Typography
+                        variant="h3"
+                        sx={{ color: 'linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet)', mb: 2, fontWeight: 600, }}
+                    >
+                        {category}
+                    </Typography>
 
-                        <Grid container spacing={4}>
-                            {items.map(({ label, desc, icon, url }) => (
-                                <Grid key={label} size={4}>
+                    <Grid container spacing={4}>
+                        {items.map(({ label, desc, icon, url }) => (
+                            <Grid key={label} size={4}>
 
-                                    <Stack direction="row" spacing={2} alignItems="flex-start">
-                                        <Box sx={{ mt: 0.5 }}>{icon}</Box>
-                                        <LinkPreview
-                                            url={url}
-                                            className="font-bold bg-clip-text text-transparent bg-gradient-to-br from-purple-500 to-pink-500"
-                                        >
-                                            <Box>
-                                                {label}
-                                            </Box>
-                                            <Typography variant="body2" color="text.secondary">
-                                                {desc}
-                                            </Typography>
-                                        </LinkPreview>
-                                    </Stack>
+                                <Stack direction="row" spacing={2} alignItems="flex-start">
+                                    <Box sx={{ mt: 0.5 }}>{icon}</Box>
+                                    <LinkPreview
+                                        url={url}
+                                        className="font-bold bg-clip-text text-transparent bg-gradient-to-br from-purple-500 to-pink-500"
+                                    >
+                                        <Box>
+                                            {label}
+                                        </Box>
+                                        <Typography variant="body2" color="text.secondary">
+                                            {desc}
+                                        </Typography>
+                                    </LinkPreview>
+                                </Stack>
 
-                                </Grid>
-                            ))}
-                        </Grid>
+                            </Grid>
+                        ))}
+                    </Grid>
 
-                        {/* Divider between sections (but not after last) */}
-                        {
-                            idx < entries.length - 1 && (
-                                <Divider
-                                    sx={{ mt: 3, borderColor: "rgba(255,255,255,0.08)" }}
-                                />
-                            )
-                        }
-                    </Box>
-                ))
-                }
-            </RainbowCard >
+                    {/* Divider between sections (but not after last) */}
+                    {
+                        idx < entries.length - 1 && (
+                            <Divider
+                                sx={{ mt: 3, borderColor: "rgba(255,255,255,0.5)" }}
+                            />
+                        )
+                    }
+                </Box>
+            ))
+            }
         </Box >
     );
 }

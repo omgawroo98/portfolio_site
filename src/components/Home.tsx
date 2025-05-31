@@ -1,10 +1,7 @@
 import {
     Box,
-    Button,
     Typography,
-    IconButton,
     Stack,
-    Grid
 } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -12,15 +9,11 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import profileImage from '../assets/images/portfolio picture.jpg';
 import { useTranslation } from 'react-i18next';
 import RainbowCard from '../layout/RainbowCard';
-import { AnimatedTooltip } from '../layout/AnimatedToolTip'
-import { Padding } from '@mui/icons-material';
-
+import { AnimatedTooltip } from '../layout/AnimatedToolTip';
 
 const Home = () => {
     const { t } = useTranslation();
     const title = t('home.title'); // "Hello there, I'm Omar."
-
-    // Split the name
     const name = 'Omar';
     const [before, after] = title.split(name);
 
@@ -50,70 +43,52 @@ const Home = () => {
             id="home"
             component="section"
             sx={{
-                width: '100%',
-                height: 'calc(100vh - 4rem)',
+                width: '70%',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
+                mx: 'auto',
+                mt: '-4rem', // 👈 Pull hero up, tweak to match navbar height
+
             }}
         >
-
-            <Stack
-                direction="column"
-                spacing={4}
+            <RainbowCard
                 sx={{
-                    width: '100%',
-                    maxWidth: '70%',
-                    mx: 'auto',
-                    position: 'relative',
-                    zIndex: 1,
+                    backgroundImage:
+                        'linear-gradient(to bottom, rgba(26, 26, 26, 0.95) 0%, rgba(15, 15, 15, 0.9) 20%, rgba(10, 10, 10, 1) 100%), radial-gradient(ellipse at bottom left, rgba(149, 76, 233, 0.15), transparent 70%)',
+                    pt: '10rem',   // 👈 Optional: pad content so it doesn't hide under navbar
                 }}
             >
-                {/* Row of 2: Hero text + Profile image */}
-                <Stack
-                    direction={{ xs: 'column', md: 'row' }}
-                    spacing={4}
-                    alignItems="stretch"
-                >
-                    {/* Card 1: Hero Text */}
-                    <RainbowCard>
-                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-                            <Typography variant="h1" fontWeight="bold">
-                                {before}
-                                <Box component="span" sx={{ color: '#fff' }}>
-                                    {name}
-                                </Box>
-                                {after}
-                            </Typography>
-                            <Typography variant="h2" color="text.secondary">
-                                {t('home.subtitle')}
-                            </Typography>
-                            <Typography variant="body1" color="text.secondary">
-                                {t('home.paragraph1')}
-                                <br />
-                                {/* <br /> */}
-                                {t('home.paragraph2')}
-                            </Typography>
-                        </Box>
-                    </RainbowCard>
-
-                    {/* Card 2: Profile Image */}
-                    <RainbowCard sx={{ minWidth: 350 }}>
-                        <Box
-                            component="img"
-                            src={profileImage}
-                            alt="Omar illustration"
-                            sx={{ width: 300, borderRadius: 4 }}
-                        />
-                    </RainbowCard>
+                <Stack direction={{ xs: 'column', md: 'row' }} spacing={4} alignItems="center" justifyContent="center" width="100%">
+                    <Stack spacing={3} alignItems="start" flex={1}>
+                        <Typography variant="h1" textAlign="center">
+                            {before}
+                            <Box component="span" sx={{ color: '#fff' }}>
+                                {name}
+                            </Box>
+                            {after}
+                        </Typography>
+                        <Typography variant="h2" color="text.secondary">
+                            {t('home.subtitle')}
+                        </Typography>
+                        <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 580 }}>
+                            {t('home.paragraph1')}
+                            {/* {t('home.paragraph2')} */}
+                        </Typography>
+                        <AnimatedTooltip items={icons} />
+                    </Stack>
+                    <Box
+                        component="img"
+                        src={profileImage}
+                        alt="Omar illustration"
+                        sx={{ width: 300, borderRadius: 4 }}
+                    />
                 </Stack>
 
-                <Stack direction="row" spacing={2} useFlexGap flexWrap="nowrap">
-                    <RainbowCard sx={{ flex: 1, flexDirection: 'row', justifyContent: "center" }}>
-                        <AnimatedTooltip items={icons} />
-                    </RainbowCard>
+                {/* <Stack direction="row" spacing={2} flexWrap="nowrap" width="100%">
+                    <AnimatedTooltip items={icons} />
 
-                    <RainbowCard sx={{ flex: 1.5 }}>
+                    <RainbowCard sx={{ flex: 1 }}>
                         <Typography variant="h5" fontWeight="bold" gutterBottom>
                             {t('home.currentHeader')}
                         </Typography>
@@ -130,12 +105,9 @@ const Home = () => {
                             {t('home.outsideBody')}
                         </Typography>
                     </RainbowCard>
-                </Stack>
-            </Stack>
-
-
-        </Box >
-
+                </Stack> */}
+            </RainbowCard>
+        </Box>
     );
 };
 

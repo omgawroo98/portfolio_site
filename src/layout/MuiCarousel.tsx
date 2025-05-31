@@ -180,15 +180,24 @@ export const ValueCard = ({ icon, title, description, moreInfo }: DevValueCard) 
           minHeight: 220,
           p: 2.5,
           borderRadius: 3,
-          backgroundColor: 'rgba(255,255,255,0.03)',
+          background: 'rgba(255,255,255,0.02)',
+          border: '1px solid rgba(255,255,255,0.06)',
           color: '#fff',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          boxShadow: '0 0 0 1px rgba(255, 255, 255, 0.1), 0 4px 20px rgba(255, 255, 255, 0.05)',
-          transition: 'box-shadow 0.3s ease, transform 0.2s ease',
+          boxShadow: `
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 0 12px rgba(255, 255, 255, 0.05)
+  `,
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          transition: 'all 0.3s ease-in-out',
           '&:hover': {
-            boxShadow: '0 0 0 1px rgba(255, 255, 255, 0.15), 0 6px 24px rgba(255, 255, 255, 0.08)',
+            boxShadow: `
+      0 0 0 1px rgba(255, 255, 255, 0.15),
+      0 0 18px rgba(255, 255, 255, 0.08)
+    `,
             transform: 'translateY(-2px)',
           },
         }}
@@ -199,7 +208,7 @@ export const ValueCard = ({ icon, title, description, moreInfo }: DevValueCard) 
             width: 48,
             height: 48,
             borderRadius: '50%',
-            background: '#111',
+            background: 'rgba(255,255,255,0.06)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',

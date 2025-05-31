@@ -36,8 +36,8 @@ const Contact = () => {
 
   return (
     <Box sx={{ py: 8, maxWidth: '70%', mx: 'auto' }}>
-      <RainbowCard>
-        <Typography variant="h1" gutterBottom align="left">
+      {/* <RainbowCard> */}
+        <Typography variant="h1" gutterBottom align="center">
           {t('contact.title')}
         </Typography>
 
@@ -73,7 +73,7 @@ const Contact = () => {
             </CustomButton>
           </Stack>
         </form>
-      </RainbowCard>
+      {/* </RainbowCard> */}
     </Box>
   );
 };

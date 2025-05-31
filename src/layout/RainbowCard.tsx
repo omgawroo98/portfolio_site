@@ -11,25 +11,27 @@ const RainbowCard = ({ children, sx = {} }: GlassCardProps) => {
   return (
     <Box
       sx={{
+        width: "100%",
         p: 4,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        borderRadius: 4,
+        borderBottomLeftRadius: 16,
+        borderBottomRightRadius: 16,
         background: 'rgba(255,255,255,0.02)',
-        border: '1px solid rgba(255,255,255,0.06)',
-        boxShadow: `
-          0 0 0 1px rgba(255, 255, 255, 0.08),
-          0 0 12px rgba(255, 255, 255, 0.05)
-        `,
+        // border: '1px solid rgba(255,255,255,0.06)',
+        // boxShadow: `
+        //   0 0 0 1px rgba(255, 255, 255, 0.08),
+        //   0 0 12px rgba(255, 255, 255, 0.05)
+        // `,
         backdropFilter: 'blur(12px)',
         WebkitBackdropFilter: 'blur(12px)',
         transition: 'all 0.3s ease-in-out',
         '&:hover': {
-          boxShadow: `
-            0 0 0 1px rgba(255, 255, 255, 0.15),
-            0 0 18px rgba(255, 255, 255, 0.08)
-          `,
+          // boxShadow: `
+          //   0 0 0 1px rgba(255, 255, 255, 0.15),
+          //   0 0 18px rgba(255, 255, 255, 0.08)
+          // `,
         },
         ...sx,
       }}

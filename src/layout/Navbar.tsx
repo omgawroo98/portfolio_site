@@ -72,6 +72,7 @@ export const NavBody = ({ children, visible }: NavBodyProps) => {
     <motion.div
       animate={{
         backdropFilter: visible ? "blur(10px)" : "none",
+        backgroundColor: visible ? "#141414" : "transparent", // 👈 dynamic background
         boxShadow: visible
           ? `0 4px 12px rgba(0, 0, 0, 0.3),
      0 12px 32px rgba(0, 0, 0, 0.4),
@@ -82,11 +83,11 @@ export const NavBody = ({ children, visible }: NavBodyProps) => {
       }}
       transition={{ type: "spring", stiffness: 120, damping: 20 }}
       style={{
-        backgroundColor: visible ? "#141414" : "#0f0f0f",
-        maxWidth: "100%",
+        maxWidth: "70%",
         margin: "0 auto",
+        borderRadius: visible ? '999px' : '0px'
       }}
-      className="relative z-[60] flex flex-row items-center justify-between self-start rounded-full px-4 py-2 lg:flex"
+      className="relative z-[60] flex flex-row items-center justify-between self-start px-4 py-2 lg:flex"
     >
       {children}
     </motion.div >
@@ -119,7 +120,9 @@ export const NavItems = ({ t }: { t: (arg0: string) => string }) => {
             }
           }}
         >
+          <Typography variant="h5" sx={{fontWeight: 500}}>
           {t(item.name)}
+          </Typography>
         </Button>
       ))}
     </Box>
@@ -136,7 +139,7 @@ export const NavbarLogo = () => {
         height={30}
         style={{ marginRight: 8 }}
       />
-      <Typography variant="h6" color="text.primary">
+      <Typography variant="h4" color="text.primary">
         Startup
       </Typography>
     </Box>
