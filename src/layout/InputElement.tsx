@@ -31,7 +31,7 @@ const InputElement: React.FC<InputElementProps> = ({
                     fontSize: '1.5rem',
                     mt: 1.5,
                     borderRadius: 2,
-                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                    backgroundColor: '#141414',
                     color: 'white',
                     px: 1,
                     py: 1,

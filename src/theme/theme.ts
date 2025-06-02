@@ -15,7 +15,7 @@ const getTheme = (mode: PaletteMode): ThemeOptions =>
       },
       primary: {
         main: '#ffffff', // Neutral white
-        contrastText: '#0f172a',  // Text that appears on primary buttons
+        contrastText: '#008080',  // Text that appears on primary buttons
       },
       secondary: {
         main: '#888888', // Subtle secondary for muted text/icons
@@ -31,13 +31,13 @@ const getTheme = (mode: PaletteMode): ThemeOptions =>
         letterSpacing: '-0.05em',   // -5%
       },
       h2: {
-        fontSize: '2rem',
-        fontWeight: 500,
+        fontSize: '4rem',
+        fontWeight: 600,
         lineHeight: 0.9,            // 90%
         letterSpacing: '-0.045em',
       },
       h3: {
-        fontSize: '1.75rem',
+        fontSize: '2rem',
         fontWeight: 600,
         lineHeight: 0.92,           // 92%
         letterSpacing: '-0.04em',

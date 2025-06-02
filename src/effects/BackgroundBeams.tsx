@@ -82,8 +82,8 @@ export const BackgroundBeams = React.memo(({ className }: { className?: string }
                     <path
                         key={`static-bl-${index}`}
                         d={path}
-                        stroke="#ffffff"
-                        strokeOpacity="0.3"
+                        stroke="#008080"
+                        strokeOpacity="0.5"
                         strokeWidth="0.5"
                         style={{
                             strokeDasharray: 1000,
@@ -132,8 +132,8 @@ export const BackgroundBeams = React.memo(({ className }: { className?: string }
                     <path
                         key={`static-tr-${index}`}
                         d={path}
-                        stroke="#ffffff"
-                        strokeOpacity="0.3"
+                        stroke="#008080"
+                        strokeOpacity="0.5"
                         strokeWidth="0.5"
                         style={{
                             strokeDasharray: 1000,

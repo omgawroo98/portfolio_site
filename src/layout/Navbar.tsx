@@ -97,6 +97,7 @@ export const NavBody = ({ children, visible }: NavBodyProps) => {
 export const NavItems = ({ t }: { t: (arg0: string) => string }) => {
   const items = [
     { name: "nav.home", link: "home" },
+    { name: "nav.experience", link: "experience" },
     { name: "nav.about", link: "about" },
     { name: "nav.skills", link: "skills" },
     { name: "nav.contact", link: "contact" },
@@ -120,7 +121,7 @@ export const NavItems = ({ t }: { t: (arg0: string) => string }) => {
             }
           }}
         >
-          <Typography variant="h5" sx={{fontWeight: 500}}>
+          <Typography variant="h6" sx={{fontWeight: 500}}>
           {t(item.name)}
           </Typography>
         </Button>

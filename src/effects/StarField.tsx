@@ -27,9 +27,11 @@ const StarField: React.FC = () => {
 
         const resize = () => {
             canvasWidth = window.innerWidth;
-            canvasHeight = window.innerHeight;
-            canvas.width = canvasWidth;
-            canvas.height = canvasHeight;
+            const { width, height } = canvas.getBoundingClientRect();
+            canvasWidth = width;
+            canvasHeight = height;
+            canvas.width = width;
+            canvas.height = height;
         };
 
         resize();
@@ -70,10 +72,10 @@ const StarField: React.FC = () => {
 
         const update = () => {
             stars.forEach((star) => {
-                star.y -= star.speed;
+                star.y += star.speed;
 
-                if (star.y < -star.radius) {
-                    star.y = canvasHeight + star.radius;
+                if (star.y > canvas.height + star.radius) {
+                    star.y = -star.radius;
                     star.x = Math.random() * canvasWidth;
                 }
             });
@@ -96,13 +98,19 @@ const StarField: React.FC = () => {
         <canvas
             ref={canvasRef}
             style={{
-                position: 'fixed',
-                top: 0,
+                position: 'absolute',
+                top: '100%',           // Sit just below the Home content
                 left: 0,
-                zIndex: -1,
-                width: '100%',
-                height: '100%',
-                background: 'radial-gradient(ellipse at bottom, #121212 0%, #0a0a0a 100%)',
+                right: 0,
+                width: '70%',
+                height: `20rem`,       // Adjust as needed
+                zIndex: 1,
+                pointerEvents: 'none',
+                margin: '0 auto',
+                marginTop: -12,
+                background: 'transparent',
+                maskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)' // ✅ WebKit fallback
             }}
         />
     );

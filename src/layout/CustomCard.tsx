@@ -4,10 +4,11 @@ import { GlowingEffect } from '../effects/GlowingEffect';
 
 interface GlassCardProps {
   children: ReactNode;
+  glow?: boolean;
   sx?: object;
 }
 
-const RainbowCard = ({ children, sx = {} }: GlassCardProps) => {
+const CustomCard = ({ children, glow = true, sx = {} }: GlassCardProps) => {
   return (
     <Box
       sx={{
@@ -16,8 +17,7 @@ const RainbowCard = ({ children, sx = {} }: GlassCardProps) => {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        borderBottomLeftRadius: 16,
-        borderBottomRightRadius: 16,
+        borderRadius: '1rem',
         background: 'rgba(255,255,255,0.02)',
         // border: '1px solid rgba(255,255,255,0.06)',
         // boxShadow: `
@@ -36,17 +36,17 @@ const RainbowCard = ({ children, sx = {} }: GlassCardProps) => {
         ...sx,
       }}
     >
-      <GlowingEffect
+      {glow ? <GlowingEffect
         spread={40}
         glow={true}
         disabled={false}
         proximity={64}
         inactiveZone={0.01}
         borderWidth={3}
-      />
+      /> : null}
       {children}
     </Box>
   );
 };
 
-export default RainbowCard;
+export default CustomCard;

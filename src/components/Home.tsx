@@ -6,9 +6,9 @@ import {
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import YouTubeIcon from '@mui/icons-material/YouTube';
-import profileImage from '../assets/images/portfolio picture.jpg';
+import profileImage from '../assets/images/portfolio picture.png';
 import { useTranslation } from 'react-i18next';
-import RainbowCard from '../layout/RainbowCard';
+import CustomCard from '../layout/CustomCard';
 import { AnimatedTooltip } from '../layout/AnimatedToolTip';
 
 const Home = () => {
@@ -48,30 +48,29 @@ const Home = () => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 mx: 'auto',
-                mt: '-4rem', // 👈 Pull hero up, tweak to match navbar height
-
+                mt: '-4rem',
             }}
         >
-            <RainbowCard
+            <CustomCard
                 sx={{
                     backgroundImage:
-                        'linear-gradient(to bottom, rgba(26, 26, 26, 0.95) 0%, rgba(15, 15, 15, 0.9) 20%, rgba(10, 10, 10, 1) 100%), radial-gradient(ellipse at bottom left, rgba(149, 76, 233, 0.15), transparent 70%)',
-                    pt: '10rem',   // 👈 Optional: pad content so it doesn't hide under navbar
+                        'linear-gradient(to top, rgba(26, 26, 26, 0.95) 0%, rgba(15, 15, 15, 0.9) 20%, rgba(10, 10, 10, 1) 100%), radial-gradient(ellipse at bottom left, rgba(149, 76, 233, 0.15), transparent 70%)',
+                    pt: '10rem',
                 }}
             >
                 <Stack direction={{ xs: 'column', md: 'row' }} spacing={4} alignItems="center" justifyContent="center" width="100%">
                     <Stack spacing={3} alignItems="start" flex={1}>
                         <Typography variant="h1" textAlign="center">
                             {before}
-                            <Box component="span" sx={{ color: '#fff' }}>
+                            <Box component="span" sx={{ color: '#008080' }}>
                                 {name}
                             </Box>
                             {after}
                         </Typography>
-                        <Typography variant="h2" color="text.secondary">
+                        <Typography variant="h3" color="text.secondary">
                             {t('home.subtitle')}
                         </Typography>
-                        <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 580 }}>
+                        <Typography variant="body1" color="text.secondary" sx={{ textJustify: "inter-word" }}>
                             {t('home.paragraph1')}
                             {/* {t('home.paragraph2')} */}
                         </Typography>
@@ -106,7 +105,7 @@ const Home = () => {
                         </Typography>
                     </RainbowCard>
                 </Stack> */}
-            </RainbowCard>
+            </CustomCard>
         </Box>
     );
 };

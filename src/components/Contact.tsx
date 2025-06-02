@@ -1,7 +1,7 @@
 import { useState, ChangeEvent, FormEvent } from 'react';
 import { Box, Typography, TextField, Button, Stack } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import RainbowCard from '../layout/RainbowCard';
+import CustomCard from '../layout/CustomCard';
 import InputElement from '../layout/InputElement';
 import CustomButton from '../layout/Button';
 

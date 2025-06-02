@@ -9,29 +9,40 @@ import StarField from './effects/StarField';
 import { BackgroundBeams } from './effects/BackgroundBeams';
 import { FadeInOnScroll } from './effects/FadeInOnScroll';
 import { LinkPreview } from './effects/LinkPreview';
+import Experience from './components/Experience';
 
 function App() {
   return (
     <div>
       {/* <SwirlBackground /> */}
-      {/* <StarField /> */}
       <BackgroundBeams />
       <Navbar />
       <main>
-        <section id="home">
-          <Home />
+        <section id="home" style={{ position: 'relative' }}>
+          <div style={{ position: 'relative', zIndex: 2 }}>
+            <Home />
+          </div>
+
+          <StarField />
         </section>
+
+        <section id="experience" >
+          <Experience />
+        </section>
+
         <FadeInOnScroll delay={0.2}>
+
           <section id="about">
             <About />
           </section>
 
+        </FadeInOnScroll>
 
-          <section id="skills">
-            <Skills />
-          </section>
+        <section id="skills">
+          <Skills />
+        </section>
 
-          {/* <section id="services">
+        {/* <section id="services">
           <Services />
         </section>
 
@@ -39,13 +50,12 @@ function App() {
           <Portfolio />
         </section> */}
 
-          <section id="contact">
-            <Contact />
-          </section>
-        </FadeInOnScroll>
+        <section id="contact">
+          <Contact />
+        </section>
 
       </main>
-    </div>
+    </div >
   );
 }
 
