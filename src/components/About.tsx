@@ -14,7 +14,7 @@ function About() {
 
   return (
 
-    <Box width="70%" sx={{ display: 'flex', flexDirection: 'column', gap: 3, mx: 'auto', alignItems: "center" }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, mx: 'auto', alignItems: "center" }}>
       <CustomCard sx={{
         backgroundImage: 'linear-gradient(to bottom, rgba(26, 26, 26, 0.95) 0%, rgba(15, 15, 15, 0.9) 40%, rgba(10, 10, 10, 1) 100%), radial-gradient(ellipse at bottom left, rgba(149, 76, 233, 0.15), transparent 70%)',
       }}>

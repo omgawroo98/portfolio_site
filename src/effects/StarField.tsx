@@ -26,12 +26,14 @@ const StarField: React.FC = () => {
         if (!canvas || !ctx) return;
 
         const resize = () => {
-            canvasWidth = window.innerWidth;
+            if (!canvas) return;
+
             const { width, height } = canvas.getBoundingClientRect();
-            canvasWidth = width;
-            canvasHeight = height;
             canvas.width = width;
             canvas.height = height;
+
+            canvasWidth = width;
+            canvasHeight = height;
         };
 
         resize();
@@ -100,17 +102,17 @@ const StarField: React.FC = () => {
             style={{
                 position: 'absolute',
                 top: '100%',           // Sit just below the Home content
-                left: 0,
-                right: 0,
-                width: '70%',
-                height: `20rem`,       // Adjust as needed
+                // left: 0,
+                // right: 0,
+                width: '100%',
+                height: `25rem`,       // Adjust as needed
                 zIndex: 1,
                 pointerEvents: 'none',
-                margin: '0 auto',
+                // margin: '0 auto',
                 marginTop: -12,
                 background: 'transparent',
-                maskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)',
-                WebkitMaskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)' // ✅ WebKit fallback
+                maskImage: 'linear-gradient(to bottom, black 10%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to bottom, black 20%, transparent 100%)' // ✅ WebKit fallback
             }}
         />
     );

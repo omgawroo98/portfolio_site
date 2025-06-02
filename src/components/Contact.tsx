@@ -35,7 +35,7 @@ const Contact = () => {
   };
 
   return (
-    <Box sx={{ py: 8, maxWidth: '70%', mx: 'auto' }}>
+    <Box sx={{ py: 8, mx: 'auto' }}>
       {/* <RainbowCard> */}
         <Typography variant="h1" gutterBottom align="center">
           {t('contact.title')}

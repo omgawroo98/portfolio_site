@@ -10,6 +10,7 @@ import { BackgroundBeams } from './effects/BackgroundBeams';
 import { FadeInOnScroll } from './effects/FadeInOnScroll';
 import { LinkPreview } from './effects/LinkPreview';
 import Experience from './components/Experience';
+import CustomCard from './layout/CustomCard';
 
 function App() {
   return (
@@ -17,32 +18,33 @@ function App() {
       {/* <SwirlBackground /> */}
       <BackgroundBeams />
       <Navbar />
-      <main>
-        <section id="home" style={{ position: 'relative' }}>
-          <div style={{ position: 'relative', zIndex: 2 }}>
-            <Home />
-          </div>
+      <CustomCard glow={false} sx={{ width: '70%', mx: 'auto', backgroundColor: '#0a0a0a', p: 0 }}>
+        <main>
+          <section id="home" style={{ position: 'relative' }}>
+            <div style={{ position: 'relative', zIndex: 2 }}>
+              <Home />
+            </div>
 
-          <StarField />
-        </section>
-
-        <section id="experience" >
-          <Experience />
-        </section>
-
-        <FadeInOnScroll delay={0.2}>
-
-          <section id="about">
-            <About />
+            {/* <StarField /> */}
           </section>
 
-        </FadeInOnScroll>
+          <section id="experience" >
+            <Experience />
+          </section>
 
-        <section id="skills">
-          <Skills />
-        </section>
+          <FadeInOnScroll delay={0.2}>
 
-        {/* <section id="services">
+            <section id="about">
+              <About />
+            </section>
+
+          </FadeInOnScroll>
+
+          <section id="skills">
+            <Skills />
+          </section>
+
+          {/* <section id="services">
           <Services />
         </section>
 
@@ -50,11 +52,12 @@ function App() {
           <Portfolio />
         </section> */}
 
-        <section id="contact">
-          <Contact />
-        </section>
+          <section id="contact">
+            <Contact />
+          </section>
 
-      </main>
+        </main>
+      </CustomCard>
     </div >
   );
 }

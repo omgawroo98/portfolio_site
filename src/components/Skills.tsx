@@ -36,7 +36,7 @@ function Skills() {
     const entries = Object.entries(skills);
 
     return (
-        <Box sx={{ py: 4, maxWidth: "70%", mx: "auto", px: 8 }}>
+        <Box sx={{ py: 4,  mx: "auto", px: 8 }}>
             <Typography variant="h1" mb={3} textAlign="left">
                 Meine Fähigkeiten
             </Typography>

@@ -43,11 +43,9 @@ const Home = () => {
             id="home"
             component="section"
             sx={{
-                width: '70%',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                mx: 'auto',
                 mt: '-4rem',
             }}
         >

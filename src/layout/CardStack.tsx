@@ -9,10 +9,9 @@ import {
   useTheme,
 } from "@mui/material";
 
-let interval: any;
-
 type Card = {
   id: number;
+  roleIndex: number;
   name: string;
   designation: string;
   content: React.ReactNode;
@@ -20,42 +19,55 @@ type Card = {
 
 export const CardStack = ({
   items,
-  offset,
-  scaleFactor,
+  offset = 10,
+  scaleFactor = 0.06,
+  triggerFlipIndex,
 }: {
   items: Card[];
   offset?: number;
   scaleFactor?: number;
+  triggerFlipIndex?: number;
 }) => {
   const theme = useTheme();
-  const CARD_OFFSET = offset || 10;
-  const SCALE_FACTOR = scaleFactor || 0.06;
   const [cards, setCards] = useState<Card[]>(items);
 
   useEffect(() => {
-    startFlipping();
-    return () => clearInterval(interval);
-  }, []);
+    setCards(items);
+  }, [items]);
 
-  const startFlipping = () => {
-    interval = setInterval(() => {
-      setCards((prevCards: Card[]) => {
-        const newArray = [...prevCards];
+  useEffect(() => {
+    if (typeof triggerFlipIndex === 'number') {
+      flipToRole(triggerFlipIndex);
+    }
+  }, [triggerFlipIndex]);
+
+  const flipToRole = (roleIndex: number) => {
+    setCards(prev => {
+      const targetIndex = prev.findIndex(card => card.roleIndex === roleIndex);
+      if (targetIndex === -1) return prev;
+
+      const newArray = [...prev];
+      for (let i = 0; i < targetIndex; i++) {
         newArray.unshift(newArray.pop()!);
-        return newArray;
-      });
-    }, 5000);
+      }
+      return newArray;
+    });
   };
 
   return (
-    <Box sx={{ position: "relative", height: "240px", width: { xs: "240px", md: "384px" } }}>
+    <Box sx={{ position: "relative", height: "240px", width: { xs: "240px", md: "50rem" } }}>
       {cards.map((card, index) => (
         <motion.div
           key={card.id}
-          style={{ transformOrigin: "top center", position: "absolute", width: "100%", height: "100%" }}
+          style={{
+            transformOrigin: "top center",
+            position: "absolute",
+            width: "100%",
+            height: "100%",
+          }}
           animate={{
-            top: index * -CARD_OFFSET,
-            scale: 1 - index * SCALE_FACTOR,
+            top: index * -offset,
+            scale: 1 - index * scaleFactor,
             zIndex: cards.length - index,
           }}
         >

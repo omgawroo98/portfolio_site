@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { Box } from '@mui/material';
-import { motion } from 'framer-motion';
 
 const combine = (...classes: (string | undefined)[]) => classes.filter(Boolean).join(" ");
 

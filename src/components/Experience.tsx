@@ -1,5 +1,7 @@
-import { Box, Typography, Grid, CardContent } from '@mui/material';
-import CustomCard from '../layout/CustomCard';
+import { Box, Typography, Stack } from '@mui/material';
+import { useState } from 'react';
+import { CardStack } from '../layout/CardStack';
+import SelectableButtonGroup from '../layout/SelectableButtonGroup'; // ✅ new import
 
 const experiences = [
     {
@@ -22,77 +24,121 @@ const experiences = [
         ],
     },
     {
-        role: 'Web Developer Intern',
-        company: 'CreativeLabs',
-        period: 'Jul 2022 – Dec 2022',
+        role: 'Software Engineer',
+        company: 'DataStream Solutions',
+        period: 'Mar 2021 – Jun 2022',
         description: [
-            'Assisted in developing landing pages using Next.js and Tailwind CSS.',
-            'Wrote unit tests and contributed to deployment pipelines.',
+            'Developed internal dashboards using React and D3.',
+            'Implemented authentication and access control using OAuth2.',
+            'Worked closely with data scientists to visualize analytics results.',
         ],
     },
     {
-        role: 'Web Developer Intern',
-        company: 'CreativeLabs',
-        period: 'Jul 2022 – Dec 2022',
+        role: 'Junior Developer',
+        company: 'BrightApps Inc.',
+        period: 'Aug 2020 – Feb 2021',
         description: [
-            'Assisted in developing landing pages using Next.js and Tailwind CSS.',
-            'Wrote unit tests and contributed to deployment pipelines.',
-        ],
-    },
-    {
-        role: 'Web Developer Intern',
-        company: 'CreativeLabs',
-        period: 'Jul 2022 – Dec 2022',
-        description: [
-            'Assisted in developing landing pages using Next.js and Tailwind CSS.',
-            'Wrote unit tests and contributed to deployment pipelines.',
-        ],
-    },
-    {
-        role: 'Web Developer Intern',
-        company: 'CreativeLabs',
-        period: 'Jul 2022 – Dec 2022',
-        description: [
-            'Assisted in developing landing pages using Next.js and Tailwind CSS.',
-            'Wrote unit tests and contributed to deployment pipelines.',
+            'Maintained and refactored legacy codebase in a Vue.js project.',
+            'Wrote integration tests and monitored build pipelines.',
+            'Contributed to bug triaging and sprint planning sessions.',
         ],
     },
 ];
 
+// Static card array — never changes
+const allCards = experiences.map((exp, roleIndex) => ({
+    id: roleIndex,
+    roleIndex,
+    name: exp.role,
+    designation: `${exp.company} · ${exp.period}`,
+    content: exp.description[0], // or join all into one string
+}));
+
 export default function Experience() {
+    const [activeRoleIndex, setActiveRoleIndex] = useState(0);
+
+    const roleOptions = experiences.map((exp, index) => ({
+        value: index,
+        label: `${exp.role} @ ${exp.company}`,
+    }));
+
     return (
-        <Box width="70%" pb="5rem" sx={{ display: 'flex', flexDirection: 'column', gap: 3, mx: 'auto', alignItems: "center", mt: -3 }} id="experience">
-            <CustomCard glow={false} sx={{
-                backgroundImage: 'linear-gradient(to top, rgba(26, 26, 26, 0.95) 0%, rgba(15, 15, 15, 0.9) 40%, rgba(10, 10, 10, 1) 100%), radial-gradient(ellipse at bottom left, rgba(149, 76, 233, 0.15), transparent 70%)',
-                gap: 3
-            }}>
-                <Grid container spacing={2} sx={{ pt: 30 }}>
-                    <Typography variant="h2" alignSelf="center" gutterBottom>
-                        Experience
+        <Box
+            sx={{
+                position: 'relative',
+                zIndex: 5,
+                overflow: 'hidden',
+            }}
+        >
+            {/* 🌈 Gradient background overlay */}
+            <Box
+                sx={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    background: 'radial-gradient(circle at top center, rgba(0,128,128,0.25), transparent 70%)',
+                    zIndex: -1,
+                }}
+            />
+
+            {/* Actual Experience content */}
+            <Box
+                sx={{
+                    pt: { xs: 12, md: 35 },
+                    pb: 20,
+                    display: 'flex',
+                    flexDirection: { xs: 'column', md: 'row' },
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    gap: 6,
+                    maxWidth: '1200px',
+                    mx: 'auto',
+                    position: 'relative',
+                }}
+                id="experience"
+            >
+                {/* Left Text + Buttons */}
+                <Stack direction="column" alignItems="start" justifyContent="center" width="100%">
+                    <Typography
+                        variant="h5"
+                        sx={{
+                            background: 'linear-gradient(90deg, #008080, #ccffff)',
+                            backgroundClip: 'text',
+                            WebkitBackgroundClip: 'text',
+                            color: 'transparent',
+                            WebkitTextFillColor: 'transparent',
+                            fontWeight: 600,
+                            display: 'inline-block',
+                            mb: 1,
+                        }}
+                    >
+                        Welcome aboard!
                     </Typography>
-                    {experiences.map((exp, index) => (
-                        <Grid size={6} key={index}>
-                            <CustomCard sx={{ backgroundColor: 'background.paper', borderRadius: 2 }}>
-                                <CardContent>
-                                    <Typography variant="h6" fontWeight={600}>
-                                        {exp.role} @ {exp.company}
-                                    </Typography>
-                                    <Typography variant="subtitle2" color="text.secondary" gutterBottom>
-                                        {exp.period}
-                                    </Typography>
-                                    <ul style={{ paddingLeft: 16 }}>
-                                        {exp.description.map((point, idx) => (
-                                            <li key={idx}>
-                                                <Typography variant="body2">{point}</Typography>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </CardContent>
-                            </CustomCard>
-                        </Grid>
-                    ))}
-                </Grid>
-            </CustomCard>
-        </Box >
+
+                    <Typography variant="h1" color="primary" sx={{ mb: 2 }}>
+                        My Journey
+                    </Typography>
+
+                    <Typography variant="h3" sx={{ mb: 2 }}>
+                        Experience Highlights
+                    </Typography>
+
+                    <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+                        Tap a role to explore what I’ve worked on.
+                    </Typography>
+
+                    <SelectableButtonGroup
+                        options={roleOptions}
+                        selected={activeRoleIndex}
+                        onChange={(val) => setActiveRoleIndex(val as number)}
+                    />
+                </Stack>
+
+                {/* Right Card Stack */}
+                <CardStack items={allCards} triggerFlipIndex={activeRoleIndex} />
+            </Box>
+        </Box>
     );
 }
