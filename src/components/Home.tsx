@@ -103,6 +103,28 @@ const Home = () => {
                         </Typography>
                     </RainbowCard>
                 </Stack> */}
+                <Box
+                    sx={{
+                        position: 'absolute',
+                        bottom: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        zIndex: -1,
+                        background: `
+      radial-gradient(
+        circle at bottom center,
+        rgba(0, 255, 255, 0.12) 0%,
+        rgba(0, 128, 128, 0.08) 40%,
+        rgba(0, 64, 64, 0.04) 60%,
+        transparent 85%
+      )
+    `,
+                        filter: 'blur(40px)',
+                        opacity: 1,
+                    }}
+                />
+
             </CustomCard>
         </Box>
     );

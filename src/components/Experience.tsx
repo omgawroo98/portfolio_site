@@ -2,6 +2,7 @@ import { Box, Typography, Stack } from '@mui/material';
 import { useState } from 'react';
 import { CardStack } from '../layout/CardStack';
 import SelectableButtonGroup from '../layout/SelectableButtonGroup'; // ✅ new import
+import { FadeInOnScroll } from '../effects/FadeInOnScroll';
 
 const experiences = [
     {
@@ -78,15 +79,25 @@ export default function Experience() {
                     left: 0,
                     width: '100%',
                     height: '100%',
-                    background: 'radial-gradient(circle at top center, rgba(0,128,128,0.25), transparent 70%)',
                     zIndex: -1,
+                    background: `
+                        radial-gradient(
+                        circle at top center,
+                        rgba(0, 255, 255, 0.4) 0%,
+                        rgba(0, 255, 255, 0.2) 20%,
+                        rgba(0, 128, 128, 0.1) 40%,
+                        transparent 70%
+                        )
+                    `,
+                    filter: 'blur(40px)', // intensified glow
+                    opacity: 1,
                 }}
             />
 
             {/* Actual Experience content */}
             <Box
                 sx={{
-                    pt: { xs: 12, md: 35 },
+                    pt: { xs: 12, md: 25 },
                     pb: 20,
                     display: 'flex',
                     flexDirection: { xs: 'column', md: 'row' },
@@ -95,50 +106,55 @@ export default function Experience() {
                     gap: 6,
                     maxWidth: '1200px',
                     mx: 'auto',
-                    position: 'relative',
+                    // position: 'relative',
                 }}
                 id="experience"
             >
                 {/* Left Text + Buttons */}
-                <Stack direction="column" alignItems="start" justifyContent="center" width="100%">
-                    <Typography
-                        variant="h5"
-                        sx={{
-                            background: 'linear-gradient(90deg, #008080, #ccffff)',
-                            backgroundClip: 'text',
-                            WebkitBackgroundClip: 'text',
-                            color: 'transparent',
-                            WebkitTextFillColor: 'transparent',
-                            fontWeight: 600,
-                            display: 'inline-block',
-                            mb: 1,
-                        }}
-                    >
-                        Welcome aboard!
-                    </Typography>
+                <FadeInOnScroll>
+                    <Stack direction="column" alignItems="start" justifyContent="center" width="100%" minWidth="25rem">
+                        <Typography
+                            variant="h5"
+                            sx={{
+                                background: 'linear-gradient(90deg, #008080, #ccffff)',
+                                backgroundClip: 'text',
+                                WebkitBackgroundClip: 'text',
+                                color: 'transparent',
+                                WebkitTextFillColor: 'transparent',
+                                fontWeight: 600,
+                                display: 'inline-block',
+                                mb: 1,
+                            }}
+                        >
+                            Welcome aboard!
+                        </Typography>
 
-                    <Typography variant="h1" color="primary" sx={{ mb: 2 }}>
-                        My Journey
-                    </Typography>
+                        <Typography variant="h1" color="primary" sx={{ mb: 2 }}>
+                            My Journey
+                        </Typography>
 
-                    <Typography variant="h3" sx={{ mb: 2 }}>
-                        Experience Highlights
-                    </Typography>
+                        <Typography variant="h3" sx={{ mb: 2 }}>
+                            Experience Highlights
+                        </Typography>
 
-                    <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
-                        Tap a role to explore what I’ve worked on.
-                    </Typography>
+                        <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+                            Tap a role to explore what I’ve worked on.
+                        </Typography>
 
-                    <SelectableButtonGroup
-                        options={roleOptions}
-                        selected={activeRoleIndex}
-                        onChange={(val) => setActiveRoleIndex(val as number)}
-                    />
-                </Stack>
+                        <SelectableButtonGroup
+                            options={roleOptions}
+                            selected={activeRoleIndex}
+                            onChange={(val) => setActiveRoleIndex(val as number)}
+                        />
+                    </Stack>
+                </FadeInOnScroll>
 
                 {/* Right Card Stack */}
-                <CardStack items={allCards} triggerFlipIndex={activeRoleIndex} />
+                <FadeInOnScroll direction="down">
+                    <CardStack items={allCards} triggerFlipIndex={activeRoleIndex} />
+                </FadeInOnScroll>
+
             </Box>
-        </Box>
+        </Box >
     );
 }

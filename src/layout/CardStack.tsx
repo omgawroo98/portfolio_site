@@ -55,7 +55,12 @@ export const CardStack = ({
   };
 
   return (
-    <Box sx={{ position: "relative", height: "240px", width: { xs: "240px", md: "50rem" } }}>
+    <Box sx={{
+      position: "relative",
+      height: "17rem",
+      width: { xs: "17rem", md: "40rem" },
+      mt: `4rem`
+    }}>
       {cards.map((card, index) => (
         <motion.div
           key={card.id}
@@ -77,11 +82,10 @@ export const CardStack = ({
               borderRadius: 4,
               p: 2,
               boxShadow: 6,
-              border: `1px solid ${
-                theme.palette.mode === "dark"
+              border: `1px solid ${theme.palette.mode === "dark"
                   ? "rgba(255, 255, 255, 0.1)"
                   : theme.palette.divider
-              }`,
+                }`,
               backgroundColor: theme.palette.background.paper,
               display: "flex",
               flexDirection: "column",
