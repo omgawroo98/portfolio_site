@@ -1,31 +1,74 @@
 import { Box, Typography } from '@mui/material';
 import { Carousel, ValueCard } from '../layout/MuiCarousel';
 import { useTranslation } from 'react-i18next';
-import CustomCard from '../layout/CustomCard';
-import { BugReport, Speed, AutoAwesome, TouchApp } from '@mui/icons-material';
+import { Spotlight } from '../effects/Spotlight';
 import { Code2, Bug, Gauge, Sparkles, MousePointerClick } from 'lucide-react';
 
-
 function About() {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   const cards = values.map((value, index) => (
     <ValueCard key={index} {...value} />
   ));
 
   return (
+    <Box
+      sx={{
+        position: 'relative',
+        // height: '300rem',
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 1,
+        mx: 'auto',
+        alignItems: 'center',
+        py: 10,
+        // bgcolor: '#000', // dark background
+      }}
+    >
+      {/* Spotlight background effect */}
+      {/* <Spotlight className="absolute top-10 left-20 opacity-100 rotate-90" fill="#008080" /> */}
 
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, mx: 'auto', alignItems: "center" }}>
-      <CustomCard sx={{
-        backgroundImage: 'linear-gradient(to bottom, rgba(26, 26, 26, 0.95) 0%, rgba(15, 15, 15, 0.9) 40%, rgba(10, 10, 10, 1) 100%), radial-gradient(ellipse at bottom left, rgba(149, 76, 233, 0.15), transparent 70%)',
-      }}>
-        <Typography
-          variant="h1"
-          px={2}
-        >
-          {t('about.heading')}
-        </Typography>
+
+
+      {/* Foreground content */}
+      <Typography
+        variant="h5"
+        sx={{
+          background: 'linear-gradient(90deg, #008080, #ccffff)',
+          backgroundClip: 'text',
+          WebkitBackgroundClip: 'text',
+          color: 'transparent',
+          WebkitTextFillColor: 'transparent',
+          fontWeight: 600,
+          display: 'inline-block',
+          mb: 1,
+          zIndex: 1,
+        }}
+      >
+        Welcome aboard!
+      </Typography>
+
+      <Typography
+        variant="h1"
+        px={2}
+        textAlign="center"
+        sx={{
+          background: 'linear-gradient(135deg, #888888 20%, #ffffff 50%)',
+          backgroundClip: 'text',
+          WebkitBackgroundClip: 'text',
+          color: 'transparent',
+          WebkitTextFillColor: 'transparent',
+          fontWeight: 700,
+          display: 'inline-block',
+          zIndex: 1,
+        }}
+      >
+        {t('about.heading')}
+      </Typography>
+
+      <Box sx={{ position: 'relative', zIndex: 1, width: '100%' }}>
         <Carousel items={cards} />
-      </CustomCard>
+      </Box>
     </Box>
   );
 }
@@ -63,5 +106,4 @@ const values = [
   },
 ];
 
-
-export default About
+export default About;

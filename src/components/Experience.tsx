@@ -69,6 +69,7 @@ export default function Experience() {
                 position: 'relative',
                 zIndex: 5,
                 overflow: 'hidden',
+                borderRadius: '1rem',
             }}
         >
             {/* 🌈 Gradient background overlay */}
@@ -76,23 +77,32 @@ export default function Experience() {
                 sx={{
                     position: 'absolute',
                     top: 0,
-                    left: 0,
+                    left: '50%',
+                    transform: 'translateX(-50%)',
                     width: '100%',
                     height: '100%',
                     zIndex: -1,
                     background: `
-                        radial-gradient(
+                    radial-gradient(
                         circle at top center,
-                        rgba(0, 255, 255, 0.4) 0%,
-                        rgba(0, 255, 255, 0.2) 20%,
-                        rgba(0, 128, 128, 0.1) 40%,
-                        transparent 70%
-                        )
-                    `,
-                    filter: 'blur(40px)', // intensified glow
+                        rgba(0, 255, 255, 0.9) 0%,
+                        rgba(0, 255, 255, 0.8) 10%,
+                        rgba(0, 255, 255, 0.5) 25%,
+                        rgba(0, 255, 255, 0.2) 40%,
+                        rgba(0, 255, 255, 0.1) 60%,
+                        transparent 80%
+                    )
+    `,
+                    filter: 'blur(60px)',
                     opacity: 1,
+                    pointerEvents: 'none',
+
+                    // ✨ Magic fading
+                    maskImage: 'linear-gradient(to bottom, white 0%, white 10%, transparent 100%)',
+                    WebkitMaskImage: 'linear-gradient(to bottom, white 0%, white 10%, transparent 100%)',
                 }}
             />
+
 
             {/* Actual Experience content */}
             <Box
@@ -128,7 +138,6 @@ export default function Experience() {
                         >
                             Welcome aboard!
                         </Typography>
-
                         <Typography variant="h1" color="primary" sx={{ mb: 2 }}>
                             My Journey
                         </Typography>

@@ -53,6 +53,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [visibleIndex, setVisibleIndex] = useState(0);
 
   useEffect(() => {
     if (carouselRef.current) {
@@ -64,6 +65,22 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
   const checkScrollability = () => {
     const ref = carouselRef.current;
     if (!ref) return;
+
+    const children = ref.querySelectorAll('[data-carousel-card]');
+    let firstVisible = 0;
+
+    for (let i = 0; i < children.length; i++) {
+      const card = children[i] as HTMLElement;
+      const cardLeft = card.getBoundingClientRect().left;
+      const containerLeft = ref.getBoundingClientRect().left;
+
+      if (cardLeft >= containerLeft - 4) { // Allow a tiny threshold
+        firstVisible = i;
+        break;
+      }
+    }
+
+    setVisibleIndex(firstVisible);
     setCanScrollLeft(ref.scrollLeft > 0);
     setCanScrollRight(ref.scrollLeft < ref.scrollWidth - ref.clientWidth);
   };
@@ -101,6 +118,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
   return (
     <CarouselContext.Provider value={{ onCardClose: handleCardClose, currentIndex }}>
       <Box position="relative" width="100%">
+        {/* Scrollable carousel */}
         <Box
           ref={carouselRef}
           onScroll={checkScrollability}
@@ -112,22 +130,30 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
             scrollBehavior: 'smooth',
             scrollbarWidth: 'none',
             '&::-webkit-scrollbar': { display: 'none' },
+
+            // 🔥 Mask fade effect
+            WebkitMaskImage: `linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)`,
+            maskImage: `linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)`,
+            WebkitMaskRepeat: 'no-repeat',
+            WebkitMaskSize: '100% 100%',
           }}
         >
           <Box display="flex" gap={2} pl={2} maxWidth="100%">
             {items.map((item, index) => (
               <motion.div
                 key={'card' + index}
+                data-carousel-card
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 * index }}
                 style={{ borderRadius: 24 }}
               >
-                {item}
+                {React.cloneElement(item, { isActive: index === visibleIndex })}
               </motion.div>
             ))}
           </Box>
         </Box>
+        {/* Scroll buttons */}
         <Box position="absolute" right={16} bottom={-16} display="flex" gap={1}>
           <IconButton onClick={() => scrollBy('left')} disabled={!canScrollLeft}>
             <ArrowBackIosNew />
@@ -139,6 +165,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
       </Box>
     </CarouselContext.Provider>
   );
+
 };
 
 export const BlurImage = ({ src, alt, ...rest }: { src: string; alt: string;[key: string]: any }) => {
@@ -165,9 +192,16 @@ export type DevValueCard = {
   title: string;
   description: string;
   moreInfo: string;
+  isActive?: boolean
 };
 
-export const ValueCard = ({ icon, title, description, moreInfo }: DevValueCard) => {
+export const ValueCard = ({
+  icon,
+  title,
+  description,
+  moreInfo,
+  isActive = false,
+}: DevValueCard) => {
   const [open, setOpen] = useState(false);
   const theme = useTheme();
 
@@ -180,7 +214,15 @@ export const ValueCard = ({ icon, title, description, moreInfo }: DevValueCard) 
           minHeight: 220,
           p: 2.5,
           borderRadius: 3,
-          background: 'rgba(255,255,255,0.02)',
+          backgroundColor: '#121212',
+          backgroundImage: isActive ? `radial-gradient(
+            circle at 50% 85%,
+            rgba(0, 255, 255, 0.5) 0%,
+            rgba(0, 255, 255, 0.25) 25%,
+            rgba(0, 255, 255, 0.1) 50%,
+            rgba(18,18,18,0.6) 70%,
+            rgba(18,18,18,1) 100%
+          )` : 'none',
           border: '1px solid rgba(255,255,255,0.06)',
           color: '#fff',
           display: 'flex',

@@ -11,12 +11,14 @@ import { FadeInOnScroll } from './effects/FadeInOnScroll';
 import { LinkPreview } from './effects/LinkPreview';
 import Experience from './components/Experience';
 import CustomCard from './layout/CustomCard';
+import SectionSeparator from './layout/SectionSeperator';
+import SpotlightDemo from './demos/SpotlightDemo';
 
 function App() {
   return (
     <div>
       {/* <SwirlBackground /> */}
-      <BackgroundBeams />
+      {/* <BackgroundBeams /> */}
       <Navbar />
       <CustomCard glow={false} sx={{ width: '70%', mx: 'auto', backgroundColor: '#0a0a0a', p: 0 }}>
         <main>
@@ -28,17 +30,19 @@ function App() {
             {/* <StarField /> */}
           </section>
 
+          <SectionSeparator />
+
           <section id="experience" >
             <Experience />
           </section>
 
-          <FadeInOnScroll delay={0.2}>
+          <SectionSeparator />
 
             <section id="about">
               <About />
             </section>
 
-          </FadeInOnScroll>
+          <SectionSeparator />
 
           <section id="skills">
             <Skills />
@@ -55,6 +59,8 @@ function App() {
           <section id="contact">
             <Contact />
           </section>
+
+          <SpotlightDemo />
 
         </main>
       </CustomCard>
