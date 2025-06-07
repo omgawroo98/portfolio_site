@@ -20,7 +20,17 @@ function App() {
       {/* <SwirlBackground /> */}
       {/* <BackgroundBeams /> */}
       <Navbar />
-      <CustomCard glow={false} sx={{ width: '70%', mx: 'auto', backgroundColor: '#0a0a0a', p: 0 }}>
+      <CustomCard
+        glow={false}
+        sx={{
+          maxWidth: '1500px',
+          width: '100%',
+          mx: 'auto',
+          px: '1rem',  // horizontal padding
+          backgroundColor: '#0a0a0a',
+          p: 0,
+        }}
+      >
         <main>
           <section id="home" style={{ position: 'relative' }}>
             <div style={{ position: 'relative', zIndex: 2 }}>
@@ -38,9 +48,9 @@ function App() {
 
           <SectionSeparator />
 
-            <section id="about">
-              <About />
-            </section>
+          <section id="about">
+            <About />
+          </section>
 
           <SectionSeparator />
 

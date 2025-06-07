@@ -21,13 +21,12 @@ function About() {
         gap: 1,
         mx: 'auto',
         alignItems: 'center',
-        py: 10,
+        pb: 10,
         // bgcolor: '#000', // dark background
       }}
     >
       {/* Spotlight background effect */}
       {/* <Spotlight className="absolute top-10 left-20 opacity-100 rotate-90" fill="#008080" /> */}
-
 
 
       {/* Foreground content */}
@@ -52,16 +51,13 @@ function About() {
         variant="h1"
         px={2}
         textAlign="center"
-        sx={{
-          background: 'linear-gradient(135deg, #888888 20%, #ffffff 50%)',
-          backgroundClip: 'text',
-          WebkitBackgroundClip: 'text',
-          color: 'transparent',
-          WebkitTextFillColor: 'transparent',
-          fontWeight: 700,
-          display: 'inline-block',
-          zIndex: 1,
-        }}
+        // sx={{
+        //   background: 'linear-gradient(135deg, #9a9a9a 10%, #ffffff 50%, #b3b3b3 90%)',
+        //   WebkitBackgroundClip: 'text',
+        //   WebkitTextFillColor: 'transparent',
+        //   display: 'inline-block',
+        //   zIndex: 1,
+        // }}
       >
         {t('about.heading')}
       </Typography>

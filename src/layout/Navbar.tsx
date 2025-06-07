@@ -69,28 +69,37 @@ interface NavBodyProps {
 
 export const NavBody = ({ children, visible }: NavBodyProps) => {
   return (
-    <motion.div
-      animate={{
-        backdropFilter: visible ? "blur(10px)" : "none",
-        backgroundColor: visible ? "#141414" : "transparent", // 👈 dynamic background
-        boxShadow: visible
-          ? `0 4px 12px rgba(0, 0, 0, 0.3),
-     0 12px 32px rgba(0, 0, 0, 0.4),
-     0 24px 64px rgba(0, 0, 0, 0.5)`
-          : "none",
-        width: visible ? '60%' : '100%',
-        y: visible ? 20 : 0,
+    <Box
+      sx={{
+        width: '100%',
+        mx: 'auto',
+        px: 2,
+        maxWidth: {
+          xs: '100%',
+          sm: '640px',
+          md: '768px',
+          lg: '1024px',
+          xl: '1500px',
+        },
       }}
-      transition={{ type: "spring", stiffness: 120, damping: 20 }}
-      style={{
-        maxWidth: "70%",
-        margin: "0 auto",
-        borderRadius: visible ? '999px' : '0px'
-      }}
-      className="relative z-[60] flex flex-row items-center justify-between self-start px-4 py-2 lg:flex"
     >
-      {children}
-    </motion.div >
+      <motion.div
+        animate={{
+          width: visible ? '80%' : '100%',
+          backgroundColor: visible ? "#141414" : "transparent",
+          backdropFilter: visible ? "blur(10px)" : "none",
+          borderRadius: visible ? '999px' : '0px',
+          y: visible ? 20 : 0,
+        }}
+        transition={{ type: "spring", stiffness: 120, damping: 20 }}
+        style={{
+          margin: '0 auto',
+        }}
+        className="relative flex flex-row items-center justify-between px-4 py-2 z-[60]"
+      >
+        {children}
+      </motion.div>
+    </Box>
   );
 };
 
@@ -121,8 +130,8 @@ export const NavItems = ({ t }: { t: (arg0: string) => string }) => {
             }
           }}
         >
-          <Typography variant="h6" sx={{fontWeight: 500}}>
-          {t(item.name)}
+          <Typography variant="h5" sx={{ fontWeight: 500 }}>
+            {t(item.name)}
           </Typography>
         </Button>
       ))}
@@ -132,7 +141,7 @@ export const NavItems = ({ t }: { t: (arg0: string) => string }) => {
 
 export const NavbarLogo = () => {
   return (
-    <Box display="flex" alignItems="center" sx={{ width: '8rem' }}>
+    <Box display="flex" alignItems="center" sx={{ minWidth: '120px', flexShrink: 0 }}>
       <img
         src="https://assets.aceternity.com/logo-dark.png"
         alt="logo"
@@ -165,7 +174,12 @@ export const NavbarButtons = () => {
   };
 
   return (
-    <Box display="flex" justifyContent="space-around" sx={{ width: "8rem" }}>
+    <Box
+      display="flex"
+      alignItems="center"
+      gap={4}
+      sx={{ minWidth: '120px', flexShrink: 0 }}
+    >
       <IconButton onClick={handleLanguageClick} sx={{ color: 'text.primary' }}>
         <LanguageIcon />
       </IconButton>
