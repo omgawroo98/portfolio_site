@@ -46,7 +46,8 @@ const Home = () => {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                mt: '-4rem',
+                mt: { xs: '-2rem', md: '-4rem' },
+                px: 2,
             }}
         >
             <CustomCard

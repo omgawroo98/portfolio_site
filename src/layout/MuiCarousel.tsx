@@ -1,52 +1,21 @@
 'use client';
 import React, { useEffect, useRef, useState, createContext, useContext, JSX, RefObject } from 'react';
 import { Box, IconButton, Modal, Paper, Typography, useTheme } from '@mui/material';
-import { ArrowBackIosNew, ArrowForwardIos, Close } from '@mui/icons-material';
-import { AnimatePresence, motion } from 'framer-motion';
-
+import { ArrowBackIosNew, ArrowForwardIos } from '@mui/icons-material';
+import { motion } from 'framer-motion';
 
 interface CarouselProps {
   items: JSX.Element[];
   initialScroll?: number;
 }
 
-type Card = {
-  src: string;
-  title: string;
-  category: string;
-  content: React.ReactNode;
-};
-
 export const CarouselContext = createContext<{
   onCardClose: (index: number) => void;
   currentIndex: number;
 }>({
-  onCardClose: () => { },
+  onCardClose: () => {},
   currentIndex: 0,
 });
-
-const useOutsideClick = (
-  ref: RefObject<HTMLElement | null>,
-  callback: (event: MouseEvent | TouchEvent) => void
-) => {
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
-      if (!ref?.current || ref.current.contains(event.target as Node)) {
-        return;
-      }
-      callback(event);
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('touchstart', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('touchstart', handleClickOutside);
-    };
-  }, [ref, callback]);
-};
-
 
 export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -74,7 +43,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
       const cardLeft = card.getBoundingClientRect().left;
       const containerLeft = ref.getBoundingClientRect().left;
 
-      if (cardLeft >= containerLeft - 4) { // Allow a tiny threshold
+      if (cardLeft >= containerLeft - 4) {
         firstVisible = i;
         break;
       }
@@ -87,29 +56,21 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
 
   const scrollBy = (dir: 'left' | 'right') => {
     const container = carouselRef.current;
-    if (!container || !container.firstChild || !(container.firstChild as HTMLElement).firstChild) return;
+    if (!container || !container.firstChild) return;
 
-    // Access the first card
     const firstCard = (container.firstChild as HTMLElement).firstChild as HTMLElement;
     const cardWidth = firstCard.getBoundingClientRect().width;
-
-    // Use actual `gap` between cards (2 * 8px default MUI spacing)
-    const gap = 16; // adjust if you change Box gap
+    const gap = 16;
 
     const scrollAmount = cardWidth + gap;
-
-    container.scrollBy({
-      left: dir === 'left' ? -scrollAmount : scrollAmount,
-      behavior: 'smooth',
-    });
+    container.scrollBy({ left: dir === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
   };
-
 
   const handleCardClose = (index: number) => {
     const ref = carouselRef.current;
     if (!ref) return;
-    const cardWidth = window.innerWidth < 768 ? 230 : 384;
-    const gap = window.innerWidth < 768 ? 4 : 8;
+    const cardWidth = window.innerWidth < 768 ? 260 : 340;
+    const gap = window.innerWidth < 768 ? 8 : 16;
     const scrollPosition = (cardWidth + gap) * (index + 1);
     ref.scrollTo({ left: scrollPosition, behavior: 'smooth' });
     setCurrentIndex(index);
@@ -118,7 +79,6 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
   return (
     <CarouselContext.Provider value={{ onCardClose: handleCardClose, currentIndex }}>
       <Box position="relative" width="100%">
-        {/* Scrollable carousel */}
         <Box
           ref={carouselRef}
           onScroll={checkScrollability}
@@ -130,18 +90,16 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
             scrollBehavior: 'smooth',
             scrollbarWidth: 'none',
             '&::-webkit-scrollbar': { display: 'none' },
-
-            // 🔥 Mask fade effect
             WebkitMaskImage: `linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)`,
             maskImage: `linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)`,
             WebkitMaskRepeat: 'no-repeat',
             WebkitMaskSize: '100% 100%',
           }}
         >
-          <Box display="flex" gap={2} pl={2} maxWidth="100%">
+          <Box display="flex" gap={2} pl={2}>
             {items.map((item, index) => (
               <motion.div
-                key={'card' + index}
+                key={`card-${index}`}
                 data-carousel-card
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -153,37 +111,33 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
             ))}
           </Box>
         </Box>
-        {/* Scroll buttons */}
+
         <Box position="absolute" right={16} bottom={-16} display="flex" gap={1}>
-          <IconButton onClick={() => scrollBy('left')} disabled={!canScrollLeft}>
-            <ArrowBackIosNew />
+          <IconButton
+            onClick={() => scrollBy('left')}
+            disabled={!canScrollLeft}
+            sx={{
+              bgcolor: 'rgba(255,255,255,0.05)',
+              color: 'white',
+              '&:hover': { bgcolor: 'rgba(255,255,255,0.1)' },
+            }}
+          >
+            <ArrowBackIosNew fontSize="small" />
           </IconButton>
-          <IconButton onClick={() => scrollBy('right')} disabled={!canScrollRight}>
-            <ArrowForwardIos />
+          <IconButton
+            onClick={() => scrollBy('right')}
+            disabled={!canScrollRight}
+            sx={{
+              bgcolor: 'rgba(255,255,255,0.05)',
+              color: 'white',
+              '&:hover': { bgcolor: 'rgba(255,255,255,0.1)' },
+            }}
+          >
+            <ArrowForwardIos fontSize="small" />
           </IconButton>
         </Box>
       </Box>
     </CarouselContext.Provider>
-  );
-
-};
-
-export const BlurImage = ({ src, alt, ...rest }: { src: string; alt: string;[key: string]: any }) => {
-  const [loading, setLoading] = useState(true);
-  return (
-    <img
-      src={src}
-      alt={alt}
-      onLoad={() => setLoading(false)}
-      style={{
-        width: '100%',
-        height: '100%',
-        filter: loading ? 'blur(10px)' : 'none',
-        transition: 'filter 0.3s ease',
-        ...rest.style,
-      }}
-      {...rest}
-    />
   );
 };
 
@@ -192,7 +146,7 @@ export type DevValueCard = {
   title: string;
   description: string;
   moreInfo: string;
-  isActive?: boolean
+  isActive?: boolean;
 };
 
 export const ValueCard = ({
@@ -203,48 +157,35 @@ export const ValueCard = ({
   isActive = false,
 }: DevValueCard) => {
   const [open, setOpen] = useState(false);
-  const theme = useTheme();
 
   return (
     <>
       <Paper
         elevation={0}
         sx={{
-          width: { xs: 230, md: 300 },
-          minHeight: 220,
-          p: 2.5,
+          width: { xs: 260, sm: 300, md: 340 },
+          minHeight: 240,
+          p: 3,
           borderRadius: 3,
-          backgroundColor: '#121212',
-          backgroundImage: isActive ? `radial-gradient(
-            circle at 50% 85%,
-            rgba(0, 255, 255, 0.5) 0%,
-            rgba(0, 255, 255, 0.25) 25%,
-            rgba(0, 255, 255, 0.1) 50%,
-            rgba(18,18,18,0.6) 70%,
-            rgba(18,18,18,1) 100%
-          )` : 'none',
-          border: '1px solid rgba(255,255,255,0.06)',
+          backgroundColor: '#0B0B0B',
+          backgroundImage: isActive
+            ? `radial-gradient(circle at 50% 90%, rgba(0,255,255,0.4), transparent 70%)`
+            : 'none',
           color: '#fff',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          boxShadow: `
-    0 0 0 1px rgba(255, 255, 255, 0.08),
-    0 0 12px rgba(255, 255, 255, 0.05)
-  `,
-          backdropFilter: 'blur(12px)',
-          WebkitBackdropFilter: 'blur(12px)',
-          transition: 'all 0.3s ease-in-out',
+          border: '1px solid rgba(255,255,255,0.06)',
+          boxShadow: isActive
+            ? '0 0 20px rgba(0,255,255,0.2), inset 0 0 8px rgba(0,255,255,0.1)'
+            : '0 0 12px rgba(255,255,255,0.05)',
+          transition: 'all 0.3s ease',
           '&:hover': {
-            boxShadow: `
-      0 0 0 1px rgba(255, 255, 255, 0.15),
-      0 0 18px rgba(255, 255, 255, 0.08)
-    `,
-            transform: 'translateY(-2px)',
+            transform: 'translateY(-3px) scale(1.015)',
+            boxShadow: '0 0 18px rgba(255,255,255,0.08)',
           },
         }}
       >
-        {/* Circular Icon Holder */}
         <Box
           sx={{
             width: 48,
@@ -257,17 +198,14 @@ export const ValueCard = ({
             mb: 2,
           }}
         >
-          <Box sx={{ color: 'white', fontSize: 28 }}>
-            {icon}
-          </Box>
+          <Box sx={{ fontSize: 28 }}>{icon}</Box>
         </Box>
 
-        {/* Content */}
         <Box>
-          <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
+          <Typography variant="subtitle1" fontWeight="bold" mb={1}>
             {title}
           </Typography>
-          <Typography variant="body2" color="grey.400">
+          <Typography variant="body2" sx={{ color: 'grey.400', lineHeight: 1.6 }}>
             {description}
           </Typography>
         </Box>
@@ -277,10 +215,9 @@ export const ValueCard = ({
           sx={{
             mt: 2,
             fontSize: 14,
-            color: '#fff',
+            color: '#80d8ff',
             cursor: 'pointer',
             fontWeight: 500,
-            alignSelf: 'flex-start',
             '&:hover': { textDecoration: 'underline' },
           }}
         >
@@ -288,7 +225,6 @@ export const ValueCard = ({
         </Typography>
       </Paper>
 
-      {/* Modal */}
       <Modal open={open} onClose={() => setOpen(false)}>
         <Box
           sx={{
@@ -296,12 +232,12 @@ export const ValueCard = ({
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            bgcolor: '#111',
+            bgcolor: '#121212',
             color: 'white',
             p: 4,
-            borderRadius: 3,
-            maxWidth: 400,
-            boxShadow: '0 0 20px rgba(255, 255, 255, 0.15)',
+            borderRadius: 2,
+            maxWidth: 420,
+            boxShadow: '0 0 20px rgba(0, 255, 255, 0.2)',
           }}
         >
           <Typography variant="h6" mb={2}>
