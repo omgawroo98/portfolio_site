@@ -96,7 +96,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
             WebkitMaskSize: '100% 100%',
           }}
         >
-          <Box display="flex" gap={2} pl={2}>
+          <Box display="flex" gap={2} pl={{ xs: 3, md: 15 }}>
             {items.map((item, index) => (
               <motion.div
                 key={`card-${index}`}
