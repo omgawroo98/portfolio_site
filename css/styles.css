@@ -3775,7 +3775,11 @@ img.u-pull-left {
 }
 
 .modal-popup img {
-    margin-bottom : var(--vspace-0_75);
+    display: block;
+    margin: 0 auto;              /* Horizontally centers image */
+    max-width: 100%;
+    max-height: 400px;           /* Adjust as needed for uniform height */
+    object-fit: contain;         /* Preserves aspect ratio inside box */
 }
 
 .modal-popup h5 {
