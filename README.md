@@ -1,10 +1,9 @@
+## This website has been deprecated! Checkout my new one: [https://omgawroo98.github.io](https://omgawroo98.github.io)
 # 🌐 omgawroo98.github.io – Developer Portfolio
 
 Welcome to the source code of my personal developer portfolio, built with **React**, **Material UI**, and **i18n**. This site is designed to showcase who I am, what I build, and how I work — including project highlights, contact information, and a clear organizational workflow.
 
 🧑‍🦯 This website was built with **WCAG 2.2 accessibility guidelines** in mind to ensure better usability and inclusion.
-
-You can check it out live here: [https://omgawroo98.github.io](https://omgawroo98.github.io)
 
 ---
 
@@ -44,27 +43,12 @@ fix: add missing translations to form labels [TKT-002]
 
 ---
 
-## 📬 Contact
-
-Feel free to reach out via the [Contact section](https://omgawroo98.github.io/#contact) on the website — or connect with me on [LinkedIn](https://www.linkedin.com/in/your-profile).
-
----
-
 ## 🛠️ Tech Stack
 
 - **React** with TypeScript
 - **Material UI (MUI)**
 - **i18next** for internationalization
 - **GitHub Projects** for task management
-
----
-
-## 🗳 Example Tickets
-
-| ID       | Title                               | Type      |
-|----------|-------------------------------------|-----------|
-| TKT-001  | Add Dark Mode Support in UI         | Feature   |
-| TKT-002  | Fix Missing i18n Translations       | Bug       |
 
 ---
 
